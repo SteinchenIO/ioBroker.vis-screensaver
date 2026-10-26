@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fotos für den Bildschirmschoner vorbereiten</title>
+<style>
+  :root {
+    --bg1: #0b1020; --bg2: #151b34; --text: #eef1fb; --muted: #8d97b8;
+    --card: rgba(255,255,255,.06); --line: rgba(255,255,255,.14);
+    --accent: #6c5ce7; --accent2: #3da9fc; --ok: #2ed573; --bad: #ff6b81;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    background: radial-gradient(900px 500px at 10% 0%, rgba(108,92,231,.25), transparent 60%),
+                linear-gradient(160deg, var(--bg1), var(--bg2));
+  }
+  main { max-width: 980px; margin: 0 auto; padding: 28px 16px 60px; }
+  h1 { font-size: 26px; margin: 0 0 6px; font-weight: 600; }
+  p.lead { color: var(--muted); margin: 0 0 22px; line-height: 1.5; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-bottom: 16px; }
+  #drop {
+    border: 2px dashed var(--line); border-radius: 18px; padding: 34px 16px; text-align: center;
+    color: var(--muted); cursor: pointer; transition: border-color .15s, background .15s;
+  }
+  #drop.over, #drop:hover { border-color: var(--accent2); background: rgba(61,169,252,.08); }
+  #drop strong { color: var(--text); font-size: 18px; display: block; margin-bottom: 4px; }
+  #files { display: none; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px 18px; }
+  label.f { display: block; font-size: 13px; color: var(--muted); }
+  label.f > span { display: block; margin-bottom: 5px; }
+  select, input[type=number] {
+    width: 100%; padding: 9px 10px; border-radius: 10px; border: 1px solid var(--line);
+    background: rgba(0,0,0,.25); color: var(--text); font: inherit;
+  }
+  input[type=range] { width: 100%; }
+  .check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text); }
+  .size2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .hint { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+  button {
+    font: inherit; font-weight: 600; color: #fff; border: 0; border-radius: 12px; padding: 11px 20px; cursor: pointer;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+  }
+  button[disabled] { opacity: .4; cursor: default; }
+  button.ghost { background: transparent; border: 1px solid var(--line); color: var(--text); }
+  .bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  #summary { color: var(--muted); font-size: 14px; flex: 1; min-width: 200px; }
+  #progress { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 12px; display: none; }
+  #progress > div { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width .1s; }
+  .row { display: grid; grid-template-columns: 112px 1fr auto; gap: 14px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+  .row:first-child { border-top: 0; }
+  .row img { width: 112px; height: 70px; object-fit: cover; border-radius: 8px; background: #000; }
+  .row .noimg { width: 112px; height: 70px; border-radius: 8px; background: rgba(255,107,129,.12); display: grid; place-items: center; color: var(--bad); font-size: 22px; }
+  .name { font-weight: 600; word-break: break-all; }
+  .meta { color: var(--muted); font-size: 13px; margin-top: 3px; }
+  .meta b { color: var(--ok); font-weight: 600; }
+  .err { color: var(--bad); font-size: 13px; margin-top: 3px; }
+  a.dl { color: var(--accent2); font-size: 13px; text-decoration: none; }
+  ol.steps { margin: 8px 0 0; padding-left: 20px; line-height: 1.7; color: var(--muted); font-size: 14px; }
+  ol.steps b { color: var(--text); }
+  @media (max-width: 560px) { .row { grid-template-columns: 84px 1fr; } .row img, .row .noimg { width: 84px; height: 56px; } .row a.dl { grid-column: 2; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Fotos für den Bildschirmschoner vorbereiten</h1>
+  <p class="lead">Die Fotos werden hier im Browser verkleinert. Es wird nichts hochgeladen und nichts an einen Server geschickt.
+     Danach lädst du die fertigen Bilder im ioBroker-Admin hoch.</p>
+
+  <div class="card">
+    <label id="drop" for="files">
+      <strong>Fotos hierher ziehen oder klicken zum Auswählen</strong>
+      JPG, PNG, WebP, GIF, BMP. Mehrere Dateien sind möglich.
+    </label>
+    <input id="files" type="file" accept="image/*" multiple>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <label class="f"><span>Zielgröße</span>
+        <select id="preset">
+          <option value="1600x1000" selected>Waveshare 10 Zoll, scharf auch beim Zoom (1600 × 1000)</option>
+          <option value="1280x800">Waveshare 10 Zoll, genau die Bildschirmgröße (1280 × 800)</option>
+          <option value="1920x1080">Full HD (1920 × 1080)</option>
+          <option value="custom">Eigene Größe …</option>
+        </select>
+        <div class="size2" id="customSize" hidden style="margin-top:8px">
+          <input id="cw" type="number" min="200" max="7680" value="1600" aria-label="Breite in Pixel">
+          <input id="ch" type="number" min="200" max="4320" value="1000" aria-label="Höhe in Pixel">
+        </div>
+        <div class="hint">Der Zoom des Bildschirmschoners vergrößert das Bild um bis zu 10 %. Mit 1600 × 1000 bleibt es auf einem 1280 × 800 Display dabei scharf.</div>
+      </label>
+
+      <label class="f"><span>Bildausschnitt</span>
+        <select id="mode">
+          <option value="cover" selected>Zuschneiden, füllt den ganzen Bildschirm</option>
+          <option value="contain">Einpassen, ganzes Bild ohne Zuschnitt</option>
+        </select>
+        <select id="anchor" style="margin-top:8px">
+          <option value="center" selected>Zuschnitt aus der Mitte</option>
+          <option value="top">Zuschnitt oben (für Personen und Hochformat)</option>
+        </select>
+        <div class="hint">Passend zur Adapter-Einstellung „Bildanpassung“: „Bildschirm füllen“ ↔ Zuschneiden, „Ganzes Bild zeigen“ ↔ Einpassen.</div>
+      </label>
+
+      <label class="f"><span>Format</span>
+        <select id="format">
+          <option value="image/jpeg" selected>JPEG (überall abspielbar)</option>
+          <option value="image/webp">WebP (ca. 25 % kleiner)</option>
+        </select>
+        <span style="margin-top:12px">Qualität: <b id="qv">82</b></span>
+        <input id="quality" type="range" min="60" max="95" value="82">
+        <div class="hint">80 bis 85 sieht auf dem Display wie das Original aus und ist meist unter 400 KB groß.</div>
+      </label>
+
+      <div class="f">
+        <label class="check"><input id="noUpscale" type="checkbox" checked> Kleine Bilder nicht vergrößern</label>
+        <div class="hint">Ein Bild, das schon kleiner als die Zielgröße ist, bleibt in seiner Größe. Es wird nur verkleinert, nie aufgeblasen.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="bar">
+      <div id="summary">Noch keine Fotos ausgewählt.</div>
+      <button id="zip" disabled>Alle als ZIP herunterladen</button>
+      <button id="clear" class="ghost" disabled>Liste leeren</button>
+    </div>
+    <div id="progress"><div></div></div>
+    <div id="list" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <strong>So kommen die Bilder in den Bildschirmschoner</strong>
+    <ol class="steps">
+      <li>ZIP herunterladen und auf dem PC entpacken.</li>
+      <li>Im ioBroker-Admin links auf <b>Dateien</b> klicken und den Ordner <b>vis.0 → slideshow</b> öffnen (oder den Ordner, der im Adapter unter „Bilderordner“ steht).</li>
+      <li>Die entpackten Bilder markieren und mit der Maus ins Fenster ziehen. Das Hochladen-Symbol oben geht auch.</li>
+      <li>Der Adapter liest den Ordner alle paar Minuten neu ein. Bilder, die schon da waren, kannst du löschen oder ersetzen.</li>
+    </ol>
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var $ = function (id) { return document.getElementById(id); };
+  var files = [];     // ausgewählte Dateien
+  var results = [];   // fertige Bilder: {name, blob, ...}
+  var runId = 0;
+  var urls = [];
+
+  // ---------- Hilfsfunktionen ----------
+
+  function fmtSize(bytes) {
+    if (bytes >= 1048576) { return (bytes / 1048576).toFixed(1).replace('.', ',') + ' MB'; }
+    return Math.max(1, Math.round(bytes / 1024)) + ' KB';
+  }
+
+  /** Dateiname ohne Leerzeichen, Umlaute und Sonderzeichen; eindeutig innerhalb der Liste. */
+  function safeName(original, ext, taken) {
+    var base = original.replace(/\.[^.]*$/, '');
+    base = base.replace(/ß/g, 'ss').normalize('NFD').replace(/[̀-ͯ]/g, '')
+               .replace(/[^A-Za-z0-9._-]+/g, '-').replace(/-{2,}/g, '-').replace(/^[-.]+|[-.]+$/g, '');
+    if (!base) { base = 'bild'; }
+    var name = base + ext, n = 2;
+    while (taken[name.toLowerCase()]) { name = base + '-' + n++ + ext; }
+    taken[name.toLowerCase()] = true;
+    return name;
+  }
+
+  function targetSize() {
+    var v = $('preset').value;
+    if (v === 'custom') {
+      return [Math.max(200, parseInt($('cw').value, 10) || 1600), Math.max(200, parseInt($('ch').value, 10) || 1000)];
+    }
+    return v.split('x').map(Number);
+  }
+
+  /** Berechnet Ausschnitt der Quelle und Größe des Ergebnisses. */
+  function plan(sw, sh, tw, th, mode, anchor, noUpscale) {
+    var sx = 0, sy = 0, cw = sw, ch = sh, scale;
+    if (mode === 'cover') {
+      if (sw / sh > tw / th) { cw = Math.round(sh * tw / th); sx = Math.round((sw - cw) / 2); }
+      else { ch = Math.round(sw * th / tw); sy = anchor === 'top' ? 0 : Math.round((sh - ch) / 2); }
+      scale = tw / cw;
+    } else {
+      scale = Math.min(tw / sw, th / sh);
+    }
+    if (noUpscale) { scale = Math.min(scale, 1); }
+    return { sx: sx, sy: sy, cw: cw, ch: ch, ow: Math.max(1, Math.round(cw * scale)), oh: Math.max(1, Math.round(ch * scale)) };
+  }
+
+  function makeCanvas(w, h) {
+    var c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    var ctx = c.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    return { canvas: c, ctx: ctx };
+  }
+
+  /** In Halbierungen verkleinern: gibt bei starker Verkleinerung ein deutlich schärferes Ergebnis. */
+  function drawScaled(src, p) {
+    var cur = src, cx = p.sx, cy = p.sy, cw = p.cw, ch = p.ch;
+    while (cw / p.ow > 2 || ch / p.oh > 2) {
+      var nw = Math.max(p.ow, Math.round(cw / 2)), nh = Math.max(p.oh, Math.round(ch / 2));
+      var step = makeCanvas(nw, nh);
+      step.ctx.drawImage(cur, cx, cy, cw, ch, 0, 0, nw, nh);
+      cur = step.canvas; cx = 0; cy = 0; cw = nw; ch = nh;
+    }
+    var out = makeCanvas(p.ow, p.oh);
+    out.ctx.fillStyle = '#000';            // JPEG kennt keine Transparenz
+    out.ctx.fillRect(0, 0, p.ow, p.oh);
+    out.ctx.drawImage(cur, cx, cy, cw, ch, 0, 0, p.ow, p.oh);
+    return out.canvas;
+  }
+
+  /** Lädt ein Bild und beachtet dabei die Drehung aus den EXIF-Daten (Fotos vom Handy). */
+  function loadBitmap(file) {
+    if (window.createImageBitmap) {
+      return createImageBitmap(file, { imageOrientation: 'from-image' }).catch(function () { return loadViaImg(file); });
+    }
+    return loadViaImg(file);
+  }
+  function loadViaImg(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () { URL.revokeObjectURL(url); resolve(img); };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('nicht lesbar')); };
+      img.src = url;
+    });
+  }
+  function dims(img) { return [img.width || img.naturalWidth, img.height || img.naturalHeight]; }
+
+  function toBlob(canvas, type, quality) {
+    return new Promise(function (resolve, reject) {
+      canvas.toBlob(function (b) { b ? resolve(b) : reject(new Error('Umwandlung fehlgeschlagen')); }, type, quality);
+    });
+  }
+
+  // ---------- ZIP (ohne Kompression, Bilder sind schon komprimiert) ----------
+
+  var CRC_TABLE = (function () {
+    var t = new Uint32Array(256);
+    for (var n = 0; n < 256; n++) {
+      var c = n;
+      for (var k = 0; k < 8; k++) { c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1); }
+      t[n] = c >>> 0;
+    }
+    return t;
+  })();
+
+  function crc32(buf) {
+    var crc = 0xffffffff;
+    for (var i = 0; i < buf.length; i++) { crc = CRC_TABLE[(crc ^ buf[i]) & 0xff] ^ (crc >>> 8); }
+    return (crc ^ 0xffffffff) >>> 0;
+  }
+
+  /** @param {{name: string, data: Uint8Array}[]} list */
+  function buildZip(list) {
+    var enc = new TextEncoder(), parts = [], central = [], offset = 0, now = new Date();
+    var time = (now.getHours() << 11) | (now.getMinutes() << 5) | (now.getSeconds() >> 1);
+    var date = ((now.getFullYear() - 1980) << 9) | ((now.getMonth() + 1) << 5) | now.getDate();
+    list.forEach(function (f) {
+      var name = enc.encode(f.name), crc = crc32(f.data), size = f.data.length;
+      var lh = new DataView(new ArrayBuffer(30));
+      lh.setUint32(0, 0x04034b50, true); lh.setUint16(4, 20, true); lh.setUint16(6, 0x0800, true);
+      lh.setUint16(10, time, true); lh.setUint16(12, date, true); lh.setUint32(14, crc, true);
+      lh.setUint32(18, size, true); lh.setUint32(22, size, true); lh.setUint16(26, name.length, true);
+      parts.push(new Uint8Array(lh.buffer), name, f.data);
+      var ch = new DataView(new ArrayBuffer(46));
+      ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true); ch.setUint16(8, 0x0800, true);
+      ch.setUint16(12, time, true); ch.setUint16(14, date, true); ch.setUint32(16, crc, true);
+      ch.setUint32(20, size, true); ch.setUint32(24, size, true); ch.setUint16(28, name.length, true);
+      ch.setUint32(42, offset, true);
+      central.push(new Uint8Array(ch.buffer), name);
+      offset += 30 + name.length + size;
+    });
+    var centralSize = central.reduce(function (n, c) { return n + c.length; }, 0);
+    var end = new DataView(new ArrayBuffer(22));
+    end.setUint32(0, 0x06054b50, true); end.setUint16(8, list.length, true); end.setUint16(10, list.length, true);
+    end.setUint32(12, centralSize, true); end.setUint32(16, offset, true);
+    return new Blob(parts.concat(central, [new Uint8Array(end.buffer)]), { type: 'application/zip' });
+  }
+
+  // ---------- Ablauf ----------
+
+  function clearUrls() { urls.forEach(function (u) { URL.revokeObjectURL(u); }); urls = []; }
+
+  function addRow(r) {
+    var row = document.createElement('div');
+    row.className = 'row';
+    if (r.error) {
+      row.innerHTML = '<div class="noimg">!</div><div><div class="name"></div><div class="err"></div></div><div></div>';
+      row.querySelector('.name').textContent = r.original;
+      row.querySelector('.err').textContent = r.error;
+    } else {
+      var url = URL.createObjectURL(r.blob);
+      urls.push(url);
+      row.setAttribute('data-out', r.name);
+      row.setAttribute('data-w', r.ow);
+      row.setAttribute('data-h', r.oh);
+      row.innerHTML = '<img alt=""><div><div class="name"></div><div class="meta"></div></div><a class="dl">Einzeln speichern</a>';
+      row.querySelector('img').src = url;
+      row.querySelector('.name').textContent = r.name;
+      var saved = Math.max(0, Math.round(100 - 100 * r.blob.size / r.originalSize));
+      row.querySelector('.meta').innerHTML = '';
+      row.querySelector('.meta').append(
+        r.original + ': ' + r.sw + ' × ' + r.sh + ', ' + fmtSize(r.originalSize) + '  →  ' +
+        r.ow + ' × ' + r.oh + ', ' + fmtSize(r.blob.size) + '  ');
+      var b = document.createElement('b');
+      b.textContent = saved > 0 ? '(' + saved + ' % kleiner)' : '';
+      row.querySelector('.meta').appendChild(b);
+      var a = row.querySelector('a.dl');
+      a.href = url; a.download = r.name;
+    }
+    $('list').appendChild(row);
+  }
+
+  async function run() {
+    var my = ++runId;
+    clearUrls();
+    $('list').innerHTML = '';
+    results = [];
+    $('zip').disabled = true;
+    if (!files.length) {
+      $('summary').textContent = 'Noch keine Fotos ausgewählt.';
+      $('clear').disabled = true;
+      $('progress').style.display = 'none';
+      return;
+    }
+    $('clear').disabled = false;
+    $('progress').style.display = 'block';
+
+    var size = targetSize(), type = $('format').value, ext = type === 'image/webp' ? '.webp' : '.jpg';
+    var quality = parseInt($('quality').value, 10) / 100, mode = $('mode').value, anchor = $('anchor').value;
+    var noUpscale = $('noUpscale').checked, taken = {}, failed = 0, totalIn = 0, totalOut = 0;
+
+    for (var i = 0; i < files.length; i++) {
+      if (my !== runId) { return; }   // Einstellungen wurden geändert: diesen Durchlauf abbrechen
+      var file = files[i];
+      $('summary').textContent = 'Verarbeite ' + (i + 1) + ' von ' + files.length + ' …';
+      $('progress').firstElementChild.style.width = (100 * i / files.length) + '%';
+      try {
+        var bmp = await loadBitmap(file);
+        var d = dims(bmp), p = plan(d[0], d[1], size[0], size[1], mode, anchor, noUpscale);
+        var blob = await toBlob(drawScaled(bmp, p), type, quality);
+        if (bmp.close) { bmp.close(); }
+        // Ist das Ergebnis größer als das Original (kleines, stark komprimiertes Bild), Original-Größe zählt nicht als Ersparnis
+        var r = { original: file.name, originalSize: file.size, sw: d[0], sh: d[1], ow: p.ow, oh: p.oh,
+                  blob: blob, name: safeName(file.name, ext, taken) };
+        results.push(r);
+        totalIn += file.size; totalOut += blob.size;
+        if (my === runId) { addRow(r); }
+      } catch (err) {
+        failed++;
+        if (my === runId) {
+          addRow({ original: file.name, error: 'Konnte nicht gelesen werden. Das Format wird vom Browser nicht unterstützt (z. B. HEIC vom iPhone: in den Einstellungen auf „Kompatibel“ stellen oder vorher umwandeln).' });
+        }
+      }
+    }
+    if (my !== runId) { return; }
+    $('progress').firstElementChild.style.width = '100%';
+    setTimeout(function () { if (my === runId) { $('progress').style.display = 'none'; } }, 600);
+    $('summary').textContent = results.length
+      ? results.length + ' Bild' + (results.length === 1 ? '' : 'er') + ' fertig: ' + fmtSize(totalIn) + '  →  ' + fmtSize(totalOut) +
+        (failed ? ', ' + failed + ' nicht lesbar' : '')
+      : 'Kein Bild konnte gelesen werden.';
+    $('zip').disabled = results.length === 0;
+  }
+
+  var timer = null;
+  function rerunSoon() { clearTimeout(timer); timer = setTimeout(run, 250); }
+
+  function setFiles(list) {
+    files = Array.prototype.filter.call(list, function (f) { return /^image\//.test(f.type) || /\.(jpe?g|png|gif|webp|bmp|avif)$/i.test(f.name); });
+    run();
+  }
+
+  $('files').addEventListener('change', function (e) { setFiles(e.target.files); });
+  ['dragenter', 'dragover'].forEach(function (n) {
+    $('drop').addEventListener(n, function (e) { e.preventDefault(); $('drop').classList.add('over'); });
+  });
+  ['dragleave', 'drop'].forEach(function (n) {
+    $('drop').addEventListener(n, function (e) { e.preventDefault(); $('drop').classList.remove('over'); });
+  });
+  $('drop').addEventListener('drop', function (e) { setFiles(e.dataTransfer.files); });
+
+  $('preset').addEventListener('change', function () { $('customSize').hidden = $('preset').value !== 'custom'; rerunSoon(); });
+  ['cw', 'ch', 'mode', 'anchor', 'format', 'noUpscale'].forEach(function (id) { $(id).addEventListener('change', rerunSoon); });
+  $('quality').addEventListener('input', function () { $('qv').textContent = $('quality').value; rerunSoon(); });
+  $('mode').addEventListener('change', function () { $('anchor').disabled = $('mode').value !== 'cover'; });
+
+  $('clear').addEventListener('click', function () { files = []; $('files').value = ''; run(); });
+
+  $('zip').addEventListener('click', async function () {
+    var list = [];
+    for (var i = 0; i < results.length; i++) {
+      list.push({ name: results[i].name, data: new Uint8Array(await results[i].blob.arrayBuffer()) });
+    }
+    var url = URL.createObjectURL(buildZip(list));
+    var a = document.createElement('a');
+    a.href = url; a.download = 'bildschirmschoner-bilder.zip';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
+  });
+})();
+</script>
+</body>
+</html>

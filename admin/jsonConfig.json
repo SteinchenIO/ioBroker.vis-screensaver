@@ -1,0 +1,283 @@
+{
+  "type": "panel",
+  "i18n": false,
+  "items": {
+    "_headerTiming": {
+      "type": "header",
+      "text": {
+        "en": "Timing",
+        "de": "Zeiten"
+      },
+      "size": 3,
+      "newLine": true,
+      "xs": 12
+    },
+    "enabled": {
+      "type": "checkbox",
+      "label": {
+        "en": "Screensaver enabled",
+        "de": "Bildschirmschoner aktiv"
+      },
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "idleSeconds": {
+      "type": "number",
+      "label": {
+        "en": "Time until start (s)",
+        "de": "Dauer bis zum Einschalten (s)"
+      },
+      "help": {
+        "en": "Seconds without touch, click or key press until the slideshow starts",
+        "de": "Sekunden ohne Berührung, Klick oder Taste, bis die Diashow startet"
+      },
+      "min": 5,
+      "max": 86400,
+      "step": 5,
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "slideSeconds": {
+      "type": "number",
+      "label": {
+        "en": "Duration per image (s)",
+        "de": "Dauer pro Bild (s)"
+      },
+      "help": {
+        "en": "Time from one image change to the next, including the cross-fade",
+        "de": "Zeit von einem Bildwechsel zum nächsten, inklusive Überblendung"
+      },
+      "min": 2,
+      "max": 3600,
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "fadeSeconds": {
+      "type": "number",
+      "label": {
+        "en": "Cross-fade duration (s)",
+        "de": "Dauer der Überblendung (s)"
+      },
+      "help": {
+        "en": "0 = hard cut. Must be at least 1 second shorter than the duration per image",
+        "de": "0 = harter Schnitt. Muss mindestens 1 Sekunde kürzer sein als die Dauer pro Bild"
+      },
+      "min": 0,
+      "max": 60,
+      "step": 0.5,
+      "validator": "Number(data.fadeSeconds) <= Number(data.slideSeconds) - 1",
+      "validatorErrorText": {
+        "en": "Cross-fade must be at least 1 second shorter than the duration per image",
+        "de": "Die Überblendung muss mindestens 1 Sekunde kürzer sein als die Dauer pro Bild"
+      },
+      "validatorNoSaveOnError": true,
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "_headerImages": {
+      "type": "header",
+      "text": {
+        "en": "Images",
+        "de": "Bilder"
+      },
+      "size": 3,
+      "newLine": true,
+      "xs": 12
+    },
+    "imageSource": {
+      "type": "text",
+      "label": {
+        "en": "Image folder(s)",
+        "de": "Bilderordner"
+      },
+      "help": {
+        "en": "Folder in the ioBroker file storage, e.g. vis.0/slideshow. Several folders separated by comma. Upload images under Files in the admin",
+        "de": "Ordner im ioBroker-Dateispeicher, z. B. vis.0/slideshow. Mehrere Ordner mit Komma trennen. Bilder lädst du im Admin unter Dateien hoch"
+      },
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 8
+    },
+    "rescanMinutes": {
+      "type": "number",
+      "label": {
+        "en": "Rescan folder every (min)",
+        "de": "Ordner neu einlesen alle (Min.)"
+      },
+      "help": {
+        "en": "0 = only at adapter start",
+        "de": "0 = nur beim Start des Adapters"
+      },
+      "min": 0,
+      "max": 1440,
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "checkImages": {
+      "type": "checkbox",
+      "label": {
+        "en": "Check image size",
+        "de": "Bildgröße prüfen"
+      },
+      "help": {
+        "en": "Warns in the log about images that are too large for a smooth slideshow",
+        "de": "Meldet im Log Bilder, die für eine flüssige Diashow zu groß sind"
+      },
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 4
+    },
+    "maxFileKB": {
+      "type": "number",
+      "label": {
+        "en": "Largest recommended file size (KB)",
+        "de": "Größte empfohlene Dateigröße (KB)"
+      },
+      "min": 100,
+      "max": 50000,
+      "step": 100,
+      "disabled": "!data.checkImages",
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "maxMegapixels": {
+      "type": "number",
+      "label": {
+        "en": "Largest recommended resolution (megapixels)",
+        "de": "Größte empfohlene Auflösung (Megapixel)"
+      },
+      "min": 0.5,
+      "max": 100,
+      "step": 0.5,
+      "disabled": "!data.checkImages",
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "_resizeHint": {
+      "type": "staticText",
+      "text": {
+        "en": "Shrink photos before uploading (1600 x 1000 px, JPEG). The tool runs in your browser, nothing is uploaded. Then upload the result under Files in the admin.",
+        "de": "Fotos vor dem Hochladen verkleinern (1600 × 1000 Pixel, JPEG). Das Werkzeug läuft im Browser, es wird nichts hochgeladen. Danach das Ergebnis im Admin unter Dateien hochladen."
+      },
+      "newLine": true,
+      "xs": 12,
+      "md": 8
+    },
+    "_resizeLink": {
+      "type": "staticLink",
+      "button": true,
+      "variant": "contained",
+      "icon": "web",
+      "href": "./adapter/vis-screensaver/tools/resize.html",
+      "text": {
+        "en": "Open photo tool",
+        "de": "Foto-Werkzeug öffnen"
+      },
+      "xs": 12,
+      "md": 4
+    },
+    "_headerLook": {
+      "type": "header",
+      "text": {
+        "en": "Appearance",
+        "de": "Darstellung"
+      },
+      "size": 3,
+      "newLine": true,
+      "xs": 12
+    },
+    "shuffle": {
+      "type": "checkbox",
+      "label": {
+        "en": "Random order",
+        "de": "Zufällige Reihenfolge"
+      },
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "fit": {
+      "type": "select",
+      "label": {
+        "en": "Image fit",
+        "de": "Bildanpassung"
+      },
+      "options": [
+        {
+          "value": "cover",
+          "label": {
+            "en": "Fill screen (crop)",
+            "de": "Bildschirm füllen (beschneiden)"
+          }
+        },
+        {
+          "value": "contain",
+          "label": {
+            "en": "Show complete image (black bars)",
+            "de": "Ganzes Bild zeigen (schwarze Balken)"
+          }
+        }
+      ],
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "kenBurns": {
+      "type": "checkbox",
+      "label": {
+        "en": "Slow zoom",
+        "de": "Langsamer Zoom"
+      },
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "showClock": {
+      "type": "checkbox",
+      "label": {
+        "en": "Show clock",
+        "de": "Uhr anzeigen"
+      },
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4
+    },
+    "_headerUse": {
+      "type": "header",
+      "text": {
+        "en": "Usage",
+        "de": "Einbindung"
+      },
+      "size": 3,
+      "newLine": true,
+      "xs": 12
+    },
+    "_usage": {
+      "type": "staticText",
+      "text": {
+        "en": "Add this line to every page that should show the screensaver: <script src=\"/vis-screensaver/screensaver.js\"></script> (for vis 1 see README). Control via states vis-screensaver.0.control.*",
+        "de": "Diese Zeile in jede Seite einfügen, die den Bildschirmschoner zeigen soll: <script src=\"/vis-screensaver/screensaver.js\"></script> (für vis 1 siehe README). Steuerung über die States vis-screensaver.0.control.*"
+      },
+      "newLine": true,
+      "xs": 12
+    }
+  }
+}

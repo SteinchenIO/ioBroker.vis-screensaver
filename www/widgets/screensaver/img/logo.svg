@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6c5ce7"/>
+      <stop offset="1" stop-color="#3da9fc"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d2440"/>
+      <stop offset="1" stop-color="#3b4a8f"/>
+    </linearGradient>
+    <clipPath id="scr"><rect x="18" y="24" width="92" height="64" rx="9"/></clipPath>
+    <mask id="crescent">
+      <rect width="128" height="128" fill="#fff"/>
+      <circle cx="97" cy="39" r="9" fill="#000"/>
+    </mask>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <rect x="18" y="24" width="92" height="64" rx="9" fill="url(#sky)"/>
+  <g clip-path="url(#scr)">
+    <path d="M14 90 L48 50 L67 72 L84 55 L114 90 Z" fill="#6c5ce7"/>
+    <path d="M14 90 L36 66 L52 84 L70 70 L92 90 Z" fill="#4b3fc0" opacity=".85"/>
+  </g>
+  <circle cx="91" cy="44" r="10" fill="#ffd166" mask="url(#crescent)"/>
+  <circle cx="34" cy="40" r="2" fill="#fff"/>
+  <circle cx="52" cy="33" r="1.5" fill="#fff"/>
+  <circle cx="70" cy="42" r="1.8" fill="#fff"/>
+  <path d="M44 52v6M41 55h6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+  <rect x="18" y="24" width="92" height="64" rx="9" fill="none" stroke="#fff" stroke-width="5"/>
+  <rect x="54" y="92" width="20" height="6" rx="3" fill="#fff"/>
+  <rect x="42" y="100" width="44" height="7" rx="3.5" fill="#fff"/>
+</svg>

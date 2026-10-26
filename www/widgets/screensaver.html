@@ -1,0 +1,229 @@
+<!--
+    ioBroker.vis-screensaver – Widget für vis (Version 1)
+
+    Das Widget zeigt das Logo des Bildschirmschoners als Kachel.
+      - Tippen:          Bildschirmschoner sofort starten
+      - Lange drücken:   Bildschirmschoner ein-/ausschalten (Schalter-State)
+      - Grüner Punkt:    Bildschirmschoner ist aktiv, grauer Punkt: ausgeschaltet
+    Im Betrieb (nicht im Editor) lädt das Widget außerdem das Browser-Skript, das den
+    Bildschirmschoner einblendet. Das Skript bleibt beim Wechsel der Views geladen.
+-->
+<style>
+    .vissc-tile {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(108, 92, 231, .25), rgba(61, 169, 252, .18));
+        border: 1px solid rgba(255, 255, 255, .18);
+        color: #fff;
+        font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+        cursor: pointer;
+        overflow: hidden;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        transition: transform .15s ease;
+    }
+    .vissc-tile:active { transform: scale(.96); }
+    .vissc-logo {
+        flex: 1 1 auto;
+        min-height: 0;
+        max-width: 80%;
+        object-fit: contain;
+        pointer-events: none;
+        transition: filter .2s ease, opacity .2s ease;
+    }
+    .vissc-label {
+        max-width: 100%;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: .2px;
+        line-height: 1.1;
+        text-align: center;
+        white-space: normal;
+        hyphens: manual;
+        overflow-wrap: anywhere;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    .vissc-dot {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #2ed573;
+        box-shadow: 0 0 8px #2ed573;
+    }
+    .vissc-off .vissc-logo { filter: grayscale(1); opacity: .45; }
+    .vissc-off .vissc-dot { background: #8d97b8; box-shadow: none; }
+</style>
+
+<script type="text/javascript">
+    "use strict";
+
+    // Beschriftungen der Einstellungen im vis-Editor
+    if (vis.editMode) {
+        $.extend(true, systemDictionary, {
+            "oid-enabled":  {"en": "Switch state (enabled)", "de": "Schalter-State (aktiv)"},
+            "instance":     {"en": "Adapter instance", "de": "Adapter-Instanz"},
+            "startOnTap":   {"en": "Start screensaver on tap", "de": "Beim Tippen Bildschirmschoner starten"},
+            "showLabel":    {"en": "Show label", "de": "Beschriftung anzeigen"},
+            "label":        {"en": "Label", "de": "Beschriftung"},
+            "showStatus":   {"en": "Show status dot", "de": "Statuspunkt anzeigen"},
+            "logo":         {"en": "Own logo (optional)", "de": "Eigenes Logo (optional)"}
+        });
+    }
+
+    vis.binds.screensaver = {
+        version: "0.1.0",
+        scriptState: 0, // 0 = nicht geladen, 1 = wird geladen, 2 = geladen
+
+        showVersion: function () {
+            if (vis.binds.screensaver.version) {
+                console.log("Version vis-screensaver: " + vis.binds.screensaver.version);
+                vis.binds.screensaver.version = null;
+            }
+        },
+
+        isOn: function (val) {
+            return !(val === false || val === "false" || val === 0 || val === "0");
+        },
+
+        /** Browser-Skript des Bildschirmschoners einmal pro Seite laden. */
+        loadScript: function (instance, callback) {
+            var b = vis.binds.screensaver;
+            if (window.IoBScreensaver) {
+                b.scriptState = 2;
+            }
+            if (b.scriptState === 2) {
+                callback && callback();
+                return;
+            }
+            b.waiting = b.waiting || [];
+            callback && b.waiting.push(callback);
+            if (b.scriptState === 1) {
+                return;
+            }
+            b.scriptState = 1;
+            window.SCREENSAVER_INSTANCE = instance;
+            var s = document.createElement("script");
+            s.src = "/vis-screensaver/screensaver.js";
+            s.onload = function () {
+                b.scriptState = 2;
+                var list = b.waiting;
+                b.waiting = [];
+                list.forEach(function (fn) { fn(); });
+            };
+            s.onerror = function () {
+                b.scriptState = 0;
+                b.waiting = [];
+                console.warn("vis-screensaver: /vis-screensaver/screensaver.js konnte nicht geladen werden");
+            };
+            document.head.appendChild(s);
+        },
+
+        createWidget: function (widgetID, view, data, style) {
+            var b = vis.binds.screensaver;
+            var $div = $("#" + widgetID);
+            if (!$div.length) {
+                // Das Element gibt es noch nicht: kurz warten und noch einmal versuchen
+                return setTimeout(function () {
+                    b.createWidget(widgetID, view, data, style);
+                }, 100);
+            }
+
+            var $tile = $div.find(".vissc-tile");
+            var $dot = $div.find(".vissc-dot");
+            var instance = parseInt(data.instance, 10) || 0;
+            var oid = data["oid-enabled"];
+            var hasOid = oid && oid !== "nothing_selected";
+
+            if (data.showLabel === false || data.showLabel === "false") {
+                $div.find(".vissc-label").hide();
+            }
+            if (data.showStatus === false || data.showStatus === "false") {
+                $dot.hide();
+            }
+
+            // Zustand des Schalters anzeigen
+            function applyStatus(val) {
+                $tile.toggleClass("vissc-off", !b.isOn(val));
+            }
+            if (hasOid) {
+                vis.states.bind(oid + ".val", function (e, newVal) {
+                    applyStatus(newVal);
+                });
+                applyStatus(vis.states[oid + ".val"]);
+            }
+
+            // Im Editor nur anzeigen, nichts auslösen und das Skript nicht laden
+            if (vis.editMode) {
+                return;
+            }
+
+            b.loadScript(instance);
+
+            var startOnTap = !(data.startOnTap === false || data.startOnTap === "false");
+            var pressTimer = null;
+            var longPressed = false;
+
+            $tile.on("pointerdown", function () {
+                longPressed = false;
+                clearTimeout(pressTimer);
+                pressTimer = setTimeout(function () {
+                    longPressed = true;
+                    if (hasOid) {
+                        vis.setValue(oid, !b.isOn(vis.states[oid + ".val"]));
+                    }
+                }, 800);
+            });
+            $tile.on("pointerup pointerleave pointercancel", function () {
+                clearTimeout(pressTimer);
+            });
+            $tile.on("click", function () {
+                if (longPressed) {
+                    longPressed = false;
+                    return;
+                }
+                if (startOnTap) {
+                    b.loadScript(instance, function () {
+                        window.IoBScreensaver.start();
+                    });
+                }
+            });
+        }
+    };
+
+    vis.binds.screensaver.showVersion();
+</script>
+
+<script id="tplScreensaver"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-set="screensaver"
+        data-vis-type="ctrl"
+        data-vis-name="Bildschirmschoner"
+        data-vis-prev='<img src="/vis-screensaver/widgets/screensaver/img/Prev.png" style="max-width:120px"/>'
+        data-vis-attrs="oid-enabled/vis-screensaver.0.control.enabled;instance/0/number,0,9,1;startOnTap/true/checkbox;showLabel/true/checkbox;label/Bildschirm­schoner;showStatus/true/checkbox;logo//image">
+    <div class="vis-widget <%== this.data.attr('class') %>" style="width:120px;height:130px;" id="<%= this.data.attr('wid') %>">
+        <div class="vis-widget-body vissc-tile">
+            <img class="vissc-logo" alt="" draggable="false"
+                 src="<%= this.data.attr('logo') || '/vis-screensaver/widgets/screensaver/img/logo.svg' %>">
+            <div class="vissc-label"><%= this.data.attr('label') %></div>
+            <div class="vissc-dot"></div>
+        </div>
+    </div>
+    <% vis.binds.screensaver.createWidget(this.data.attr('wid'), this.view, this.data, this.style); %>
+</script>

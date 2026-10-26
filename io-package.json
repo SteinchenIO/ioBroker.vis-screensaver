@@ -1,0 +1,91 @@
+{
+  "common": {
+    "name": "vis-screensaver",
+    "version": "0.1.0",
+    "news": {
+      "0.1.0": {
+        "en": "Initial release",
+        "de": "Erste Version"
+      }
+    },
+    "title": "Screensaver",
+    "titleLang": {
+      "en": "Screensaver",
+      "de": "Bildschirmschoner"
+    },
+    "desc": {
+      "en": "Slideshow screensaver with vis widget for vis, vis-2 and custom web pages",
+      "de": "Bildschirmschoner mit Diashow und vis-Widget für vis, vis-2 und eigene Webseiten"
+    },
+    "authors": [
+      "Dein Name <du@example.com>"
+    ],
+    "keywords": [
+      "screensaver",
+      "slideshow",
+      "vis",
+      "kiosk"
+    ],
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "screensaver.svg",
+    "extIcon": "https://raw.githubusercontent.com/DEIN-NAME/ioBroker.vis-screensaver/main/admin/screensaver.svg",
+    "readme": "https://github.com/DEIN-NAME/ioBroker.vis-screensaver/blob/main/README.md",
+    "enabled": true,
+    "loglevel": "info",
+    "tier": 3,
+    "mode": "daemon",
+    "type": "visualization-widgets",
+    "restartAdapters": [
+      "vis"
+    ],
+    "compact": true,
+    "adminUI": {
+      "config": "json"
+    },
+    "supportCustoms": false,
+    "dependencies": [
+      {
+        "js-controller": ">=5.0.19"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=6.17.14"
+      }
+    ]
+  },
+  "native": {
+    "enabled": true,
+    "idleSeconds": 180,
+    "slideSeconds": 20,
+    "fadeSeconds": 2,
+    "imageSource": "vis.0/slideshow",
+    "shuffle": true,
+    "fit": "cover",
+    "kenBurns": true,
+    "showClock": true,
+    "rescanMinutes": 10,
+    "checkImages": true,
+    "maxFileKB": 1500,
+    "maxMegapixels": 4
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "",
+      "type": "meta",
+      "common": {
+        "name": {
+          "en": "Screensaver files",
+          "de": "Dateien des Bildschirmschoners"
+        },
+        "type": "meta.user"
+      },
+      "native": {}
+    }
+  ]
+}

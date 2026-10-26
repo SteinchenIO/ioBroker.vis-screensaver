@@ -1,0 +1,40 @@
+{
+  "name": "iobroker.vis-screensaver",
+  "version": "0.1.0",
+  "description": "Bildschirmschoner mit Diashow für vis, vis-2 und eigene Web-Oberflächen",
+  "author": {
+    "name": "Dein Name",
+    "email": "du@example.com"
+  },
+  "homepage": "https://github.com/DEIN-NAME/ioBroker.vis-screensaver",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "screensaver",
+    "slideshow",
+    "vis",
+    "kiosk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEIN-NAME/ioBroker.vis-screensaver.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@iobroker/adapter-core": "^3.2.3"
+  },
+  "main": "main.js",
+  "files": [
+    "admin/",
+    "lib/",
+    "www/",
+    "io-package.json",
+    "LICENSE",
+    "main.js"
+  ],
+  "scripts": {
+    "test": "node test/adapter.test.js && node test/imageinfo.test.js"
+  }
+}
