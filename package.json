@@ -33,8 +33,5 @@
     "io-package.json",
     "LICENSE",
     "main.js"
-  ],
-  "scripts": {
-    "test": "node test/adapter.test.js && node test/imageinfo.test.js"
-  }
+  ]
 }

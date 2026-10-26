@@ -1,5 +1,5 @@
 node_modules/
 *.tgz
 *.zip
-test/fixtures/
+test/
 __pycache__/
