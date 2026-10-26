@@ -18,7 +18,7 @@
       "de": "Bildschirmschoner mit Diashow und vis-Widget für vis, vis-2 und eigene Webseiten"
     },
     "authors": [
-      "Dein Name <du@example.com>"
+      "SteinchenIO <git@felz.de>"
     ],
     "keywords": [
       "screensaver",
@@ -32,8 +32,8 @@
     },
     "platform": "Javascript/Node.js",
     "icon": "screensaver.svg",
-    "extIcon": "https://raw.githubusercontent.com/DEIN-NAME/ioBroker.vis-screensaver/main/admin/screensaver.svg",
-    "readme": "https://github.com/DEIN-NAME/ioBroker.vis-screensaver/blob/main/README.md",
+    "extIcon": "https://raw.githubusercontent.com/SteinchenIO/ioBroker.vis-screensaver/main/admin/screensaver.svg",
+    "readme": "https://github.com/SteinchenIO/ioBroker.vis-screensaver/blob/main/README.md",
     "enabled": true,
     "loglevel": "info",
     "tier": 3,

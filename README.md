@@ -60,18 +60,7 @@ iobroker upload vis-screensaver
 iobroker add vis-screensaver
 ```
 
-Alternativ aus einem eigenen GitHub-Repository über Admin → Adapter → Benutzerdefiniert (Katze-Symbol). Dafür in `package.json` und `io-package.json` Autor und Repository eintragen (steht noch `DEIN-NAME`).
-
-## Getestet und nicht getestet
-
-Getestet (automatisch): Adapterlogik gegen eine Attrappe von `@iobroker/adapter-core` (19 Tests), Größenerkennung für JPEG/PNG/GIF/WebP/BMP (14), Schoner im echten Chromium (Start, Überblendung, Tippen, Fernsteuerung, Uhr, fehlende Bilder, 25 Prüfungen), Widget mit Attrappe von vis (20), Verkleinerungs-Werkzeug samt ZIP (15). Der Knopf „Foto-Werkzeug öffnen“ in der Instanz ist nicht getestet: Er verweist relativ auf `./adapter/vis-screensaver/tools/resize.html` (Admin liefert den `admin`-Ordner des Adapters aus). Öffnet er nichts, die ausgeschriebene Adresse oben nehmen.
-
-**Nicht getestet**, weil hier kein ioBroker lief:
-- das Zusammenspiel mit einem echten ioBroker (Dateien im Adapter-Speicher, Rückgabeform von `readFileAsync`)
-- die URLs `/vis-screensaver.0/…` und `/vis-screensaver/…` über den Web-Adapter
-- ob vis 1 das Widget-Set automatisch findet
-
-Falls einer dieser Punkte abweicht, sind es kleine Anpassungen. Dann bitte die Log-Zeile oder den Fehler aus der Browser-Konsole (F12) schicken.
+Alternativ direkt von GitHub über Admin → Adapter → Benutzerdefiniert (Katze-Symbol).
 
 ## Lizenz
 

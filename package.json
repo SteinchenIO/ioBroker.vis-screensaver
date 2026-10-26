@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "description": "Bildschirmschoner mit Diashow für vis, vis-2 und eigene Web-Oberflächen",
   "author": {
-    "name": "Dein Name",
-    "email": "du@example.com"
+    "name": "SteinchenIO",
+    "email": "git@felz.de"
   },
-  "homepage": "https://github.com/DEIN-NAME/ioBroker.vis-screensaver",
+  "homepage": "https://github.com/SteinchenIO/ioBroker.vis-screensaver",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DEIN-NAME/ioBroker.vis-screensaver.git"
+    "url": "git+https://github.com/SteinchenIO/ioBroker.vis-screensaver.git"
   },
   "engines": {
     "node": ">=18"
