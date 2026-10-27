@@ -7,22 +7,17 @@
       "src": "spende.png",
       "newLine": true,
       "xs": 12,
-      "md": 8,
-      "lg": 6
+      "md": 3
     },
     "_donateLink": {
       "type": "staticLink",
-      "button": true,
-      "variant": "contained",
-      "icon": "web",
       "href": "https://www.paypal.me/SteinchenIO",
       "text": {
-        "en": "Support the project",
-        "de": "Projekt unterstützen"
+        "en": "Support via PayPal",
+        "de": "Per PayPal spenden"
       },
-      "newLine": true,
       "xs": 12,
-      "md": 4
+      "md": 3
     },
     "_headerTiming": {
       "type": "header",

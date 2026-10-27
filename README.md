@@ -1,6 +1,6 @@
 # ioBroker.vis-screensaver
 
-[![Spendier mir einen Kaffee](admin/spende.svg)](https://www.paypal.me/SteinchenIO)
+[<img src="admin/spende.svg" alt="Projekt unterstützen" height="28">](https://www.paypal.me/SteinchenIO)
 
 Bildschirmschoner mit eigenen Fotos für Wandtablets und Kiosk-Displays mit ioBroker/vis.
 Nach einer einstellbaren Leerlaufzeit blendet er Bilder aus einem ioBroker-Ordner weich ineinander über. Ein Tipp beendet ihn, ohne dass darunter etwas ausgelöst wird.
