@@ -14,6 +14,7 @@
  * den Bildschirmschoner in jeder Seite ein, in die es eingebunden ist.
  */
 
+const os = require('node:os');
 const utils = require('@iobroker/adapter-core');
 const { getImageSize } = require('./lib/imageinfo');
 
@@ -393,25 +394,46 @@ class Screensaver extends utils.Adapter {
     }
 
     /**
+     * Baut die vollständige Adresse des Foto-Werkzeugs (Admin-Port und IP-Adresse dieses Rechners).
+     * Fällt bei Problemen auf den relativen Pfad zurück.
+     * @returns {Promise<string>}
+     */
+    async photoToolUrl() {
+        const path = '/files/vis-screensaver.admin/tools/resize.html';
+        try {
+            let port = 8081;
+            let protocol = 'http';
+            const admin = await this.getForeignObjectAsync('system.adapter.admin.0');
+            if (admin && admin.native) {
+                port = admin.native.port || port;
+                protocol = admin.native.secure ? 'https' : 'http';
+            }
+            for (const list of Object.values(os.networkInterfaces())) {
+                for (const net of list || []) {
+                    if (net.family === 'IPv4' && !net.internal) {
+                        return `${protocol}://${net.address}:${port}${path}`;
+                    }
+                }
+            }
+        } catch (err) {
+            this.log.debug(`Adresse des Foto-Werkzeugs nicht ermittelbar: ${err.message}`);
+        }
+        return path;
+    }
+
+    /**
      * Nachrichten aus der Admin-Oberfläche (Knopf "Foto-Werkzeug öffnen").
-     * Antwort mit openUrl: der Admin öffnet die Adresse relativ zu seiner eigenen Adresse in einem neuen Tab.
+     * Die Antwort enthält openUrl (der Admin öffnet die Adresse in einem neuen Tab) und die Adresse
+     * als Text, damit man sie auch sieht und abtippen kann, falls der Browser das Fenster blockiert.
      * @param {ioBroker.Message} obj
      */
-    onMessage(obj) {
+    async onMessage(obj) {
         this.log.debug(`Nachricht empfangen: ${obj && obj.command}`);
-        if (!obj || !obj.command) {
+        if (!obj || obj.command !== 'openPhotoTool' || !obj.callback) {
             return;
         }
-        if (obj.command === 'openPhotoTool') {
-            if (obj.callback) {
-                this.sendTo(
-                    obj.from,
-                    obj.command,
-                    { openUrl: '/files/vis-screensaver.admin/tools/resize.html', window: '_blank' },
-                    obj.callback,
-                );
-            }
-        }
+        const url = await this.photoToolUrl();
+        this.sendTo(obj.from, obj.command, { openUrl: url, window: '_blank', result: `Foto-Werkzeug: ${url}` }, obj.callback);
     }
 
     /** @param {() => void} callback */

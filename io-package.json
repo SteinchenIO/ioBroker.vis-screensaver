@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "news": {
+      "0.1.4": {
+        "en": "Photo tool button shows the full address of the tool and opens it.",
+        "de": "Foto-Werkzeug-Knopf zeigt die vollständige Adresse an und öffnet das Werkzeug."
+      },
       "0.1.3": {
         "en": "Fixed invalid jsonConfig (validator text), debug log for the photo tool button.",
         "de": "Ungültige jsonConfig behoben (Validator-Text), Debug-Log für den Foto-Werkzeug-Knopf."
