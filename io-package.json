@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "news": {
+      "0.1.9": {
+        "en": "vis 1 widget file moved to the widgets folder so vis can find the widget set.",
+        "de": "Widget-Datei für vis 1 in den Ordner widgets verschoben, damit vis den Widget-Satz findet."
+      },
       "0.1.8": {
         "en": "Screensaver no longer runs inside the vis editor.",
         "de": "Der Schoner läuft nicht mehr im vis-Editor."
