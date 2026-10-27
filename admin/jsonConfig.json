@@ -6,10 +6,10 @@
       "type": "staticImage",
       "src": "spende.png",
       "newLine": true,
-      "xs": 12,
-      "md": 2,
       "href": "https://www.paypal.me/SteinchenIO",
-      "sm": 4
+      "xs": 6,
+      "sm": 3,
+      "md": 2
     },
     "_helpLink": {
       "type": "staticLink",
@@ -201,7 +201,7 @@
       "button": true,
       "variant": "contained",
       "icon": "web",
-      "href": "./adapter/vis-screensaver/tools/resize.html",
+      "href": "/files/vis-screensaver.admin/tools/resize.html",
       "text": {
         "en": "Open photo tool",
         "de": "Foto-Werkzeug öffnen"
