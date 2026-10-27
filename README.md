@@ -46,7 +46,7 @@ Hat das Desktop-Menü einen eigenen Schoner (`CONFIG.saver`), dort `enabled:fals
 
 - **Zielgröße:** Das Waveshare-Display hat 1280 × 800 (16:10). Mit dem Zoom braucht ein Bild bis zu 10 % Reserve, also **1600 × 1000** Pixel. Mehr bringt nichts, kostet aber Speicher und Ruckler auf dem Raspberry Pi.
 - **Format:** JPEG, Qualität 80–85, möglichst unter 1,5 MB, im Normalfall unter 400 KB.
-- **Verkleinern:** In der Instanz (Bilder) auf **Foto-Werkzeug öffnen** klicken (alternativ `http://<ioBroker-IP>:8081/files/vis-screensaver.admin/tools/resize.html`), Fotos hineinziehen, ZIP laden. Alles läuft im Browser; die Handy-Drehung (EXIF) wird beachtet, Dateinamen werden bereinigt.
+- **Verkleinern:** In den Instanz-Einstellungen unter „Bilder“ auf das Bild **Foto-Werkzeug öffnen** klicken. Es öffnet sich im selben Tab, speichere vorher deine Einstellungen (alternativ `http://<ioBroker-IP>:8081/files/vis-screensaver.admin/tools/resize.html`), Fotos hineinziehen, ZIP laden. Alles läuft im Browser; die Handy-Drehung (EXIF) wird beachtet, Dateinamen werden bereinigt.
 - **Hochladen:** Admin → **Dateien** → Ordner `vis.0/slideshow` → entpackte Bilder ins Fenster ziehen.
 - **Kontrolle:** Der Adapter prüft die Bilder ohne sie zu dekodieren. Was über „Maximale Dateigröße“ oder „Maximale Megapixel“ liegt, steht im Log und in `info.imageReport`. Bilder werden trotzdem gezeigt.
 - Hochformatbilder: Bei „Bildschirm füllen“ werden sie stark beschnitten. Dafür „Ganzes Bild zeigen“ wählen oder sie im Werkzeug mit „Einpassen“ vorbereiten.

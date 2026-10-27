@@ -190,25 +190,20 @@
     "_resizeHint": {
       "type": "staticText",
       "text": {
-        "en": "Shrink photos before uploading (1600 x 1000 px, JPEG). The tool runs in your browser, nothing is uploaded. Then upload the result under Files in the admin. If the button does nothing, open http://<ioBroker-IP>:8081/files/vis-screensaver.admin/tools/resize.html.",
-        "de": "Fotos vor dem Hochladen verkleinern (1600 × 1000 Pixel, JPEG). Das Werkzeug läuft im Browser, es wird nichts hochgeladen. Danach das Ergebnis im Admin unter Dateien hochladen. Tut der Knopf nichts, öffne http://<ioBroker-IP>:8081/files/vis-screensaver.admin/tools/resize.html."
+        "en": "Shrink photos before uploading (1600 x 1000 px, JPEG). The tool runs in your browser, nothing is uploaded. It opens in this tab, so save your settings first. Use the Back button to return. Then upload the result under Files in the admin.",
+        "de": "Fotos vor dem Hochladen verkleinern (1600 × 1000 Pixel, JPEG). Das Werkzeug läuft im Browser, es wird nichts hochgeladen. Es öffnet sich in diesem Tab, speichere deine Einstellungen deshalb vorher. Mit der Zurück-Taste kommst du wieder hierher. Danach das Ergebnis im Admin unter Dateien hochladen."
       },
       "newLine": true,
       "xs": 12,
-      "md": 8
+      "md": 10
     },
     "_resizeLink": {
-      "type": "sendTo",
-      "command": "openPhotoTool",
-      "variant": "contained",
-      "icon": "web",
-      "showProcess": false,
-      "label": {
-        "en": "Open photo tool",
-        "de": "Foto-Werkzeug öffnen"
-      },
-      "xs": 12,
-      "md": 4
+      "type": "staticImage",
+      "src": "foto-werkzeug.png",
+      "href": "/files/vis-screensaver.admin/tools/resize.html",
+      "xs": 6,
+      "sm": 3,
+      "md": 2
     },
     "_headerLook": {
       "type": "header",

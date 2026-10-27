@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "news": {
+      "0.1.5": {
+        "en": "Photo tool opens via a clickable image in the settings.",
+        "de": "Foto-Werkzeug öffnet über ein anklickbares Bild in den Einstellungen."
+      },
       "0.1.4": {
         "en": "Photo tool button shows the full address of the tool and opens it.",
         "de": "Foto-Werkzeug-Knopf zeigt die vollständige Adresse an und öffnet das Werkzeug."
@@ -72,8 +76,7 @@
       {
         "admin": ">=6.17.14"
       }
-    ],
-    "messagebox": true
+    ]
   },
   "native": {
     "enabled": true,
