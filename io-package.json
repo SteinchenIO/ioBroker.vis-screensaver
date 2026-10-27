@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.14",
+    "version": "0.1.15",
     "news": {
+      "0.1.15": {
+        "en": "Description corrected (no vis-2 widget).",
+        "de": "Beschreibung korrigiert (kein vis-2-Widget)."
+      },
       "0.1.14": {
         "en": "README: integration and image folder updated.",
         "de": "README: Einbinden und Bilderordner aktualisiert."
@@ -70,8 +74,8 @@
       "de": "Bildschirmschoner"
     },
     "desc": {
-      "en": "Slideshow screensaver with vis widget for vis, vis-2 and custom web pages",
-      "de": "Bildschirmschoner mit Diashow und vis-Widget für vis, vis-2 und eigene Webseiten"
+      "en": "Slideshow screensaver with vis widget for vis and custom web pages",
+      "de": "Bildschirmschoner mit Diashow und vis-Widget für vis und eigene Webseiten"
     },
     "authors": [
       "SteinchenIO <git@felz.de>"
