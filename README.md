@@ -1,5 +1,7 @@
 # ioBroker.vis-screensaver
 
+[![Spendier mir einen Kaffee](admin/spende.svg)](https://www.paypal.me/SteinchenIO)
+
 Bildschirmschoner mit eigenen Fotos für Wandtablets und Kiosk-Displays mit ioBroker/vis.
 Nach einer einstellbaren Leerlaufzeit blendet er Bilder aus einem ioBroker-Ordner weich ineinander über. Ein Tipp beendet ihn, ohne dass darunter etwas ausgelöst wird.
 
@@ -51,17 +53,52 @@ Hat das Desktop-Menü einen eigenen Schoner (`CONFIG.saver`), dort `enabled:fals
 
 ## Installation
 
-Auf dem ioBroker-Server (aus dem entpackten Ordner):
+Voraussetzungen: Node.js 18 oder neuer, js-controller 5.0.19 oder neuer, Admin 6.17.14 oder neuer.
+
+Der Adapter steht nicht im offiziellen ioBroker-Repository und wird deshalb direkt von GitHub installiert. Das geht auf dem ioBroker-Rechner (z. B. Raspberry Pi) per SSH:
 
 ```
 cd /opt/iobroker
-npm install /pfad/zu/iobroker.vis-screensaver
-iobroker upload vis-screensaver
+iobroker url https://github.com/SteinchenIO/ioBroker.vis-screensaver
+```
+
+Danach in der Admin-Oberfläche unter Instanzen prüfen, ob `vis-screensaver.0` vorhanden ist. Falls nicht:
+
+```
 iobroker add vis-screensaver
 ```
 
-Alternativ direkt von GitHub über Admin → Adapter → Benutzerdefiniert (Katze-Symbol).
+Anschließend in den Instanz-Einstellungen Bilderordner und Zeiten eintragen. Wie du den Schoner in vis oder eine eigene Seite einbindest, steht unter „Einbinden“.
+
+Alternativ geht es über Admin → Adapter → Benutzerdefiniert (Katze-Symbol) mit derselben GitHub-Adresse.
+
+### Wichtig: nicht von Hand nach `node_modules` kopieren
+
+Ein von Hand nach `/opt/iobroker/node_modules/` kopierter Ordner steht nicht in der `package.json` von ioBroker. Beim nächsten `npm install` (z. B. bei einem Adapter-Update) wird er dann als überflüssig entfernt, und die Instanz meldet `startInstance cannot find adapter`. Die Installation über `iobroker url` trägt den Adapter dagegen ein und schützt ihn.
+
+### Update
+
+Erneut denselben Befehl ausführen:
+
+```
+cd /opt/iobroker
+iobroker url https://github.com/SteinchenIO/ioBroker.vis-screensaver
+```
+
+Die Instanz-Einstellungen bleiben erhalten. Der Adapter startet dabei vis einmal neu, damit das Widget erkannt wird.
+
+## Unterstützen
+
+Gefällt dir der Adapter? Über [PayPal.me/SteinchenIO](https://www.paypal.me/SteinchenIO) kannst du die Weiterentwicklung mit einer kleinen Spende unterstützen. Der Adapter bleibt in jedem Fall kostenlos.
 
 ## Lizenz
 
-MIT
+Der Adapter steht unter der **MIT-Lizenz**. Maßgeblich ist der englische Originaltext in [LICENSE](LICENSE). Die folgende deutsche Fassung ist eine unverbindliche Übersetzung (auch als Datei: [LICENSE-DE.md](LICENSE-DE.md)).
+
+Copyright (c) 2026 SteinchenIO
+
+Hiermit wird unentgeltlich jeder Person, die eine Kopie der Software und der zugehörigen Dokumentationsdateien (die „Software“) erhält, die Erlaubnis erteilt, uneingeschränkt mit der Software zu verfahren. Dies umfasst insbesondere das Recht, die Software zu nutzen, zu kopieren, zu verändern, zusammenzuführen, zu veröffentlichen, zu verbreiten, zu unterlizenzieren und/oder zu verkaufen, und Personen, denen die Software bereitgestellt wird, dies ebenfalls zu gestatten, unter den folgenden Bedingungen:
+
+Der obige Urheberrechtsvermerk und dieser Erlaubnisvermerk sind in allen Kopien oder wesentlichen Teilen der Software beizufügen.
+
+DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE BEREITGESTELLT, EINSCHLIESSLICH DER GARANTIE ZUR BENUTZUNG FÜR DEN VORGESEHENEN ODER EINEN BESTIMMTEN ZWECK SOWIE JEGLICHER RECHTSVERLETZUNG, JEDOCH NICHT DARAUF BESCHRÄNKT. IN KEINEM FALL SIND DIE AUTOREN ODER COPYRIGHTINHABER FÜR JEGLICHEN SCHADEN ODER SONSTIGE ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER ERFÜLLUNG EINES VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG MIT DER SOFTWARE ODER SONSTIGER VERWENDUNG DER SOFTWARE ENTSTANDEN.

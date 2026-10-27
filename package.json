@@ -32,6 +32,11 @@
     "www/",
     "io-package.json",
     "LICENSE",
+    "LICENSE-DE.md",
     "main.js"
-  ]
+  ],
+  "funding": {
+    "type": "individual",
+    "url": "https://www.paypal.me/SteinchenIO"
+  }
 }
