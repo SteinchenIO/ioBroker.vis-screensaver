@@ -1,8 +1,16 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.10",
+    "version": "0.1.12",
     "news": {
+      "0.1.12": {
+        "en": "Smaller donate image.",
+        "de": "Spenden-Bild deutlich kleiner."
+      },
+      "0.1.11": {
+        "en": "Widget: default label without quotation marks.",
+        "de": "Widget: Standard-Beschriftung ohne Anführungszeichen."
+      },
       "0.1.10": {
         "en": "Widget properties now use the correct vis format (data point picker, checkboxes, default values).",
         "de": "Widget-Eigenschaften im richtigen vis-Format (Datenpunkt-Auswahl, Häkchen, Standardwerte)."
