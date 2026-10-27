@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.9",
+    "version": "0.1.10",
     "news": {
+      "0.1.10": {
+        "en": "Widget properties now use the correct vis format (data point picker, checkboxes, default values).",
+        "de": "Widget-Eigenschaften im richtigen vis-Format (Datenpunkt-Auswahl, Häkchen, Standardwerte)."
+      },
       "0.1.9": {
         "en": "vis 1 widget file moved to the widgets folder so vis can find the widget set.",
         "de": "Widget-Datei für vis 1 in den Ordner widgets verschoben, damit vis den Widget-Satz findet."
