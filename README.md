@@ -70,7 +70,15 @@ iobroker add vis-screensaver
 
 Anschließend in den Instanz-Einstellungen Bilderordner und Zeiten eintragen. Wie du den Schoner in vis oder eine eigene Seite einbindest, steht unter „Einbinden“.
 
-Alternativ geht es über Admin → Adapter → Benutzerdefiniert (Katze-Symbol) mit derselben GitHub-Adresse.
+### Alternativ im Admin
+
+Die Installation geht auch über die Oberfläche. Das **Katzen-Symbol** (GitHub-Zeichen) in der Adapter-Ansicht gibt es aber **nur im Expertenmodus**.
+
+1. **Expertenmodus einschalten** (Schalter unten links in der Menüleiste).
+2. Im Reiter **Adapter** oben in der Werkzeugleiste auf das **Katzen-Symbol** klicken.
+3. Im Dialog den Reiter **Benutzerdefiniert** wählen. Der Reiter „Von GitHub“ passt hier nicht, er zeigt nur Adapter aus der Adapterliste.
+4. Die Adresse `https://github.com/SteinchenIO/ioBroker.vis-screensaver` eintragen.
+5. Den Haken bei „Instanz erstellen, wenn noch keine existiert“ gesetzt lassen und auf **Installieren** klicken.
 
 ### Wichtig: nicht von Hand nach `node_modules` kopieren
 
