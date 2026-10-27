@@ -5,20 +5,24 @@
     "_donateImage": {
       "type": "staticImage",
       "src": "spende.png",
-      "newLine": true,
       "href": "https://www.paypal.me/SteinchenIO",
-      "xs": 6,
-      "sm": 3,
-      "md": 2
+      "newLine": true,
+      "xs": 4,
+      "sm": 2,
+      "md": 1
     },
     "_helpLink": {
       "type": "staticLink",
+      "button": true,
+      "variant": "outlined",
+      "icon": "book",
       "href": "https://github.com/SteinchenIO/ioBroker.vis-screensaver/blob/main/README.md",
       "text": {
         "en": "Instructions (README)",
         "de": "Anleitung (README)"
       },
       "xs": 12,
+      "sm": 4,
       "md": 3
     },
     "_headerTiming": {
@@ -189,20 +193,20 @@
     "_resizeHint": {
       "type": "staticText",
       "text": {
-        "en": "Shrink photos before uploading (1600 x 1000 px, JPEG). The tool runs in your browser, nothing is uploaded. Then upload the result under Files in the admin.",
-        "de": "Fotos vor dem Hochladen verkleinern (1600 × 1000 Pixel, JPEG). Das Werkzeug läuft im Browser, es wird nichts hochgeladen. Danach das Ergebnis im Admin unter Dateien hochladen."
+        "en": "Shrink photos before uploading (1600 x 1000 px, JPEG). The tool runs in your browser, nothing is uploaded. Then upload the result under Files in the admin. If the button does nothing, open http://<ioBroker-IP>:8081/files/vis-screensaver.admin/tools/resize.html.",
+        "de": "Fotos vor dem Hochladen verkleinern (1600 × 1000 Pixel, JPEG). Das Werkzeug läuft im Browser, es wird nichts hochgeladen. Danach das Ergebnis im Admin unter Dateien hochladen. Tut der Knopf nichts, öffne http://<ioBroker-IP>:8081/files/vis-screensaver.admin/tools/resize.html."
       },
       "newLine": true,
       "xs": 12,
       "md": 8
     },
     "_resizeLink": {
-      "type": "staticLink",
-      "button": true,
+      "type": "sendTo",
+      "command": "openPhotoTool",
       "variant": "contained",
       "icon": "web",
-      "href": "/files/vis-screensaver.admin/tools/resize.html",
-      "text": {
+      "showProcess": false,
+      "label": {
         "en": "Open photo tool",
         "de": "Foto-Werkzeug öffnen"
       },

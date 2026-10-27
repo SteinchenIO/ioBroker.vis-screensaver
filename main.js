@@ -49,6 +49,7 @@ class Screensaver extends utils.Adapter {
 
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
+        this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
     }
 
@@ -388,6 +389,27 @@ class Screensaver extends utils.Adapter {
             }
         } catch (err) {
             this.log.warn(`Steuerbefehl "${local}" fehlgeschlagen: ${err.message}`);
+        }
+    }
+
+    /**
+     * Nachrichten aus der Admin-Oberfläche (Knopf "Foto-Werkzeug öffnen").
+     * Antwort mit openUrl: der Admin öffnet die Adresse relativ zu seiner eigenen Adresse in einem neuen Tab.
+     * @param {ioBroker.Message} obj
+     */
+    onMessage(obj) {
+        if (!obj || !obj.command) {
+            return;
+        }
+        if (obj.command === 'openPhotoTool') {
+            if (obj.callback) {
+                this.sendTo(
+                    obj.from,
+                    obj.command,
+                    { openUrl: '/files/vis-screensaver.admin/tools/resize.html', window: '_blank' },
+                    obj.callback,
+                );
+            }
         }
     }
 
