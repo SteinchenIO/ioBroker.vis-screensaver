@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-screensaver",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Bildschirmschoner mit Diashow für vis, vis-2 und eigene Web-Oberflächen",
   "author": {
     "name": "SteinchenIO",

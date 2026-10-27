@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "news": {
+      "0.1.6": {
+        "en": "Donate image no longer squeezed, README button opens in a new tab.",
+        "de": "Spenden-Bild nicht mehr gestaucht, README-Knopf öffnet in einem neuen Tab."
+      },
       "0.1.5": {
         "en": "Photo tool opens via a clickable image in the settings.",
         "de": "Foto-Werkzeug öffnet über ein anklickbares Bild in den Einstellungen."
