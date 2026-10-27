@@ -1,11 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="190" height="34" viewBox="0 0 190 34" role="img" aria-label="Spenden">
+<svg xmlns="http://www.w3.org/2000/svg" width="170" height="34" viewBox="0 0 170 34" role="img" aria-label="Kaffee spenden">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#6c5ce7"/>
       <stop offset="1" stop-color="#3da9fc"/>
     </linearGradient>
   </defs>
-  <rect width="190" height="34" rx="17" fill="url(#bg)"/>
-  <path d="M26 24 c-6 -4.5 -10 -8 -10 -12 a5.2 5.2 0 0 1 10 -2.4 a5.2 5.2 0 0 1 10 2.4 c0 4 -4 7.5 -10 12 z" fill="#ff5d73" transform="translate(-1 0)"/>
-  <text x="46" y="22" font-family="'Segoe UI', system-ui, Roboto, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Projekt unterstützen</text>
+  <rect width="170" height="34" rx="17" fill="url(#bg)"/>
+  <!-- Kaffeetasse mit Dampf -->
+  <g fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" opacity=".75">
+    <path d="M15 11 q-2 -2.5 0 -5"/>
+    <path d="M20 11 q-2 -2.5 0 -5"/>
+    <path d="M25 11 q-2 -2.5 0 -5"/>
+  </g>
+  <path d="M10 13.5 h19 v5 a6.5 6.5 0 0 1 -6.5 6.5 h-6 a6.5 6.5 0 0 1 -6.5 -6.5 z" fill="#ffffff"/>
+  <path d="M29 15 h2 a3.2 3.2 0 0 1 0 6.4 h-3" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M19.5 22.8 c-3 -2 -4.7 -3.4 -4.7 -5.2 a2.3 2.3 0 0 1 4.7 -.9 a2.3 2.3 0 0 1 4.7 .9 c0 1.8 -1.7 3.2 -4.7 5.2 z" fill="#ff5d73"/>
+  <text x="46" y="22" font-family="'Segoe UI', system-ui, Roboto, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Kaffee spenden</text>
 </svg>

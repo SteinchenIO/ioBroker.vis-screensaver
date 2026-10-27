@@ -7,14 +7,16 @@
       "src": "spende.png",
       "newLine": true,
       "xs": 12,
-      "md": 3
-    },
-    "_donateLink": {
-      "type": "staticLink",
+      "md": 2,
       "href": "https://www.paypal.me/SteinchenIO",
+      "sm": 4
+    },
+    "_helpLink": {
+      "type": "staticLink",
+      "href": "https://github.com/SteinchenIO/ioBroker.vis-screensaver/blob/main/README.md",
       "text": {
-        "en": "Support via PayPal",
-        "de": "Per PayPal spenden"
+        "en": "Instructions (README)",
+        "de": "Anleitung (README)"
       },
       "xs": 12,
       "md": 3

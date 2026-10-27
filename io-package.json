@@ -4,8 +4,8 @@
     "version": "0.1.0",
     "news": {
       "0.1.0": {
-        "en": "Initial release",
-        "de": "Erste Version"
+        "en": "First release: screensaver with your own photos and cross-fade, adjustable timing, optional clock, vis widget and a photo tool for resizing.",
+        "de": "Erste Version: Bildschirmschoner mit eigenen Fotos und Überblendung, einstellbare Zeiten, Uhr zuschaltbar, vis-Widget und Foto-Werkzeug zum Verkleinern."
       }
     },
     "title": "Screensaver",
