@@ -12,12 +12,12 @@ Nach einer einstellbaren Leerlaufzeit blendet er Bilder aus einem ioBroker-Ordne
 | Zeit bis zum Start | Sekunden ohne Bedienung, bis der Schoner startet | 180 |
 | Anzeigedauer je Bild | Sekunden, die jedes Bild zu sehen ist (inklusive Überblendung) | 20 |
 | Dauer der Überblendung | Sekunden für die weiche Überblendung (muss mindestens 1 s kürzer sein als die Anzeigedauer) | 2 |
-| Bilderordner | Ordner im ioBroker-Dateispeicher, z. B. `vis.0/slideshow`; mehrere mit Komma | `vis.0/slideshow` |
+| Bilderordner | Ordner im ioBroker-Dateispeicher in der Form `Bereich/Unterordner`, z. B. `vis.0/slideshow` oder `0_userdata.0/slideshow`; mehrere mit Komma. Es wird nur eine Ebene gelesen | `vis.0/slideshow` |
 | Zufällige Reihenfolge | mischt die Bilder, ohne dasselbe Bild zweimal hintereinander | an |
 | Bildanpassung | Bildschirm füllen (zuschneiden) oder ganzes Bild zeigen | füllen |
 | Langsamer Zoom | sanfte Bewegung im Bild (Ken Burns) | an |
 | Uhr anzeigen | Uhrzeit und Datum unten links | an |
-| Ordner neu einlesen | alle n Minuten werden neue Bilder erkannt | 10 |
+| Ordner neu einlesen | alle n Minuten werden neue Bilder erkannt; 0 = nur beim Start der Instanz | 10 |
 | Bildgröße prüfen | meldet zu große Bilder im Log | an |
 
 ## Objekte
@@ -30,12 +30,12 @@ Nach einer einstellbaren Leerlaufzeit blendet er Bilder aus einem ioBroker-Ordne
 
 Der Schoner ist ein Skript, das die Seite selbst lädt. Es gibt drei Wege:
 
-1. **Eigenes HTML (z. B. Desktop-Menü):** vor `</body>` einfügen
-   `<script src="/vis-screensaver/screensaver.js"></script>`
-2. **vis 1, Widget:** nach der Installation startet vis einmal neu (macht der Adapter selbst). Im Editor das Widget **Bildschirmschoner** auf eine Ansicht ziehen. Es lädt das Skript, zeigt den Status und startet den Schoner per Tipp. Langer Druck (0,8 s) schaltet ihn ein oder aus.
-3. **vis 1 ohne Widget:** im Reiter **Skript** einfügen:
+1. **vis 1, für alle Ansichten (empfohlen):** im Editor rechts den Reiter **Skripte** öffnen und diese Zeile eintragen:
    `(function(){var s=document.createElement('script');s.src='/vis-screensaver/screensaver.js';document.head.appendChild(s);})();`
-   Ein alter Schoner-Code in diesem Reiter muss vorher raus, sonst laufen zwei.
+   Das gilt für das ganze Projekt. Ein alter Schoner-Code in diesem Reiter muss vorher raus, sonst laufen zwei. Danach die Ansicht im Betrieb (nicht im Editor) mit Strg+F5 neu laden. Im Editor startet der Schoner nie.
+2. **vis 1, Widget:** nach der Installation startet vis einmal neu (macht der Adapter selbst). Im Editor in „Widget einfügen“ den Satz `screensaver` wählen und **Bildschirmschoner** auf eine Ansicht ziehen. Es lädt das Skript, zeigt den Status und startet den Schoner per Tipp. Langer Druck (0,8 s) schaltet ihn ein oder aus. Im Feld „Schalter-State“ steht `vis-screensaver.0.control.enabled`. Das Widget braucht man nur, wenn man die Kachel haben will. Das Skript läuft auch ohne.
+3. **Eigenes HTML (z. B. Desktop-Menü):** vor `</body>` einfügen
+   `<script src="/vis-screensaver/screensaver.js"></script>`
 
 Steuerung aus eigenem Code: `IoBScreensaver.start()`, `.stop()`, `.reload()`, `.isActive()`.
 Bei eingebetteten Seiten (z. B. Lyrion im Rahmen), in denen Tippen die Seite nicht erreicht:

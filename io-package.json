@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.13",
+    "version": "0.1.14",
     "news": {
+      "0.1.14": {
+        "en": "README: integration and image folder updated.",
+        "de": "README: Einbinden und Bilderordner aktualisiert."
+      },
       "0.1.13": {
         "en": "Donate image: narrower column and sharper image.",
         "de": "Spenden-Bild: schmalere Spalte und schärferes Bild."
