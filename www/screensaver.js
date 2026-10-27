@@ -19,6 +19,11 @@
         return;
     }
 
+    // Im vis-Editor nie laufen, sonst startet der Schoner beim Bearbeiten
+    if (/\/edit\.html/.test(window.location.pathname) && !window.SCREENSAVER_ALLOW_EDITOR) {
+        return;
+    }
+
     var INSTANCE = window.SCREENSAVER_INSTANCE != null ? window.SCREENSAVER_INSTANCE : 0;
     var BASE = '/vis-screensaver.' + INSTANCE + '/';
     var POLL_MS = 5000;

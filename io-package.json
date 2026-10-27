@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "news": {
+      "0.1.8": {
+        "en": "Screensaver no longer runs inside the vis editor.",
+        "de": "Der Schoner läuft nicht mehr im vis-Editor."
+      },
       "0.1.7": {
         "en": "Photo tool: drop area is now a proper box.",
         "de": "Foto-Werkzeug: Ablagefeld ist jetzt ein durchgehendes Feld."
