@@ -1,8 +1,16 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "news": {
+      "0.1.3": {
+        "en": "Fixed invalid jsonConfig (validator text), debug log for the photo tool button.",
+        "de": "Ungültige jsonConfig behoben (Validator-Text), Debug-Log für den Foto-Werkzeug-Knopf."
+      },
+      "0.1.2": {
+        "en": "Log hint for oversized images points to the photo tool button in the settings.",
+        "de": "Log-Hinweis zu großen Bildern verweist auf den Foto-Werkzeug-Knopf in den Einstellungen."
+      },
       "0.1.1": {
         "en": "Admin: smaller donate button, photo tool button works via adapter message, README link as button.",
         "de": "Admin: kleinerer Spenden-Button, Foto-Werkzeug-Knopf läuft über eine Adapter-Nachricht, README-Link als Knopf."

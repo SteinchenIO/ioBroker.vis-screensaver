@@ -95,10 +95,7 @@
       "max": 60,
       "step": 0.5,
       "validator": "Number(data.fadeSeconds) <= Number(data.slideSeconds) - 1",
-      "validatorErrorText": {
-        "en": "Cross-fade must be at least 1 second shorter than the duration per image",
-        "de": "Die Überblendung muss mindestens 1 Sekunde kürzer sein als die Dauer pro Bild"
-      },
+      "validatorErrorText": "Die Überblendung muss mindestens 1 Sekunde kürzer sein als die Dauer pro Bild",
       "validatorNoSaveOnError": true,
       "newLine": true,
       "xs": 12,

@@ -285,7 +285,7 @@ class Screensaver extends utils.Adapter {
             if (problems.length) {
                 this.log.warn(
                     `${problems.length} von ${entries.length} Bildern sind größer als empfohlen. ` +
-                        'Verkleinern geht mit /vis-screensaver/tools/resize.html (siehe README).',
+                        'Verkleinern: in den Instanz-Einstellungen unter "Bilder" auf "Foto-Werkzeug öffnen" klicken (siehe README).',
                 );
                 for (const p of problems.slice(0, MAX_LOGGED_PROBLEMS)) {
                     this.log.warn(`  ${p.file}: ${p.issues.join('; ')}`);
@@ -398,6 +398,7 @@ class Screensaver extends utils.Adapter {
      * @param {ioBroker.Message} obj
      */
     onMessage(obj) {
+        this.log.debug(`Nachricht empfangen: ${obj && obj.command}`);
         if (!obj || !obj.command) {
             return;
         }
