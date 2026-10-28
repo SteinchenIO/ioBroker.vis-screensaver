@@ -54,6 +54,10 @@ Add before `</body>`:
 <script src="/vis-screensaver/screensaver.js"></script>
 ```
 
+### Example view for vis 1
+
+The file [`examples/vis-view-screensaver-demo.json`](examples/vis-view-screensaver-demo.json) is a ready-made vis 1 view with the tile, an on/off lamp for `control.enabled` and the button "Schoner starten" and three lines with the values from `info` (images found, too large, last scan). Import it in the editor on the **Views** tab (import view) and paste the file content. It contains nothing but the screensaver controls.
+
 ### Control from your own code
 
 ```javascript
@@ -130,6 +134,9 @@ The instance settings are kept. The adapter restarts vis once so that the widget
 Do you like the adapter? You can support further development with a small donation via [PayPal.me/SteinchenIO](https://www.paypal.me/SteinchenIO). The adapter stays free in any case.
 
 ## Changelog
+
+### 0.1.24
+- Example view for vis 1 added (`examples/`).
 
 ### 0.1.23
 - Standard ioBroker tests and GitHub workflow added.

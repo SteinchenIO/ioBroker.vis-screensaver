@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.23",
+    "version": "0.1.24",
     "news": {
+      "0.1.24": {
+        "en": "Example view for vis 1 added.",
+        "de": "Beispielansicht für vis 1 hinzugefügt.",
+        "ru": "Добавлен пример представления для vis 1.",
+        "pt": "Adicionada vista de exemplo para o vis 1.",
+        "nl": "Voorbeeldweergave voor vis 1 toegevoegd.",
+        "fr": "Vue d'exemple pour vis 1 ajoutée.",
+        "it": "Aggiunta vista di esempio per vis 1.",
+        "es": "Añadida vista de ejemplo para vis 1.",
+        "pl": "Dodano przykładowy widok dla vis 1.",
+        "uk": "Додано приклад вигляду для vis 1.",
+        "zh-cn": "新增 vis 1 示例视图。"
+      },
       "0.1.23": {
         "en": "Standard ioBroker tests and GitHub workflow added.",
         "de": "Standard-Tests von ioBroker und GitHub-Aktion hinzugefügt.",
@@ -80,19 +93,6 @@
         "pl": "Podniesiono wymagania: Node.js 22, js-controller 6.0.11, admin 7.6.17; zaktualizowano adapter-core.",
         "uk": "Підвищено вимоги: Node.js 22, js-controller 6.0.11, admin 7.6.17; оновлено adapter-core.",
         "zh-cn": "提高了要求：Node.js 22、js-controller 6.0.11、admin 7.6.17；已更新 adapter-core。"
-      },
-      "0.1.17": {
-        "en": "Admin layout sizes for large screens, shorter news list.",
-        "de": "Admin-Layout für große Bildschirme, kürzere News-Liste.",
-        "ru": "Размеры макета админки для больших экранов, более короткий список новостей.",
-        "pt": "Tamanhos do layout do admin para ecrãs grandes, lista de novidades mais curta.",
-        "nl": "Layoutmaten van de admin voor grote schermen, kortere nieuwslijst.",
-        "fr": "Tailles de mise en page de l'admin pour grands écrans, liste de nouveautés raccourcie.",
-        "it": "Dimensioni del layout dell'admin per schermi grandi, elenco delle novità più breve.",
-        "es": "Tamaños del diseño del admin para pantallas grandes, lista de novedades más corta.",
-        "pl": "Rozmiary układu panelu admin dla dużych ekranów, krótsza lista nowości.",
-        "uk": "Розміри макета адмінки для великих екранів, коротший список новин.",
-        "zh-cn": "为大屏幕添加管理界面布局尺寸，缩短更新列表。"
       }
     },
     "titleLang": {

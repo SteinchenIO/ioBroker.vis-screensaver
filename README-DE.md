@@ -54,6 +54,10 @@ Vor `</body>` einfügen:
 <script src="/vis-screensaver/screensaver.js"></script>
 ```
 
+### Beispielansicht für vis 1
+
+Die Datei [`examples/vis-view-screensaver-demo.json`](examples/vis-view-screensaver-demo.json) ist eine fertige vis-1-Ansicht mit der Kachel, einer An/Aus-Lampe für `control.enabled` und dem Knopf „Schoner starten“ sowie drei Zeilen mit den Werten aus `info` (Bilder gefunden, zu groß, letztes Einlesen). Im Editor im Reiter **Views** die Ansicht importieren und den Dateiinhalt einfügen. Sie enthält nur die Bedienelemente des Schoners.
+
 ### Steuerung aus eigenem Code
 
 ```javascript
