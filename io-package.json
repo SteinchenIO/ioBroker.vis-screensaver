@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.19",
+    "version": "0.1.20",
     "news": {
+      "0.1.20": {
+        "en": "Formatted, colored code examples in the settings and README.",
+        "de": "Formatierte, farbige Code-Beispiele in den Einstellungen und der README."
+      },
       "0.1.19": {
         "en": "Admin layout sizes completed, admin 7.6.20 recommended.",
         "de": "Admin-Layout vervollständigt, Admin 7.6.20 empfohlen."
@@ -26,10 +30,6 @@
       "0.1.14": {
         "en": "README: integration and image folder updated.",
         "de": "README: Einbinden und Bilderordner aktualisiert."
-      },
-      "0.1.13": {
-        "en": "Donate image: narrower column and sharper image.",
-        "de": "Spenden-Bild: schmalere Spalte und schärferes Bild."
       }
     },
     "titleLang": {

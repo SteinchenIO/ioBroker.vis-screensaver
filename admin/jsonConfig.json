@@ -324,8 +324,22 @@
     "_usage": {
       "type": "staticText",
       "text": {
-        "en": "Add this line to every page that should show the screensaver: <script src=\"/vis-screensaver/screensaver.js\"></script> (for vis 1 see README). Control via states vis-screensaver.0.control.*",
-        "de": "Diese Zeile in jede Seite einfügen, die den Bildschirmschoner zeigen soll: <script src=\"/vis-screensaver/screensaver.js\"></script> (für vis 1 siehe README). Steuerung über die States vis-screensaver.0.control.*"
+        "en": "The screensaver is a script that the page loads itself. Steering via the states vis-screensaver.0.control.* – more details in the README.",
+        "de": "Der Bildschirmschoner ist ein Skript, das die Seite selbst lädt. Steuerung über die States vis-screensaver.0.control.* – mehr dazu in der README."
+      },
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
+    },
+    "_usageCode": {
+      "type": "staticText",
+      "format": "html",
+      "text": {
+        "en": "<p style=\"margin:0 0 2px\"><b>Your own page or desktop menu: add before &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: add in the editor under \"Scripts\" (applies to all views)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "de": "<p style=\"margin:0 0 2px\"><b>Eigene Seite oder Desktop-Menü: vor &lt;/body&gt; einfügen</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: im Editor unter „Skripte“ eintragen (gilt für alle Ansichten)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>"
       },
       "newLine": true,
       "xs": 12,
