@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-screensaver",
-  "version": "0.1.16",
+  "version": "0.1.18",
   "description": "Bildschirmschoner mit Diashow für vis und eigene Web-Oberflächen",
   "author": {
     "name": "SteinchenIO",
@@ -20,10 +20,10 @@
     "url": "git+https://github.com/SteinchenIO/ioBroker.vis-screensaver.git"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.2.3"
+    "@iobroker/adapter-core": "^3.4.3"
   },
   "main": "main.js",
   "files": [

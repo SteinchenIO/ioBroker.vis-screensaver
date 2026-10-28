@@ -53,7 +53,7 @@ Hat das Desktop-Menü einen eigenen Schoner (`CONFIG.saver`), dort `enabled:fals
 
 ## Installation
 
-Voraussetzungen: Node.js 18 oder neuer, js-controller 5.0.19 oder neuer, Admin 6.17.14 oder neuer.
+Voraussetzungen: Node.js 22 oder neuer, js-controller 6.0.11 oder neuer, Admin 7.6.17 oder neuer.
 
 Der Adapter steht nicht im offiziellen ioBroker-Repository und wird deshalb direkt von GitHub installiert. Das geht auf dem ioBroker-Rechner (z. B. Raspberry Pi) per SSH:
 

@@ -1,8 +1,16 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.16",
+    "version": "0.1.18",
     "news": {
+      "0.1.18": {
+        "en": "Requirements raised: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core updated.",
+        "de": "Voraussetzungen angehoben: Node.js 22, js-controller 6.0.11, Admin 7.6.17; adapter-core aktualisiert."
+      },
+      "0.1.17": {
+        "en": "Admin layout sizes for large screens, shorter news list.",
+        "de": "Admin-Layout für große Bildschirme, kürzere News-Liste."
+      },
       "0.1.16": {
         "en": "Adapter timer, state roles and metadata (connectionType, dataSource) follow the ioBroker guidelines.",
         "de": "Adapter-Timer, Rollen der Datenpunkte und Metadaten (connectionType, dataSource) nach den ioBroker-Vorgaben."
@@ -22,57 +30,8 @@
       "0.1.12": {
         "en": "Smaller donate image.",
         "de": "Spenden-Bild deutlich kleiner."
-      },
-      "0.1.11": {
-        "en": "Widget: default label without quotation marks.",
-        "de": "Widget: Standard-Beschriftung ohne Anführungszeichen."
-      },
-      "0.1.10": {
-        "en": "Widget properties now use the correct vis format (data point picker, checkboxes, default values).",
-        "de": "Widget-Eigenschaften im richtigen vis-Format (Datenpunkt-Auswahl, Häkchen, Standardwerte)."
-      },
-      "0.1.9": {
-        "en": "vis 1 widget file moved to the widgets folder so vis can find the widget set.",
-        "de": "Widget-Datei für vis 1 in den Ordner widgets verschoben, damit vis den Widget-Satz findet."
-      },
-      "0.1.8": {
-        "en": "Screensaver no longer runs inside the vis editor.",
-        "de": "Der Schoner läuft nicht mehr im vis-Editor."
-      },
-      "0.1.7": {
-        "en": "Photo tool: drop area is now a proper box.",
-        "de": "Foto-Werkzeug: Ablagefeld ist jetzt ein durchgehendes Feld."
-      },
-      "0.1.6": {
-        "en": "Donate image no longer squeezed, README button opens in a new tab.",
-        "de": "Spenden-Bild nicht mehr gestaucht, README-Knopf öffnet in einem neuen Tab."
-      },
-      "0.1.5": {
-        "en": "Photo tool opens via a clickable image in the settings.",
-        "de": "Foto-Werkzeug öffnet über ein anklickbares Bild in den Einstellungen."
-      },
-      "0.1.4": {
-        "en": "Photo tool button shows the full address of the tool and opens it.",
-        "de": "Foto-Werkzeug-Knopf zeigt die vollständige Adresse an und öffnet das Werkzeug."
-      },
-      "0.1.3": {
-        "en": "Fixed invalid jsonConfig (validator text), debug log for the photo tool button.",
-        "de": "Ungültige jsonConfig behoben (Validator-Text), Debug-Log für den Foto-Werkzeug-Knopf."
-      },
-      "0.1.2": {
-        "en": "Log hint for oversized images points to the photo tool button in the settings.",
-        "de": "Log-Hinweis zu großen Bildern verweist auf den Foto-Werkzeug-Knopf in den Einstellungen."
-      },
-      "0.1.1": {
-        "en": "Admin: smaller donate button, photo tool button works via adapter message, README link as button.",
-        "de": "Admin: kleinerer Spenden-Button, Foto-Werkzeug-Knopf läuft über eine Adapter-Nachricht, README-Link als Knopf."
-      },
-      "0.1.0": {
-        "en": "First release: screensaver with your own photos and cross-fade, adjustable timing, optional clock, vis widget and a photo tool for resizing.",
-        "de": "Erste Version: Bildschirmschoner mit eigenen Fotos und Überblendung, einstellbare Zeiten, Uhr zuschaltbar, vis-Widget und Foto-Werkzeug zum Verkleinern."
       }
     },
-    "title": "Screensaver",
     "titleLang": {
       "en": "Screensaver",
       "de": "Bildschirmschoner"
@@ -115,12 +74,12 @@
     "supportCustoms": false,
     "dependencies": [
       {
-        "js-controller": ">=5.0.19"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=6.17.14"
+        "admin": ">=7.6.17"
       }
     ]
   },
