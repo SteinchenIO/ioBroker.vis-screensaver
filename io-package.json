@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.21",
+    "version": "0.1.22",
     "news": {
+      "0.1.22": {
+        "en": "README button opens the German README.",
+        "de": "README-Knopf öffnet die deutsche README.",
+        "ru": "Кнопка README открывает немецкий README.",
+        "pt": "O botão README abre o README alemão.",
+        "nl": "De README-knop opent de Duitse README.",
+        "fr": "Le bouton README ouvre le README allemand.",
+        "it": "Il pulsante README apre il README tedesco.",
+        "es": "El botón README abre el README alemán.",
+        "pl": "Przycisk README otwiera niemiecki plik README.",
+        "uk": "Кнопка README відкриває німецький README.",
+        "zh-cn": "README 按钮打开德语版 README。"
+      },
       "0.1.21": {
         "en": "Translations added, e-mail address in the license.",
         "de": "Übersetzungen ergänzt, E-Mail-Adresse in der Lizenz.",
@@ -80,19 +93,6 @@
         "pl": "Timer adaptera, role stanów i metadane (connectionType, dataSource) zgodne z wytycznymi ioBroker.",
         "uk": "Таймер адаптера, ролі станів і метадані (connectionType, dataSource) відповідають рекомендаціям ioBroker.",
         "zh-cn": "适配器定时器、状态角色和元数据（connectionType、dataSource）符合 ioBroker 规范。"
-      },
-      "0.1.15": {
-        "en": "Description corrected (no vis-2 widget).",
-        "de": "Beschreibung korrigiert (kein vis-2-Widget).",
-        "ru": "Исправлено описание (виджета для vis-2 нет).",
-        "pt": "Descrição corrigida (sem widget para vis-2).",
-        "nl": "Beschrijving gecorrigeerd (geen widget voor vis-2).",
-        "fr": "Description corrigée (pas de widget pour vis-2).",
-        "it": "Descrizione corretta (nessun widget per vis-2).",
-        "es": "Descripción corregida (sin widget para vis-2).",
-        "pl": "Poprawiono opis (brak widżetu dla vis-2).",
-        "uk": "Виправлено опис (віджета для vis-2 немає).",
-        "zh-cn": "已更正说明（没有 vis-2 小部件）。"
       }
     },
     "titleLang": {
