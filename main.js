@@ -70,7 +70,7 @@ class Screensaver extends utils.Adapter {
         await this.refresh(true);
 
         if (this.settings.rescanMinutes > 0) {
-            this.rescanTimer = setInterval(
+            this.rescanTimer = this.setInterval(
                 () => this.refresh(false).catch(err => this.log.warn(`Neu einlesen fehlgeschlagen: ${err.message}`)),
                 this.settings.rescanMinutes * 60 * 1000,
             );
@@ -101,7 +101,7 @@ class Screensaver extends utils.Adapter {
             'control.enabled': {
                 name: { en: 'Screensaver enabled (runtime switch)', de: 'Bildschirmschoner aktiv (Laufzeit-Schalter)' },
                 type: 'boolean',
-                role: 'switch',
+                role: 'switch.enable',
                 read: true,
                 write: true,
                 def: true,
@@ -109,14 +109,14 @@ class Screensaver extends utils.Adapter {
             'control.start': {
                 name: { en: 'Start screensaver now', de: 'Bildschirmschoner jetzt starten' },
                 type: 'boolean',
-                role: 'button',
+                role: 'button.start',
                 read: false,
                 write: true,
             },
             'control.stop': {
                 name: { en: 'Stop screensaver / restart idle timer', de: 'Bildschirmschoner beenden / Leerlaufzeit neu starten' },
                 type: 'boolean',
-                role: 'button',
+                role: 'button.stop',
                 read: false,
                 write: true,
             },
@@ -154,7 +154,8 @@ class Screensaver extends utils.Adapter {
             },
         };
         for (const [id, common] of Object.entries(states)) {
-            await this.setObjectNotExistsAsync(id, { type: 'state', common, native: {} });
+            // extendObject statt setObjectNotExists, damit auch bestehende Instanzen neue Rollen bekommen
+            await this.extendObjectAsync(id, { type: 'state', common, native: {} });
         }
     }
 
@@ -395,7 +396,7 @@ class Screensaver extends utils.Adapter {
     onUnload(callback) {
         try {
             if (this.rescanTimer) {
-                clearInterval(this.rescanTimer);
+                this.clearInterval(this.rescanTimer);
                 this.rescanTimer = null;
             }
         } finally {

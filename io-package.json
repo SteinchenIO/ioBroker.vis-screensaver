@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.15",
+    "version": "0.1.16",
     "news": {
+      "0.1.16": {
+        "en": "Adapter timer, state roles and metadata (connectionType, dataSource) follow the ioBroker guidelines.",
+        "de": "Adapter-Timer, Rollen der Datenpunkte und Metadaten (connectionType, dataSource) nach den ioBroker-Vorgaben."
+      },
       "0.1.15": {
         "en": "Description corrected (no vis-2 widget).",
         "de": "Beschreibung korrigiert (kein vis-2-Widget)."
@@ -99,6 +103,8 @@
     "tier": 3,
     "mode": "daemon",
     "type": "visualization-widgets",
+    "connectionType": "local",
+    "dataSource": "poll",
     "restartAdapters": [
       "vis"
     ],
