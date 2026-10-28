@@ -1,44 +1,125 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.20",
+    "version": "0.1.21",
     "news": {
+      "0.1.21": {
+        "en": "Translations added, e-mail address in the license.",
+        "de": "Übersetzungen ergänzt, E-Mail-Adresse in der Lizenz.",
+        "ru": "Добавлены переводы, адрес электронной почты в лицензии.",
+        "pt": "Traduções adicionadas, endereço de e-mail na licença.",
+        "nl": "Vertalingen toegevoegd, e-mailadres in de licentie.",
+        "fr": "Traductions ajoutées, adresse e-mail dans la licence.",
+        "it": "Aggiunte le traduzioni, indirizzo e-mail nella licenza.",
+        "es": "Traducciones añadidas, dirección de correo en la licencia.",
+        "pl": "Dodano tłumaczenia, adres e-mail w licencji.",
+        "uk": "Додано переклади, адреса електронної пошти в ліцензії.",
+        "zh-cn": "新增翻译，许可证中加入电子邮件地址。"
+      },
       "0.1.20": {
         "en": "Formatted, colored code examples in the settings and README.",
-        "de": "Formatierte, farbige Code-Beispiele in den Einstellungen und der README."
+        "de": "Formatierte, farbige Code-Beispiele in den Einstellungen und der README.",
+        "ru": "Отформатированные цветные примеры кода в настройках и README.",
+        "pt": "Exemplos de código formatados e coloridos nas definições e no README.",
+        "nl": "Opgemaakte, gekleurde codevoorbeelden in de instellingen en README.",
+        "fr": "Exemples de code formatés et colorés dans les paramètres et le README.",
+        "it": "Esempi di codice formattati e colorati nelle impostazioni e nel README.",
+        "es": "Ejemplos de código con formato y color en los ajustes y en el README.",
+        "pl": "Sformatowane, kolorowe przykłady kodu w ustawieniach i README.",
+        "uk": "Відформатовані кольорові приклади коду в налаштуваннях і README.",
+        "zh-cn": "设置和 README 中的代码示例已格式化并着色。"
       },
       "0.1.19": {
         "en": "Admin layout sizes completed, admin 7.6.20 recommended.",
-        "de": "Admin-Layout vervollständigt, Admin 7.6.20 empfohlen."
+        "de": "Admin-Layout vervollständigt, Admin 7.6.20 empfohlen.",
+        "ru": "Размеры макета админки дополнены, рекомендуется admin 7.6.20.",
+        "pt": "Tamanhos do layout do admin concluídos, recomenda-se admin 7.6.20.",
+        "nl": "Layoutmaten van de admin aangevuld, admin 7.6.20 aanbevolen.",
+        "fr": "Tailles de mise en page de l'admin complétées, admin 7.6.20 recommandé.",
+        "it": "Dimensioni del layout dell'admin completate, consigliato admin 7.6.20.",
+        "es": "Tamaños del diseño del admin completados, se recomienda admin 7.6.20.",
+        "pl": "Uzupełniono rozmiary układu w panelu admin, zalecany admin 7.6.20.",
+        "uk": "Доповнено розміри макета адмінки, рекомендовано admin 7.6.20.",
+        "zh-cn": "补全了管理界面的布局尺寸，推荐使用 admin 7.6.20。"
       },
       "0.1.18": {
         "en": "Requirements raised: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core updated.",
-        "de": "Voraussetzungen angehoben: Node.js 22, js-controller 6.0.11, Admin 7.6.17; adapter-core aktualisiert."
+        "de": "Voraussetzungen angehoben: Node.js 22, js-controller 6.0.11, Admin 7.6.17; adapter-core aktualisiert.",
+        "ru": "Повышены требования: Node.js 22, js-controller 6.0.11, admin 7.6.17; обновлён adapter-core.",
+        "pt": "Requisitos aumentados: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core atualizado.",
+        "nl": "Vereisten verhoogd: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core bijgewerkt.",
+        "fr": "Exigences relevées : Node.js 22, js-controller 6.0.11, admin 7.6.17 ; adapter-core mis à jour.",
+        "it": "Requisiti aumentati: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core aggiornato.",
+        "es": "Requisitos aumentados: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core actualizado.",
+        "pl": "Podniesiono wymagania: Node.js 22, js-controller 6.0.11, admin 7.6.17; zaktualizowano adapter-core.",
+        "uk": "Підвищено вимоги: Node.js 22, js-controller 6.0.11, admin 7.6.17; оновлено adapter-core.",
+        "zh-cn": "提高了要求：Node.js 22、js-controller 6.0.11、admin 7.6.17；已更新 adapter-core。"
       },
       "0.1.17": {
         "en": "Admin layout sizes for large screens, shorter news list.",
-        "de": "Admin-Layout für große Bildschirme, kürzere News-Liste."
+        "de": "Admin-Layout für große Bildschirme, kürzere News-Liste.",
+        "ru": "Размеры макета админки для больших экранов, более короткий список новостей.",
+        "pt": "Tamanhos do layout do admin para ecrãs grandes, lista de novidades mais curta.",
+        "nl": "Layoutmaten van de admin voor grote schermen, kortere nieuwslijst.",
+        "fr": "Tailles de mise en page de l'admin pour grands écrans, liste de nouveautés raccourcie.",
+        "it": "Dimensioni del layout dell'admin per schermi grandi, elenco delle novità più breve.",
+        "es": "Tamaños del diseño del admin para pantallas grandes, lista de novedades más corta.",
+        "pl": "Rozmiary układu panelu admin dla dużych ekranów, krótsza lista nowości.",
+        "uk": "Розміри макета адмінки для великих екранів, коротший список новин.",
+        "zh-cn": "为大屏幕添加管理界面布局尺寸，缩短更新列表。"
       },
       "0.1.16": {
         "en": "Adapter timer, state roles and metadata (connectionType, dataSource) follow the ioBroker guidelines.",
-        "de": "Adapter-Timer, Rollen der Datenpunkte und Metadaten (connectionType, dataSource) nach den ioBroker-Vorgaben."
+        "de": "Adapter-Timer, Rollen der Datenpunkte und Metadaten (connectionType, dataSource) nach den ioBroker-Vorgaben.",
+        "ru": "Таймер адаптера, роли состояний и метаданные (connectionType, dataSource) соответствуют рекомендациям ioBroker.",
+        "pt": "Temporizador do adaptador, funções dos estados e metadados (connectionType, dataSource) seguem as diretrizes do ioBroker.",
+        "nl": "Adaptertimer, statusrollen en metadata (connectionType, dataSource) volgen de ioBroker-richtlijnen.",
+        "fr": "Minuterie de l'adaptateur, rôles des états et métadonnées (connectionType, dataSource) conformes aux directives d'ioBroker.",
+        "it": "Timer dell'adattatore, ruoli degli stati e metadati (connectionType, dataSource) conformi alle linee guida di ioBroker.",
+        "es": "Temporizador del adaptador, roles de los estados y metadatos (connectionType, dataSource) conformes a las directrices de ioBroker.",
+        "pl": "Timer adaptera, role stanów i metadane (connectionType, dataSource) zgodne z wytycznymi ioBroker.",
+        "uk": "Таймер адаптера, ролі станів і метадані (connectionType, dataSource) відповідають рекомендаціям ioBroker.",
+        "zh-cn": "适配器定时器、状态角色和元数据（connectionType、dataSource）符合 ioBroker 规范。"
       },
       "0.1.15": {
         "en": "Description corrected (no vis-2 widget).",
-        "de": "Beschreibung korrigiert (kein vis-2-Widget)."
-      },
-      "0.1.14": {
-        "en": "README: integration and image folder updated.",
-        "de": "README: Einbinden und Bilderordner aktualisiert."
+        "de": "Beschreibung korrigiert (kein vis-2-Widget).",
+        "ru": "Исправлено описание (виджета для vis-2 нет).",
+        "pt": "Descrição corrigida (sem widget para vis-2).",
+        "nl": "Beschrijving gecorrigeerd (geen widget voor vis-2).",
+        "fr": "Description corrigée (pas de widget pour vis-2).",
+        "it": "Descrizione corretta (nessun widget per vis-2).",
+        "es": "Descripción corregida (sin widget para vis-2).",
+        "pl": "Poprawiono opis (brak widżetu dla vis-2).",
+        "uk": "Виправлено опис (віджета для vis-2 немає).",
+        "zh-cn": "已更正说明（没有 vis-2 小部件）。"
       }
     },
     "titleLang": {
       "en": "Screensaver",
-      "de": "Bildschirmschoner"
+      "de": "Bildschirmschoner",
+      "ru": "Заставка",
+      "pt": "Protetor de ecrã",
+      "nl": "Schermbeveiliging",
+      "fr": "Économiseur d'écran",
+      "it": "Salvaschermo",
+      "es": "Salvapantallas",
+      "pl": "Wygaszacz ekranu",
+      "uk": "Заставка",
+      "zh-cn": "屏幕保护程序"
     },
     "desc": {
       "en": "Slideshow screensaver with vis widget for vis and custom web pages",
-      "de": "Bildschirmschoner mit Diashow und vis-Widget für vis und eigene Webseiten"
+      "de": "Bildschirmschoner mit Diashow und vis-Widget für vis und eigene Webseiten",
+      "ru": "Заставка со слайд-шоу и виджетом для vis и собственных веб-страниц",
+      "pt": "Protetor de ecrã com apresentação de imagens e widget para vis e páginas web próprias",
+      "nl": "Schermbeveiliging met diavoorstelling en widget voor vis en eigen webpagina's",
+      "fr": "Économiseur d'écran avec diaporama et widget pour vis et pages web personnalisées",
+      "it": "Salvaschermo con presentazione di immagini e widget per vis e pagine web personalizzate",
+      "es": "Salvapantallas con presentación de imágenes y widget para vis y páginas web propias",
+      "pl": "Wygaszacz ekranu z pokazem slajdów i widżetem dla vis oraz własnych stron WWW",
+      "uk": "Заставка зі слайд-шоу та віджетом для vis і власних веб-сторінок",
+      "zh-cn": "带幻灯片和 vis 小部件的屏幕保护程序，适用于 vis 和自定义网页"
     },
     "authors": [
       "SteinchenIO <git@felz.de>"

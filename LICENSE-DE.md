@@ -3,7 +3,7 @@
 > **Hinweis:** Dies ist eine unverbindliche Übersetzung zum besseren Verständnis.
 > Maßgeblich ist allein der englische Originaltext in der Datei [LICENSE](LICENSE).
 
-Copyright (c) 2026 SteinchenIO
+Copyright (c) 2026 SteinchenIO <git@felz.de>
 
 Hiermit wird unentgeltlich jeder Person, die eine Kopie der Software und der zugehörigen Dokumentationsdateien (die „Software“) erhält, die Erlaubnis erteilt, uneingeschränkt mit der Software zu verfahren. Dies umfasst insbesondere das Recht, die Software zu nutzen, zu kopieren, zu verändern, zusammenzuführen, zu veröffentlichen, zu verbreiten, zu unterlizenzieren und/oder zu verkaufen, und Personen, denen die Software bereitgestellt wird, dies ebenfalls zu gestatten, unter den folgenden Bedingungen:
 
