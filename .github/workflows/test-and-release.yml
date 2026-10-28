@@ -1,0 +1,34 @@
+name: Test and Release
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+  pull_request: {}
+
+jobs:
+  check:
+    if: contains(github.event.head_commit.message, '[skip ci]') == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ioBroker/testing-action-check@v1
+        with:
+          node-version: '22.x'
+          lint: false
+
+  adapter-tests:
+    if: contains(github.event.head_commit.message, '[skip ci]') == false
+    needs: [check]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22.x, 24.x]
+        os: [ubuntu-latest]
+    steps:
+      - uses: ioBroker/testing-action-adapter@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          os: ${{ matrix.os }}
