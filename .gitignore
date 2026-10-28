@@ -1,5 +1,8 @@
 node_modules/
 *.tgz
 *.zip
-test/
 __pycache__/
+# eigene Prüfungen bleiben lokal, nur die ioBroker-Standardtests gehören ins Repository
+test/*
+!test/package.js
+!test/integration.js

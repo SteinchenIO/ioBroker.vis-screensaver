@@ -1,7 +1,7 @@
 {
   "name": "iobroker.vis-screensaver",
-  "version": "0.1.22",
-  "description": "Bildschirmschoner mit Diashow für vis und eigene Web-Oberflächen",
+  "version": "0.1.23",
+  "description": "Slideshow screensaver with your own photos for vis and custom web pages",
   "author": {
     "name": "SteinchenIO",
     "email": "git@felz.de"
@@ -40,5 +40,19 @@
   "funding": {
     "type": "individual",
     "url": "https://www.paypal.me/SteinchenIO"
+  },
+  "bugs": {
+    "url": "https://github.com/SteinchenIO/ioBroker.vis-screensaver/issues"
+  },
+  "devDependencies": {
+    "@iobroker/testing": "^6.3.0",
+    "@types/node": "^22.0.0",
+    "chai": "^4.5.0",
+    "mocha": "^11.7.1"
+  },
+  "scripts": {
+    "test:package": "mocha test/package --exit",
+    "test:integration": "mocha test/integration --exit",
+    "test": "npm run test:package && npm run test:integration"
   }
 }

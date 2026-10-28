@@ -131,6 +131,9 @@ Do you like the adapter? You can support further development with a small donati
 
 ## Changelog
 
+### 0.1.23
+- Standard ioBroker tests and GitHub workflow added.
+
 ### 0.1.22
 - README button opens the German README.
 

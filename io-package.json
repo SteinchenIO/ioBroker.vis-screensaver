@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.22",
+    "version": "0.1.23",
     "news": {
+      "0.1.23": {
+        "en": "Standard ioBroker tests and GitHub workflow added.",
+        "de": "Standard-Tests von ioBroker und GitHub-Aktion hinzugefügt.",
+        "ru": "Добавлены стандартные тесты ioBroker и рабочий процесс GitHub.",
+        "pt": "Testes padrão do ioBroker e fluxo de trabalho do GitHub adicionados.",
+        "nl": "Standaard ioBroker-tests en GitHub-workflow toegevoegd.",
+        "fr": "Tests standard ioBroker et workflow GitHub ajoutés.",
+        "it": "Aggiunti i test standard di ioBroker e il workflow GitHub.",
+        "es": "Añadidas las pruebas estándar de ioBroker y el flujo de trabajo de GitHub.",
+        "pl": "Dodano standardowe testy ioBroker i przepływ pracy GitHub.",
+        "uk": "Додано стандартні тести ioBroker і робочий процес GitHub.",
+        "zh-cn": "新增 ioBroker 标准测试和 GitHub 工作流。"
+      },
       "0.1.22": {
         "en": "README button opens the German README.",
         "de": "README-Knopf öffnet die deutsche README.",
@@ -80,19 +93,6 @@
         "pl": "Rozmiary układu panelu admin dla dużych ekranów, krótsza lista nowości.",
         "uk": "Розміри макета адмінки для великих екранів, коротший список новин.",
         "zh-cn": "为大屏幕添加管理界面布局尺寸，缩短更新列表。"
-      },
-      "0.1.16": {
-        "en": "Adapter timer, state roles and metadata (connectionType, dataSource) follow the ioBroker guidelines.",
-        "de": "Adapter-Timer, Rollen der Datenpunkte und Metadaten (connectionType, dataSource) nach den ioBroker-Vorgaben.",
-        "ru": "Таймер адаптера, роли состояний и метаданные (connectionType, dataSource) соответствуют рекомендациям ioBroker.",
-        "pt": "Temporizador do adaptador, funções dos estados e metadados (connectionType, dataSource) seguem as diretrizes do ioBroker.",
-        "nl": "Adaptertimer, statusrollen en metadata (connectionType, dataSource) volgen de ioBroker-richtlijnen.",
-        "fr": "Minuterie de l'adaptateur, rôles des états et métadonnées (connectionType, dataSource) conformes aux directives d'ioBroker.",
-        "it": "Timer dell'adattatore, ruoli degli stati e metadati (connectionType, dataSource) conformi alle linee guida di ioBroker.",
-        "es": "Temporizador del adaptador, roles de los estados y metadatos (connectionType, dataSource) conformes a las directrices de ioBroker.",
-        "pl": "Timer adaptera, role stanów i metadane (connectionType, dataSource) zgodne z wytycznymi ioBroker.",
-        "uk": "Таймер адаптера, ролі станів і метадані (connectionType, dataSource) відповідають рекомендаціям ioBroker.",
-        "zh-cn": "适配器定时器、状态角色和元数据（connectionType、dataSource）符合 ioBroker 规范。"
       }
     },
     "titleLang": {
