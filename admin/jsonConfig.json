@@ -220,7 +220,8 @@
       "xs": 12,
       "md": 10,
       "lg": 10,
-      "xl": 10
+      "xl": 10,
+      "sm": 12
     },
     "_resizeLink": {
       "type": "staticImage",
@@ -327,7 +328,11 @@
         "de": "Diese Zeile in jede Seite einfügen, die den Bildschirmschoner zeigen soll: <script src=\"/vis-screensaver/screensaver.js\"></script> (für vis 1 siehe README). Steuerung über die States vis-screensaver.0.control.*"
       },
       "newLine": true,
-      "xs": 12
+      "xs": 12,
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
     }
   }
 }

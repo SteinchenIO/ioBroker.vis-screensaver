@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.18",
+    "version": "0.1.19",
     "news": {
+      "0.1.19": {
+        "en": "Admin layout sizes completed, admin 7.6.20 recommended.",
+        "de": "Admin-Layout vervollständigt, Admin 7.6.20 empfohlen."
+      },
       "0.1.18": {
         "en": "Requirements raised: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core updated.",
         "de": "Voraussetzungen angehoben: Node.js 22, js-controller 6.0.11, Admin 7.6.17; adapter-core aktualisiert."
@@ -26,10 +30,6 @@
       "0.1.13": {
         "en": "Donate image: narrower column and sharper image.",
         "de": "Spenden-Bild: schmalere Spalte und schärferes Bild."
-      },
-      "0.1.12": {
-        "en": "Smaller donate image.",
-        "de": "Spenden-Bild deutlich kleiner."
       }
     },
     "titleLang": {
@@ -79,7 +79,7 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=7.6.17"
+        "admin": ">=7.6.20"
       }
     ]
   },
