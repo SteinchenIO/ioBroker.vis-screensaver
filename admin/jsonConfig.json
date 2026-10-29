@@ -1,6 +1,6 @@
 {
   "type": "panel",
-  "i18n": false,
+  "i18n": true,
   "items": {
     "_donateImage": {
       "type": "staticImage",
@@ -20,10 +20,7 @@
       "icon": "book",
       "href": "https://github.com/SteinchenIO/ioBroker.vis-screensaver/blob/main/README-DE.md",
       "target": "_blank",
-      "text": {
-        "en": "Instructions (README)",
-        "de": "Anleitung (README)"
-      },
+      "text": "Instructions (README)",
       "xs": 12,
       "sm": 4,
       "md": 3,
@@ -32,20 +29,14 @@
     },
     "_headerTiming": {
       "type": "header",
-      "text": {
-        "en": "Timing",
-        "de": "Zeiten"
-      },
+      "text": "Timing",
       "size": 3,
       "newLine": true,
       "xs": 12
     },
     "enabled": {
       "type": "checkbox",
-      "label": {
-        "en": "Screensaver enabled",
-        "de": "Bildschirmschoner aktiv"
-      },
+      "label": "Screensaver enabled",
       "newLine": true,
       "xs": 12,
       "sm": 6,
@@ -55,14 +46,8 @@
     },
     "idleSeconds": {
       "type": "number",
-      "label": {
-        "en": "Time until start (s)",
-        "de": "Dauer bis zum Einschalten (s)"
-      },
-      "help": {
-        "en": "Seconds without touch, click or key press until the slideshow starts",
-        "de": "Sekunden ohne Berührung, Klick oder Taste, bis die Diashow startet"
-      },
+      "label": "Time until start (s)",
+      "help": "Seconds without touch, click or key press until the slideshow starts",
       "min": 5,
       "max": 86400,
       "step": 5,
@@ -75,14 +60,8 @@
     },
     "slideSeconds": {
       "type": "number",
-      "label": {
-        "en": "Duration per image (s)",
-        "de": "Dauer pro Bild (s)"
-      },
-      "help": {
-        "en": "Time from one image change to the next, including the cross-fade",
-        "de": "Zeit von einem Bildwechsel zum nächsten, inklusive Überblendung"
-      },
+      "label": "Duration per image (s)",
+      "help": "Time from one image change to the next, including the cross-fade",
       "min": 2,
       "max": 3600,
       "newLine": true,
@@ -94,19 +73,13 @@
     },
     "fadeSeconds": {
       "type": "number",
-      "label": {
-        "en": "Cross-fade duration (s)",
-        "de": "Dauer der Überblendung (s)"
-      },
-      "help": {
-        "en": "0 = hard cut. Must be at least 1 second shorter than the duration per image",
-        "de": "0 = harter Schnitt. Muss mindestens 1 Sekunde kürzer sein als die Dauer pro Bild"
-      },
+      "label": "Cross-fade duration (s)",
+      "help": "0 = hard cut. Must be at least 1 second shorter than the duration per image",
       "min": 0,
       "max": 60,
       "step": 0.5,
       "validator": "Number(data.fadeSeconds) <= Number(data.slideSeconds) - 1",
-      "validatorErrorText": "Die Überblendung muss mindestens 1 Sekunde kürzer sein als die Dauer pro Bild",
+      "validatorErrorText": "The cross-fade must be at least 1 second shorter than the duration per image",
       "validatorNoSaveOnError": true,
       "newLine": true,
       "xs": 12,
@@ -117,24 +90,15 @@
     },
     "_headerImages": {
       "type": "header",
-      "text": {
-        "en": "Images",
-        "de": "Bilder"
-      },
+      "text": "Images",
       "size": 3,
       "newLine": true,
       "xs": 12
     },
     "imageSource": {
       "type": "text",
-      "label": {
-        "en": "Image folder(s)",
-        "de": "Bilderordner"
-      },
-      "help": {
-        "en": "Folder in the ioBroker file storage, e.g. vis.0/slideshow. Several folders separated by comma. Upload images under Files in the admin",
-        "de": "Ordner im ioBroker-Dateispeicher, z. B. vis.0/slideshow. Mehrere Ordner mit Komma trennen. Bilder lädst du im Admin unter Dateien hoch"
-      },
+      "label": "Image folder(s)",
+      "help": "Folder in the ioBroker file storage, e.g. vis.0/slideshow. Several folders separated by comma. Upload images under Files in the admin",
       "newLine": true,
       "xs": 12,
       "sm": 12,
@@ -144,14 +108,8 @@
     },
     "rescanMinutes": {
       "type": "number",
-      "label": {
-        "en": "Rescan folder every (min)",
-        "de": "Ordner neu einlesen alle (Min.)"
-      },
-      "help": {
-        "en": "0 = only at adapter start",
-        "de": "0 = nur beim Start des Adapters"
-      },
+      "label": "Rescan folder every (min)",
+      "help": "0 = only at adapter start",
       "min": 0,
       "max": 1440,
       "newLine": true,
@@ -163,14 +121,8 @@
     },
     "checkImages": {
       "type": "checkbox",
-      "label": {
-        "en": "Check image size",
-        "de": "Bildgröße prüfen"
-      },
-      "help": {
-        "en": "Warns in the log about images that are too large for a smooth slideshow",
-        "de": "Meldet im Log Bilder, die für eine flüssige Diashow zu groß sind"
-      },
+      "label": "Check image size",
+      "help": "Warns in the log about images that are too large for a smooth slideshow",
       "newLine": true,
       "xs": 12,
       "sm": 12,
@@ -180,10 +132,7 @@
     },
     "maxFileKB": {
       "type": "number",
-      "label": {
-        "en": "Largest recommended file size (KB)",
-        "de": "Größte empfohlene Dateigröße (KB)"
-      },
+      "label": "Largest recommended file size (KB)",
       "min": 100,
       "max": 50000,
       "step": 100,
@@ -196,10 +145,7 @@
     },
     "maxMegapixels": {
       "type": "number",
-      "label": {
-        "en": "Largest recommended resolution (megapixels)",
-        "de": "Größte empfohlene Auflösung (Megapixel)"
-      },
+      "label": "Largest recommended resolution (megapixels)",
       "min": 0.5,
       "max": 100,
       "step": 0.5,
@@ -212,10 +158,7 @@
     },
     "_resizeHint": {
       "type": "staticText",
-      "text": {
-        "en": "Shrink photos before uploading (1600 x 1000 px, JPEG). The tool runs in your browser, nothing is uploaded. It opens in a new tab. If your browser blocks pop-ups, it opens in this tab instead: allow pop-ups for the admin address, or save your settings first and use the Back button to return. Then upload the result under Files in the admin.",
-        "de": "Fotos vor dem Hochladen verkleinern (1600 × 1000 Pixel, JPEG). Das Werkzeug läuft im Browser, es wird nichts hochgeladen. Es öffnet sich in einem neuen Tab. Blockiert dein Browser Popups, öffnet es sich stattdessen in diesem Tab: erlaube Popups für die Admin-Adresse oder speichere vorher deine Einstellungen und komm mit der Zurück-Taste wieder hierher. Danach das Ergebnis im Admin unter Dateien hochladen."
-      },
+      "text": "Shrink photos before uploading (1600 x 1000 px, JPEG). The tool runs in your browser, nothing is uploaded. It opens in a new tab. If your browser blocks pop-ups, it opens in this tab instead: allow pop-ups for the admin address, or save your settings first and use the Back button to return. Then upload the result under Files in the admin.",
       "newLine": true,
       "xs": 12,
       "md": 10,
@@ -235,20 +178,14 @@
     },
     "_headerLook": {
       "type": "header",
-      "text": {
-        "en": "Appearance",
-        "de": "Darstellung"
-      },
+      "text": "Appearance",
       "size": 3,
       "newLine": true,
       "xs": 12
     },
     "shuffle": {
       "type": "checkbox",
-      "label": {
-        "en": "Random order",
-        "de": "Zufällige Reihenfolge"
-      },
+      "label": "Random order",
       "newLine": true,
       "xs": 12,
       "sm": 6,
@@ -258,24 +195,15 @@
     },
     "fit": {
       "type": "select",
-      "label": {
-        "en": "Image fit",
-        "de": "Bildanpassung"
-      },
+      "label": "Image fit",
       "options": [
         {
           "value": "cover",
-          "label": {
-            "en": "Fill screen (crop)",
-            "de": "Bildschirm füllen (beschneiden)"
-          }
+          "label": "Fill screen (crop)"
         },
         {
           "value": "contain",
-          "label": {
-            "en": "Show complete image (black bars)",
-            "de": "Ganzes Bild zeigen (schwarze Balken)"
-          }
+          "label": "Show complete image (black bars)"
         }
       ],
       "newLine": true,
@@ -287,10 +215,7 @@
     },
     "kenBurns": {
       "type": "checkbox",
-      "label": {
-        "en": "Slow zoom",
-        "de": "Langsamer Zoom"
-      },
+      "label": "Slow zoom",
       "newLine": true,
       "xs": 12,
       "sm": 6,
@@ -300,10 +225,7 @@
     },
     "showClock": {
       "type": "checkbox",
-      "label": {
-        "en": "Show clock",
-        "de": "Uhr anzeigen"
-      },
+      "label": "Show clock",
       "newLine": true,
       "xs": 12,
       "sm": 6,
@@ -313,20 +235,14 @@
     },
     "_headerDetect": {
       "type": "header",
-      "text": {
-        "en": "People detection (photo tool, optional)",
-        "de": "Personenerkennung (Foto-Werkzeug, optional)"
-      },
+      "text": "People detection (photo tool, optional)",
       "size": 3,
       "newLine": true,
       "xs": 12
     },
     "_detectText": {
       "type": "staticText",
-      "text": {
-        "en": "The photo tool can centre the crop on people. This needs about 22 MB, downloaded once from Google and jsDelivr, checked by checksum and kept when the adapter is updated. The photos stay on your computer.",
-        "de": "Das Foto-Werkzeug kann den Zuschnitt auf Personen legen. Dafür werden etwa 22 MB einmal von Google und jsDelivr geladen, per Prüfsumme kontrolliert und bei Adapter-Updates behalten. Die Fotos bleiben auf deinem Rechner."
-      },
+      "text": "The photo tool can centre the crop on people. This needs about 22 MB, downloaded once from Google and jsDelivr, checked by checksum and kept when the adapter is updated. The photos stay on your computer.",
       "newLine": true,
       "xs": 12,
       "sm": 12,
@@ -337,10 +253,7 @@
     "_detectInstall": {
       "type": "sendTo",
       "command": "installDetection",
-      "label": {
-        "en": "Install people detection (about 22 MB)",
-        "de": "Personenerkennung installieren (ca. 22 MB)"
-      },
+      "label": "Install people detection (about 22 MB)",
       "variant": "contained",
       "showProcess": true,
       "timeout": 300000,
@@ -354,10 +267,7 @@
     "_detectStatus": {
       "type": "sendTo",
       "command": "detectionStatus",
-      "label": {
-        "en": "Check status",
-        "de": "Status prüfen"
-      },
+      "label": "Check status",
       "variant": "outlined",
       "timeout": 20000,
       "xs": 12,
@@ -368,20 +278,14 @@
     },
     "_headerUse": {
       "type": "header",
-      "text": {
-        "en": "Usage",
-        "de": "Einbindung"
-      },
+      "text": "Usage",
       "size": 3,
       "newLine": true,
       "xs": 12
     },
     "_usage": {
       "type": "staticText",
-      "text": {
-        "en": "The screensaver is a script that the page loads itself. Steering via the states vis-screensaver.0.control.* – more details in the README.",
-        "de": "Der Bildschirmschoner ist ein Skript, das die Seite selbst lädt. Steuerung über die States vis-screensaver.0.control.* – mehr dazu in der README."
-      },
+      "text": "The screensaver is a script that the page loads itself. Steering via the states vis-screensaver.0.control.* – more details in the README.",
       "newLine": true,
       "xs": 12,
       "sm": 12,
@@ -394,7 +298,16 @@
       "format": "html",
       "text": {
         "en": "<p style=\"margin:0 0 2px\"><b>Your own page or desktop menu: add before &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: add in the editor under \"Scripts\" (applies to all views)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
-        "de": "<p style=\"margin:0 0 2px\"><b>Eigene Seite oder Desktop-Menü: vor &lt;/body&gt; einfügen</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: im Editor unter „Skripte“ eintragen (gilt für alle Ansichten)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>"
+        "de": "<p style=\"margin:0 0 2px\"><b>Eigene Seite oder Desktop-Menü: vor &lt;/body&gt; einfügen</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: im Editor unter „Skripte“ eintragen (gilt für alle Ansichten)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "ru": "<p style=\"margin:0 0 2px\"><b>Собственная страница или меню рабочего стола: добавьте перед &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: добавьте в редакторе в разделе «Скрипты» (действует для всех представлений)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "pt": "<p style=\"margin:0 0 2px\"><b>A sua página ou menu de ambiente de trabalho: adicione antes de &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: adicione no editor em «Scripts» (vale para todas as vistas)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "nl": "<p style=\"margin:0 0 2px\"><b>Eigen pagina of bureaubladmenu: toevoegen vóór &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: toevoegen in de editor onder «Scripts» (geldt voor alle weergaven)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "fr": "<p style=\"margin:0 0 2px\"><b>Votre propre page ou menu de bureau : à ajouter avant &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1 : à ajouter dans l'éditeur sous « Scripts » (valable pour toutes les vues)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "it": "<p style=\"margin:0 0 2px\"><b>Pagina propria o menu desktop: aggiungere prima di &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: aggiungere nell'editor sotto «Script» (vale per tutte le viste)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "es": "<p style=\"margin:0 0 2px\"><b>Su propia página o menú de escritorio: añadir antes de &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: añadir en el editor en «Scripts» (vale para todas las vistas)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "pl": "<p style=\"margin:0 0 2px\"><b>Własna strona lub menu pulpitu: dodaj przed &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: dodaj w edytorze w sekcji «Skrypty» (dotyczy wszystkich widoków)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "uk": "<p style=\"margin:0 0 2px\"><b>Власна сторінка або меню робочого столу: додайте перед &lt;/body&gt;</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1: додайте в редакторі в розділі «Скрипти» (діє для всіх подань)</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>",
+        "zh-cn": "<p style=\"margin:0 0 2px\"><b>自己的页面或桌面菜单：添加在 &lt;/body&gt; 之前</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\"><span style=\"color:#d6336c\">&lt;script</span> <span style=\"color:#e8590c\">src</span>=<span style=\"color:#2b9a66\">\"/vis-screensaver/screensaver.js\"</span><span style=\"color:#d6336c\">&gt;&lt;/script&gt;</span></pre><p style=\"margin:0 0 2px\"><b>vis 1：在编辑器的“脚本”中添加（适用于所有视图）</b></p><pre style=\"background:rgba(128,128,128,.18);padding:10px 12px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.5;margin:4px 0 14px;white-space:pre;overflow-x:auto\">(<span style=\"color:#9c5bd8\">function</span>(){<span style=\"color:#9c5bd8\">var</span> s=document.<span style=\"color:#1c7ed6\">createElement</span>(<span style=\"color:#2b9a66\">'script'</span>);s.src=<span style=\"color:#2b9a66\">'/vis-screensaver/screensaver.js'</span>;document.head.<span style=\"color:#1c7ed6\">appendChild</span>(s);})();</pre>"
       },
       "newLine": true,
       "xs": 12,

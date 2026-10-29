@@ -1,8 +1,34 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.27",
+    "version": "0.1.29",
     "news": {
+      "0.1.29": {
+        "en": "Admin texts moved to translation files (admin/i18n).",
+        "de": "Admin-Texte in Übersetzungsdateien ausgelagert (admin/i18n).",
+        "ru": "Тексты администратора вынесены в файлы переводов (admin/i18n).",
+        "pt": "Textos do admin movidos para ficheiros de tradução (admin/i18n).",
+        "nl": "Admin-teksten verplaatst naar vertaalbestanden (admin/i18n).",
+        "fr": "Textes de l'admin déplacés dans des fichiers de traduction (admin/i18n).",
+        "it": "Testi dell'admin spostati in file di traduzione (admin/i18n).",
+        "es": "Textos del admin movidos a archivos de traducción (admin/i18n).",
+        "pl": "Teksty panelu admin przeniesiono do plików tłumaczeń (admin/i18n).",
+        "uk": "Тексти адмінки винесено у файли перекладів (admin/i18n).",
+        "zh-cn": "管理界面文本已移至翻译文件（admin/i18n）。"
+      },
+      "0.1.28": {
+        "en": "Admin dialog translated into all 11 languages.",
+        "de": "Admin-Dialog in alle 11 Sprachen übersetzt.",
+        "ru": "Диалог администратора переведён на все 11 языков.",
+        "pt": "Diálogo de administração traduzido para os 11 idiomas.",
+        "nl": "Admin-dialoog vertaald in alle 11 talen.",
+        "fr": "Dialogue d'administration traduit dans les 11 langues.",
+        "it": "Finestra di amministrazione tradotta in tutte le 11 lingue.",
+        "es": "Diálogo de administración traducido a los 11 idiomas.",
+        "pl": "Okno administracyjne przetłumaczone na wszystkie 11 języków.",
+        "uk": "Діалог адміністратора перекладено всіма 11 мовами.",
+        "zh-cn": "管理界面已翻译为全部 11 种语言。"
+      },
       "0.1.27": {
         "en": "Texts: photo tool link opens in a new tab (pop-ups must be allowed).",
         "de": "Texte: Der Link zum Foto-Werkzeug öffnet sich in einem neuen Tab (Popups müssen erlaubt sein).",
@@ -67,32 +93,6 @@
         "pl": "Dodano standardowe testy ioBroker i przepływ pracy GitHub.",
         "uk": "Додано стандартні тести ioBroker і робочий процес GitHub.",
         "zh-cn": "新增 ioBroker 标准测试和 GitHub 工作流。"
-      },
-      "0.1.22": {
-        "en": "README button opens the German README.",
-        "de": "README-Knopf öffnet die deutsche README.",
-        "ru": "Кнопка README открывает немецкий README.",
-        "pt": "O botão README abre o README alemão.",
-        "nl": "De README-knop opent de Duitse README.",
-        "fr": "Le bouton README ouvre le README allemand.",
-        "it": "Il pulsante README apre il README tedesco.",
-        "es": "El botón README abre el README alemán.",
-        "pl": "Przycisk README otwiera niemiecki plik README.",
-        "uk": "Кнопка README відкриває німецький README.",
-        "zh-cn": "README 按钮打开德语版 README。"
-      },
-      "0.1.21": {
-        "en": "Translations added, e-mail address in the license.",
-        "de": "Übersetzungen ergänzt, E-Mail-Adresse in der Lizenz.",
-        "ru": "Добавлены переводы, адрес электронной почты в лицензии.",
-        "pt": "Traduções adicionadas, endereço de e-mail na licença.",
-        "nl": "Vertalingen toegevoegd, e-mailadres in de licentie.",
-        "fr": "Traductions ajoutées, adresse e-mail dans la licence.",
-        "it": "Aggiunte le traduzioni, indirizzo e-mail nella licenza.",
-        "es": "Traducciones añadidas, dirección de correo en la licencia.",
-        "pl": "Dodano tłumaczenia, adres e-mail w licencji.",
-        "uk": "Додано переклади, адреса електронної пошти в ліцензії.",
-        "zh-cn": "新增翻译，许可证中加入电子邮件地址。"
       }
     },
     "titleLang": {

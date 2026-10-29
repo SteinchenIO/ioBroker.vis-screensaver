@@ -137,6 +137,12 @@ Do you like the adapter? You can support further development with a small donati
 
 ## Changelog
 
+### 0.1.29
+- Admin texts moved to translation files (`admin/i18n`).
+
+### 0.1.28
+- Admin dialog translated into all 11 languages.
+
 ### 0.1.27
 - Texts: the photo tool link opens in a new tab (pop-ups must be allowed).
 
