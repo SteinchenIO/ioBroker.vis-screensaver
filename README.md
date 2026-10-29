@@ -80,8 +80,8 @@ If your desktop menu has its own screensaver (`CONFIG.saver`), set `enabled:fals
 
 - **Target size:** The Waveshare display is 1280 × 800 (16:10). With the zoom an image needs up to 10 % reserve, so **1600 × 1000** pixels. More gives no benefit but costs memory and causes stutter on a Raspberry Pi.
 - **Format:** JPEG, quality 80–85, preferably below 1.5 MB, usually below 400 KB.
-- **Shrinking:** In the instance settings under "Images" click the **Foto-Werkzeug öffnen** image. It opens in the same tab, so save your settings first (alternatively `http://<ioBroker-IP>:8081/files/vis-screensaver.admin/tools/resize.html`). Drop your photos in and download the ZIP. Everything runs in the browser; the phone rotation (EXIF) is respected and file names are cleaned.
-- **People detection (optional):** The photo tool can find people and crop around them instead of cutting from the middle. You can also move the crop by hand ("Ausschnitt verschieben"). The detection runs in the browser, the photos stay on your computer. It needs four files (about 22 MB) that are **not** part of the adapter, so updates stay small:
+- **Shrinking:** In the instance settings under "Images" click the **Foto-Werkzeug öffnen** image. It opens in a new tab; if your browser blocks pop-ups for the admin address it opens in the same tab instead, so allow pop-ups there or save your settings first (alternatively `http://<ioBroker-IP>:8081/files/vis-screensaver.admin/tools/resize.html`). Drop your photos in and download the ZIP. Everything runs in the browser; the phone rotation (EXIF) is respected and file names are cleaned.
+- **People detection (optional):** The photo tool can find people and crop around them instead of cutting from the middle. You can also move the crop by hand ("Ausschnitt verschieben"). The detection runs in the browser, the photos stay on your computer. It needs four files (about 22 MB) that are **not** part of the adapter, so updates stay small.
   Install it once in the adapter settings under **People detection** with the button "Install people detection (about 22 MB)". The adapter downloads the files once (model from Google, library from jsDelivr), checks their checksums and keeps them in its own file storage, so adapter updates do not download them again. Without them the tool crops from the middle and says so under "Bildausschnitt".
 - **Upload:** Admin → **Files** → folder `vis.0/slideshow` → drag the unpacked images into the window.
 - **Check:** The adapter checks the images without decoding them. Anything above "Maximum file size" or "Maximum megapixels" appears in the log and in `info.imageReport`. The images are still shown.
@@ -136,6 +136,9 @@ The instance settings are kept. The adapter restarts vis once so that the widget
 Do you like the adapter? You can support further development with a small donation via [PayPal.me/SteinchenIO](https://www.paypal.me/SteinchenIO). The adapter stays free in any case.
 
 ## Changelog
+
+### 0.1.27
+- Texts: the photo tool link opens in a new tab (pop-ups must be allowed).
 
 ### 0.1.26
 - Photo tool: people detection is installed with one button in the adapter settings.

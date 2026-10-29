@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.26",
+    "version": "0.1.27",
     "news": {
+      "0.1.27": {
+        "en": "Texts: photo tool link opens in a new tab (pop-ups must be allowed).",
+        "de": "Texte: Der Link zum Foto-Werkzeug öffnet sich in einem neuen Tab (Popups müssen erlaubt sein).",
+        "ru": "Тексты: ссылка на фото-инструмент открывается в новой вкладке (всплывающие окна должны быть разрешены).",
+        "pt": "Textos: a ligação para a ferramenta de fotos abre num novo separador (os pop-ups têm de estar permitidos).",
+        "nl": "Teksten: de link naar de fototool opent in een nieuw tabblad (pop-ups moeten zijn toegestaan).",
+        "fr": "Textes : le lien vers l'outil photo s'ouvre dans un nouvel onglet (les pop-ups doivent être autorisés).",
+        "it": "Testi: il link allo strumento foto si apre in una nuova scheda (i pop-up devono essere consentiti).",
+        "es": "Textos: el enlace a la herramienta de fotos se abre en una pestaña nueva (deben permitirse las ventanas emergentes).",
+        "pl": "Teksty: link do narzędzia do zdjęć otwiera się w nowej karcie (wyskakujące okna muszą być dozwolone).",
+        "uk": "Тексти: посилання на інструмент для фото відкривається в новій вкладці (спливаючі вікна мають бути дозволені).",
+        "zh-cn": "文本：照片工具链接在新标签页中打开（需允许弹出窗口）。"
+      },
       "0.1.26": {
         "en": "Photo tool: people detection is installed with one button in the adapter settings (downloaded once, kept across updates).",
         "de": "Foto-Werkzeug: Personenerkennung wird mit einem Knopf in den Adaptereinstellungen installiert (einmal geladen, bleibt bei Updates erhalten).",
@@ -80,19 +93,6 @@
         "pl": "Dodano tłumaczenia, adres e-mail w licencji.",
         "uk": "Додано переклади, адреса електронної пошти в ліцензії.",
         "zh-cn": "新增翻译，许可证中加入电子邮件地址。"
-      },
-      "0.1.20": {
-        "en": "Formatted, colored code examples in the settings and README.",
-        "de": "Formatierte, farbige Code-Beispiele in den Einstellungen und der README.",
-        "ru": "Отформатированные цветные примеры кода в настройках и README.",
-        "pt": "Exemplos de código formatados e coloridos nas definições e no README.",
-        "nl": "Opgemaakte, gekleurde codevoorbeelden in de instellingen en README.",
-        "fr": "Exemples de code formatés et colorés dans les paramètres et le README.",
-        "it": "Esempi di codice formattati e colorati nelle impostazioni e nel README.",
-        "es": "Ejemplos de código con formato y color en los ajustes y en el README.",
-        "pl": "Sformatowane, kolorowe przykłady kodu w ustawieniach i README.",
-        "uk": "Відформатовані кольорові приклади коду в налаштуваннях і README.",
-        "zh-cn": "设置和 README 中的代码示例已格式化并着色。"
       }
     },
     "titleLang": {
