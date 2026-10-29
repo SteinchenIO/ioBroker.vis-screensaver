@@ -294,7 +294,7 @@
   // Die Dateien (Modell, Bibliothek, WASM) liegen nicht im Adapter-Code, sondern im Dateispeicher der Instanz
   // oder daneben im Ordner "mediapipe". Fehlen sie, wird aus der Mitte zugeschnitten.
 
-  var detector = null, detState = 'idle', detCache = {}, manual = {};
+  var detector = null, detState = 'idle', detCache = {}, manual = {}, detErrors = [];
   var DET_BASES = ['mediapipe/', '../../vis-screensaver.0/mediapipe/'];
 
   function setDetStatus() {
@@ -304,7 +304,7 @@
       idle: '',
       loading: 'Personenerkennung wird geladen …',
       ready: 'Personenerkennung bereit. Die Fotos bleiben auf diesem Rechner.',
-      unavailable: 'Personenerkennung nicht installiert oder nicht ladbar. Es wird aus der Mitte zugeschnitten.'
+      unavailable: 'Personenerkennung nicht installiert oder nicht ladbar. Installieren: Adapter-Einstellungen → „Personenerkennung installieren“. Bis dahin wird aus der Mitte zugeschnitten.' + (detErrors.length ? ' Fehler: ' + detErrors.join(' | ') : '')
     }[detState];
   }
 
@@ -320,7 +320,7 @@
           baseOptions: { modelAssetPath: base + 'efficientdet_lite0.tflite' },
           runningMode: 'IMAGE', scoreThreshold: 0.4, maxResults: 20, categoryAllowlist: ['person']
         });
-      } catch (err) { detector = null; }
+      } catch (err) { detector = null; detErrors.push(DET_BASES[i] + ': ' + (err && err.message || err)); console.warn('Personenerkennung', DET_BASES[i], err); }
     }
     detState = detector ? 'ready' : 'unavailable';
     setDetStatus();

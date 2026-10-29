@@ -311,6 +311,61 @@
       "lg": 4,
       "xl": 4
     },
+    "_headerDetect": {
+      "type": "header",
+      "text": {
+        "en": "People detection (photo tool, optional)",
+        "de": "Personenerkennung (Foto-Werkzeug, optional)"
+      },
+      "size": 3,
+      "newLine": true,
+      "xs": 12
+    },
+    "_detectText": {
+      "type": "staticText",
+      "text": {
+        "en": "The photo tool can centre the crop on people. This needs about 22 MB, downloaded once from Google and jsDelivr, checked by checksum and kept when the adapter is updated. The photos stay on your computer.",
+        "de": "Das Foto-Werkzeug kann den Zuschnitt auf Personen legen. Dafür werden etwa 22 MB einmal von Google und jsDelivr geladen, per Prüfsumme kontrolliert und bei Adapter-Updates behalten. Die Fotos bleiben auf deinem Rechner."
+      },
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
+    },
+    "_detectInstall": {
+      "type": "sendTo",
+      "command": "installDetection",
+      "label": {
+        "en": "Install people detection (about 22 MB)",
+        "de": "Personenerkennung installieren (ca. 22 MB)"
+      },
+      "variant": "contained",
+      "showProcess": true,
+      "timeout": 300000,
+      "newLine": true,
+      "xs": 12,
+      "sm": 6,
+      "md": 4,
+      "lg": 4,
+      "xl": 4
+    },
+    "_detectStatus": {
+      "type": "sendTo",
+      "command": "detectionStatus",
+      "label": {
+        "en": "Check status",
+        "de": "Status prüfen"
+      },
+      "variant": "outlined",
+      "timeout": 20000,
+      "xs": 12,
+      "sm": 6,
+      "md": 4,
+      "lg": 4,
+      "xl": 4
+    },
     "_headerUse": {
       "type": "header",
       "text": {

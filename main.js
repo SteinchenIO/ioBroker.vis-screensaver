@@ -16,6 +16,7 @@
 
 const utils = require('@iobroker/adapter-core');
 const { getImageSize } = require('./lib/imageinfo');
+const detection = require('./lib/detection');
 
 const IMAGE_EXT = /\.(jpe?g|png|gif|webp|avif|bmp|svg)$/i;
 const MAX_LOGGED_PROBLEMS = 5;
@@ -49,6 +50,7 @@ class Screensaver extends utils.Adapter {
 
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
+        this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
     }
 
@@ -66,6 +68,13 @@ class Screensaver extends utils.Adapter {
         await this.setStateAsync('control.enabled', this.runtimeEnabled, true);
 
         this.subscribeStates('control.*');
+
+        try {
+            const st = await detection.status(name => this.readFileAsync(this.namespace, name));
+            await this.setStateAsync('info.detection', st.installed ? 'installed' : 'not installed', true);
+        } catch (err) {
+            this.log.debug(`Status der Personenerkennung nicht lesbar: ${err.message}`);
+        }
 
         await this.refresh(true);
 
@@ -151,6 +160,14 @@ class Screensaver extends utils.Adapter {
                 read: true,
                 write: false,
                 def: '',
+            },
+            'info.detection': {
+                name: { en: 'People detection (photo tool)', de: 'Personenerkennung (Foto-Werkzeug)' },
+                type: 'string',
+                role: 'text',
+                read: true,
+                write: false,
+                def: 'not installed',
             },
         };
         for (const [id, common] of Object.entries(states)) {
@@ -389,6 +406,49 @@ class Screensaver extends utils.Adapter {
             }
         } catch (err) {
             this.log.warn(`Steuerbefehl "${local}" fehlgeschlagen: ${err.message}`);
+        }
+    }
+
+    /**
+     * Nachrichten aus der Admin-Oberfläche (Knöpfe in den Einstellungen).
+     * @param {ioBroker.Message} obj
+     */
+    async onMessage(obj) {
+        if (!obj || !obj.command) {
+            return;
+        }
+        const reply = result => obj.callback && this.sendTo(obj.from, obj.command, result, obj.callback);
+        const read = name => this.readFileAsync(this.namespace, name);
+        try {
+            if (obj.command === 'detectionStatus') {
+                const st = await detection.status(read);
+                reply({
+                    result: st.installed
+                        ? 'Personenerkennung ist installiert.'
+                        : st.outdated
+                          ? 'Eine ältere Version ist installiert. Bitte neu installieren.'
+                          : 'Personenerkennung ist nicht installiert.',
+                });
+            } else if (obj.command === 'installDetection') {
+                const force = !!(obj.message && obj.message.force);
+                const res = await detection.install({
+                    read,
+                    write: (name, data) => this.writeFileAsync(this.namespace, name, data),
+                    log: this.log,
+                    force,
+                });
+                await this.setStateAsync('info.detection', 'installed', true);
+                reply({
+                    result: res.downloaded
+                        ? `Personenerkennung installiert (${(res.bytes / 1048576).toFixed(1)} MB). Foto-Werkzeug neu laden.`
+                        : 'Personenerkennung ist schon installiert. Es wurde nichts geladen.',
+                });
+            } else {
+                reply({ error: `Unbekannter Befehl: ${obj.command}` });
+            }
+        } catch (err) {
+            this.log.warn(`Personenerkennung: ${err.message}`);
+            reply({ error: err.message });
         }
     }
 

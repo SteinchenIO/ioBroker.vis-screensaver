@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.25",
+    "version": "0.1.26",
     "news": {
+      "0.1.26": {
+        "en": "Photo tool: people detection is installed with one button in the adapter settings (downloaded once, kept across updates).",
+        "de": "Foto-Werkzeug: Personenerkennung wird mit einem Knopf in den Adaptereinstellungen installiert (einmal geladen, bleibt bei Updates erhalten).",
+        "ru": "Фото-инструмент: распознавание людей устанавливается одной кнопкой в настройках адаптера (загружается один раз, сохраняется при обновлениях).",
+        "pt": "Ferramenta de fotos: a deteção de pessoas é instalada com um botão nas definições do adaptador (descarregada uma vez, mantida nas atualizações).",
+        "nl": "Fototool: persoonsherkenning wordt met één knop in de adapterinstellingen geïnstalleerd (eenmaal gedownload, blijft bij updates behouden).",
+        "fr": "Outil photo : la détection des personnes s'installe d'un bouton dans les réglages de l'adaptateur (téléchargée une fois, conservée lors des mises à jour).",
+        "it": "Strumento foto: il riconoscimento delle persone si installa con un pulsante nelle impostazioni dell'adattatore (scaricato una volta, mantenuto negli aggiornamenti).",
+        "es": "Herramienta de fotos: la detección de personas se instala con un botón en los ajustes del adaptador (se descarga una vez y se conserva en las actualizaciones).",
+        "pl": "Narzędzie do zdjęć: wykrywanie osób instaluje się jednym przyciskiem w ustawieniach adaptera (pobierane raz, zachowane po aktualizacjach).",
+        "uk": "Інструмент для фото: розпізнавання людей встановлюється однією кнопкою в налаштуваннях адаптера (завантажується один раз, зберігається при оновленнях).",
+        "zh-cn": "照片工具：在适配器设置中点击一个按钮即可安装人物检测（只下载一次，更新后保留）。"
+      },
       "0.1.25": {
         "en": "Photo tool: optional person detection and manual crop adjustment.",
         "de": "Foto-Werkzeug: optionale Personenerkennung und Ausschnitt von Hand verschieben.",
@@ -80,19 +93,6 @@
         "pl": "Sformatowane, kolorowe przykłady kodu w ustawieniach i README.",
         "uk": "Відформатовані кольорові приклади коду в налаштуваннях і README.",
         "zh-cn": "设置和 README 中的代码示例已格式化并着色。"
-      },
-      "0.1.19": {
-        "en": "Admin layout sizes completed, admin 7.6.20 recommended.",
-        "de": "Admin-Layout vervollständigt, Admin 7.6.20 empfohlen.",
-        "ru": "Размеры макета админки дополнены, рекомендуется admin 7.6.20.",
-        "pt": "Tamanhos do layout do admin concluídos, recomenda-se admin 7.6.20.",
-        "nl": "Layoutmaten van de admin aangevuld, admin 7.6.20 aanbevolen.",
-        "fr": "Tailles de mise en page de l'admin complétées, admin 7.6.20 recommandé.",
-        "it": "Dimensioni del layout dell'admin completate, consigliato admin 7.6.20.",
-        "es": "Tamaños del diseño del admin completados, se recomienda admin 7.6.20.",
-        "pl": "Uzupełniono rozmiary układu w panelu admin, zalecany admin 7.6.20.",
-        "uk": "Доповнено розміри макета адмінки, рекомендовано admin 7.6.20.",
-        "zh-cn": "补全了管理界面的布局尺寸，推荐使用 admin 7.6.20。"
       }
     },
     "titleLang": {
@@ -162,7 +162,8 @@
       {
         "admin": ">=7.6.20"
       }
-    ]
+    ],
+    "messagebox": true
   },
   "native": {
     "enabled": true,
