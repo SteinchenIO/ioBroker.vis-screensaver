@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.24",
+    "version": "0.1.25",
     "news": {
+      "0.1.25": {
+        "en": "Photo tool: optional person detection and manual crop adjustment.",
+        "de": "Foto-Werkzeug: optionale Personenerkennung und Ausschnitt von Hand verschieben.",
+        "ru": "Фото-инструмент: необязательное распознавание людей и ручная корректировка кадра.",
+        "pt": "Ferramenta de fotos: deteção opcional de pessoas e ajuste manual do recorte.",
+        "nl": "Fototool: optionele persoonsherkenning en handmatig bijsnijden aanpassen.",
+        "fr": "Outil photo : détection facultative des personnes et ajustement manuel du cadrage.",
+        "it": "Strumento foto: riconoscimento facoltativo delle persone e regolazione manuale del ritaglio.",
+        "es": "Herramienta de fotos: detección opcional de personas y ajuste manual del recorte.",
+        "pl": "Narzędzie do zdjęć: opcjonalne wykrywanie osób i ręczna korekta kadru.",
+        "uk": "Інструмент для фото: необов'язкове розпізнавання людей і ручне коригування кадру.",
+        "zh-cn": "照片工具：可选的人物检测和手动调整裁剪。"
+      },
       "0.1.24": {
         "en": "Example view for vis 1 added.",
         "de": "Beispielansicht für vis 1 hinzugefügt.",
@@ -80,19 +93,6 @@
         "pl": "Uzupełniono rozmiary układu w panelu admin, zalecany admin 7.6.20.",
         "uk": "Доповнено розміри макета адмінки, рекомендовано admin 7.6.20.",
         "zh-cn": "补全了管理界面的布局尺寸，推荐使用 admin 7.6.20。"
-      },
-      "0.1.18": {
-        "en": "Requirements raised: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core updated.",
-        "de": "Voraussetzungen angehoben: Node.js 22, js-controller 6.0.11, Admin 7.6.17; adapter-core aktualisiert.",
-        "ru": "Повышены требования: Node.js 22, js-controller 6.0.11, admin 7.6.17; обновлён adapter-core.",
-        "pt": "Requisitos aumentados: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core atualizado.",
-        "nl": "Vereisten verhoogd: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core bijgewerkt.",
-        "fr": "Exigences relevées : Node.js 22, js-controller 6.0.11, admin 7.6.17 ; adapter-core mis à jour.",
-        "it": "Requisiti aumentati: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core aggiornato.",
-        "es": "Requisitos aumentados: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core actualizado.",
-        "pl": "Podniesiono wymagania: Node.js 22, js-controller 6.0.11, admin 7.6.17; zaktualizowano adapter-core.",
-        "uk": "Підвищено вимоги: Node.js 22, js-controller 6.0.11, admin 7.6.17; оновлено adapter-core.",
-        "zh-cn": "提高了要求：Node.js 22、js-controller 6.0.11、admin 7.6.17；已更新 adapter-core。"
       }
     },
     "titleLang": {

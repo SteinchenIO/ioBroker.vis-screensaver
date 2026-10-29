@@ -61,7 +61,21 @@
   a.dl { color: var(--accent2); font-size: 13px; text-decoration: none; }
   ol.steps { margin: 8px 0 0; padding-left: 20px; line-height: 1.7; color: var(--muted); font-size: 14px; }
   ol.steps b { color: var(--text); }
-  @media (max-width: 560px) { .row { grid-template-columns: 84px 1fr; } .row img, .row .noimg { width: 84px; height: 56px; } .row a.dl { grid-column: 2; } }
+  .acts { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+  button.mini { font-size: 12.5px; padding: 6px 12px; border-radius: 9px; }
+  .badge { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; margin-left: 6px; border: 1px solid var(--line); color: var(--muted); }
+  .badge.ok { color: var(--ok); border-color: var(--ok); }
+  #detStatus { font-size: 12.5px; margin-top: 6px; color: var(--muted); line-height: 1.4; }
+  #detStatus.ok { color: var(--ok); }
+  #editor { position: fixed; inset: 0; z-index: 10; background: rgba(0,0,0,.78); display: flex; align-items: center; justify-content: center; padding: 12px; }
+  #editor[hidden] { display: none; }
+  .ebox { background: var(--bg2); border: 1px solid var(--line); border-radius: 18px; padding: 16px; max-width: 96vw; }
+  .etitle { font-weight: 600; margin-bottom: 10px; word-break: break-all; }
+  #eStage { position: relative; display: inline-block; line-height: 0; touch-action: none; user-select: none; }
+  #eImg { max-width: 90vw; max-height: 68vh; display: block; }
+  #eFrame { position: absolute; border: 3px solid var(--accent2); box-shadow: 0 0 0 9999px rgba(0,0,0,.55); cursor: move; touch-action: none; }
+  .ehint { color: var(--muted); font-size: 13px; margin: 10px 0 12px; }
+  @media (max-width: 560px) { .row { grid-template-columns: 84px 1fr; } .row img, .row .noimg { width: 84px; height: 56px; } .row .acts { grid-column: 2; align-items: flex-start; } }
 </style>
 </head>
 <body>
@@ -100,9 +114,11 @@
           <option value="contain">Einpassen, ganzes Bild ohne Zuschnitt</option>
         </select>
         <select id="anchor" style="margin-top:8px">
-          <option value="center" selected>Zuschnitt aus der Mitte</option>
+          <option value="auto" selected>Personen erkennen und darauf zuschneiden</option>
+          <option value="center">Zuschnitt aus der Mitte</option>
           <option value="top">Zuschnitt oben (für Personen und Hochformat)</option>
         </select>
+        <div id="detStatus"></div>
         <div class="hint">Passend zur Adapter-Einstellung „Bildanpassung“: „Bildschirm füllen“ ↔ Zuschneiden, „Ganzes Bild zeigen“ ↔ Einpassen.</div>
       </label>
 
@@ -144,6 +160,19 @@
   </div>
 </main>
 
+<div id="editor" hidden>
+  <div class="ebox">
+    <div class="etitle" id="eTitle"></div>
+    <div id="eStage"><img id="eImg" alt=""><div id="eFrame"></div></div>
+    <div class="ehint">Den Rahmen mit Maus oder Finger verschieben. Er zeigt den Teil des Fotos, der im Bildschirmschoner zu sehen ist.</div>
+    <div class="bar">
+      <button id="eOk">Übernehmen</button>
+      <button id="eReset" class="ghost">Zurück zur Automatik</button>
+      <button id="eCancel" class="ghost">Abbrechen</button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   'use strict';
@@ -181,12 +210,30 @@
     return v.split('x').map(Number);
   }
 
-  /** Berechnet Ausschnitt der Quelle und Größe des Ergebnisses. */
-  function plan(sw, sh, tw, th, mode, anchor, noUpscale) {
+  /** Anfang eines Ausschnitts der Länge win in einer Strecke total, so dass die Box b0..b1 darin liegt (ohne Box: Mitte). */
+  function place(b0, b1, win, total, alignStart) {
+    var start;
+    if (b0 === null) { start = (total - win) / 2; }
+    else if (alignStart && (b1 - b0) > win * 0.9) { start = b0 - win * 0.05; }   // sehr hohe Person: Kopf im Bild halten
+    else { start = (b0 + b1) / 2 - win / 2; }
+    return Math.max(0, Math.min(total - win, Math.round(start)));
+  }
+
+  /** Berechnet Ausschnitt der Quelle und Größe des Ergebnisses.
+   *  focus: null, {box: {x0,y0,x1,y1}} (0..1, erkannte Personen) oder {center: {x,y}} (von Hand). */
+  function plan(sw, sh, tw, th, mode, anchor, noUpscale, focus) {
     var sx = 0, sy = 0, cw = sw, ch = sh, scale;
     if (mode === 'cover') {
-      if (sw / sh > tw / th) { cw = Math.round(sh * tw / th); sx = Math.round((sw - cw) / 2); }
-      else { ch = Math.round(sw * th / tw); sy = anchor === 'top' ? 0 : Math.round((sh - ch) / 2); }
+      var fb = null;
+      if (focus && focus.box) { fb = { x0: focus.box.x0 * sw, x1: focus.box.x1 * sw, y0: focus.box.y0 * sh, y1: focus.box.y1 * sh }; }
+      if (focus && focus.center) { fb = { x0: focus.center.x * sw, x1: focus.center.x * sw, y0: focus.center.y * sh, y1: focus.center.y * sh }; }
+      if (sw / sh > tw / th) {
+        cw = Math.round(sh * tw / th);
+        sx = place(fb ? fb.x0 : null, fb ? fb.x1 : null, cw, sw, false);
+      } else {
+        ch = Math.round(sw * th / tw);
+        sy = (!fb && anchor === 'top') ? 0 : place(fb ? fb.y0 : null, fb ? fb.y1 : null, ch, sh, !!(focus && focus.box));
+      }
       scale = tw / cw;
     } else {
       scale = Math.min(tw / sw, th / sh);
@@ -242,6 +289,71 @@
       canvas.toBlob(function (b) { b ? resolve(b) : reject(new Error('Umwandlung fehlgeschlagen')); }, type, quality);
     });
   }
+
+  // ---------- Personenerkennung (MediaPipe, läuft im Browser) ----------
+  // Die Dateien (Modell, Bibliothek, WASM) liegen nicht im Adapter-Code, sondern im Dateispeicher der Instanz
+  // oder daneben im Ordner "mediapipe". Fehlen sie, wird aus der Mitte zugeschnitten.
+
+  var detector = null, detState = 'idle', detCache = {}, manual = {};
+  var DET_BASES = ['mediapipe/', '../../vis-screensaver.0/mediapipe/'];
+
+  function setDetStatus() {
+    var el = $('detStatus');
+    el.className = detState === 'ready' ? 'ok' : '';
+    el.textContent = {
+      idle: '',
+      loading: 'Personenerkennung wird geladen …',
+      ready: 'Personenerkennung bereit. Die Fotos bleiben auf diesem Rechner.',
+      unavailable: 'Personenerkennung nicht installiert oder nicht ladbar. Es wird aus der Mitte zugeschnitten.'
+    }[detState];
+  }
+
+  async function initDetector() {
+    if (detState !== 'idle') { return; }
+    detState = 'loading'; setDetStatus();
+    for (var i = 0; i < DET_BASES.length && !detector; i++) {
+      try {
+        var base = new URL(DET_BASES[i], location.href).href;
+        var mod = await import(base + 'vision_bundle.mjs');
+        var vision = await mod.FilesetResolver.forVisionTasks(base + 'wasm');
+        detector = await mod.ObjectDetector.createFromOptions(vision, {
+          baseOptions: { modelAssetPath: base + 'efficientdet_lite0.tflite' },
+          runningMode: 'IMAGE', scoreThreshold: 0.4, maxResults: 20, categoryAllowlist: ['person']
+        });
+      } catch (err) { detector = null; }
+    }
+    detState = detector ? 'ready' : 'unavailable';
+    setDetStatus();
+  }
+
+  /** Sucht Personen und liefert Rahmen in 0..1 (Bruchteile der Bildgröße).
+   *  Das Foto wird mit grauem Rand auf ein Quadrat gelegt, damit das Modell es nicht verzerrt (breite Fotos). */
+  function detectPeople(bmp, d) {
+    var S = 640, k = S / Math.max(d[0], d[1]);
+    var w = Math.max(1, Math.round(d[0] * k)), h = Math.max(1, Math.round(d[1] * k));
+    var ox = Math.round((S - w) / 2), oy = Math.round((S - h) / 2);
+    var c = makeCanvas(S, S);
+    c.ctx.fillStyle = '#808080';
+    c.ctx.fillRect(0, 0, S, S);
+    c.ctx.drawImage(bmp, 0, 0, d[0], d[1], ox, oy, w, h);
+    var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
+    var boxes = [];
+    detector.detect(c.canvas).detections.forEach(function (det) {
+      var b = det.boundingBox;
+      boxes.push({ x0: clamp((b.originX - ox) / w), y0: clamp((b.originY - oy) / h),
+                   x1: clamp((b.originX + b.width - ox) / w), y1: clamp((b.originY + b.height - oy) / h) });
+    });
+    var big = boxes.filter(function (b) { return (b.x1 - b.x0) * (b.y1 - b.y0) >= 0.005; });   // winzige Personen im Hintergrund ignorieren
+    return big.length ? big : boxes;
+  }
+
+  function unionBox(boxes) {
+    return boxes.reduce(function (u, b) {
+      return { x0: Math.min(u.x0, b.x0), y0: Math.min(u.y0, b.y0), x1: Math.max(u.x1, b.x1), y1: Math.max(u.y1, b.y1) };
+    }, { x0: 1, y0: 1, x1: 0, y1: 0 });
+  }
+
+  function fileKey(f) { return f.name + '|' + f.size + '|' + f.lastModified; }
 
   // ---------- ZIP (ohne Kompression, Bilder sind schon komprimiert) ----------
 
@@ -305,7 +417,7 @@
       row.setAttribute('data-out', r.name);
       row.setAttribute('data-w', r.ow);
       row.setAttribute('data-h', r.oh);
-      row.innerHTML = '<img alt=""><div><div class="name"></div><div class="meta"></div></div><a class="dl">Einzeln speichern</a>';
+      row.innerHTML = '<img alt=""><div><div class="name"></div><div class="meta"></div></div><div class="acts"><a class="dl">Einzeln speichern</a></div>';
       row.querySelector('img').src = url;
       row.querySelector('.name').textContent = r.name;
       var saved = Math.max(0, Math.round(100 - 100 * r.blob.size / r.originalSize));
@@ -316,6 +428,18 @@
       var b = document.createElement('b');
       b.textContent = saved > 0 ? '(' + saved + ' % kleiner)' : '';
       row.querySelector('.meta').appendChild(b);
+      if (r.badge) {
+        var bd = document.createElement('span');
+        bd.className = 'badge' + (r.badgeOk ? ' ok' : '');
+        bd.textContent = r.badge;
+        row.querySelector('.meta').appendChild(bd);
+      }
+      if (r.canMove) {
+        var mv = document.createElement('button');
+        mv.className = 'mini ghost'; mv.type = 'button'; mv.textContent = 'Ausschnitt verschieben';
+        mv.addEventListener('click', function () { openEditor(r); });
+        row.querySelector('.acts').appendChild(mv);
+      }
       var a = row.querySelector('a.dl');
       a.href = url; a.download = r.name;
     }
@@ -348,12 +472,29 @@
       $('progress').firstElementChild.style.width = (100 * i / files.length) + '%';
       try {
         var bmp = await loadBitmap(file);
-        var d = dims(bmp), p = plan(d[0], d[1], size[0], size[1], mode, anchor, noUpscale);
+        var d = dims(bmp), key = fileKey(file), focus = null, badge = '', badgeOk = false;
+        if (mode === 'cover') {
+          if (manual[key]) { focus = { center: manual[key] }; badge = 'von Hand'; badgeOk = true; }
+          else if (anchor === 'auto') {
+            if (detState === 'idle') { $('summary').textContent = 'Personenerkennung wird geladen …'; await initDetector(); }
+            if (detector) {
+              if (!detCache[key]) {
+                try { detCache[key] = { boxes: detectPeople(bmp, d) }; } catch (e) { detCache[key] = { boxes: [] }; }
+              }
+              var boxes = detCache[key].boxes;
+              if (boxes.length) { focus = { box: unionBox(boxes) }; badge = boxes.length === 1 ? '1 Person erkannt' : boxes.length + ' Personen erkannt'; badgeOk = true; }
+              else { badge = 'keine Person erkannt, Mitte'; }
+            }
+          }
+        }
+        var p = plan(d[0], d[1], size[0], size[1], mode, anchor, noUpscale, focus);
         var blob = await toBlob(drawScaled(bmp, p), type, quality);
         if (bmp.close) { bmp.close(); }
         // Ist das Ergebnis größer als das Original (kleines, stark komprimiertes Bild), Original-Größe zählt nicht als Ersparnis
         var r = { original: file.name, originalSize: file.size, sw: d[0], sh: d[1], ow: p.ow, oh: p.oh,
-                  blob: blob, name: safeName(file.name, ext, taken) };
+                  blob: blob, name: safeName(file.name, ext, taken),
+                  file: file, key: key, badge: badge, badgeOk: badgeOk, canMove: mode === 'cover',
+                  tw: size[0], th: size[1], mode: mode, anchor: anchor, noUpscale: noUpscale, focus: focus };
         results.push(r);
         totalIn += file.size; totalOut += blob.size;
         if (my === runId) { addRow(r); }
@@ -373,6 +514,74 @@
       : 'Kein Bild konnte gelesen werden.';
     $('zip').disabled = results.length === 0;
   }
+
+  // ---------- Ausschnitt von Hand verschieben ----------
+
+  var edit = null;   // {r, k, fw, fh, dw, dh, x, y}
+
+  function openEditor(r) {
+    var img = $('eImg'), url = URL.createObjectURL(r.file);
+    $('eTitle').textContent = r.original;
+    img.onload = function () {
+      var sw = img.naturalWidth, sh = img.naturalHeight;
+      var p = plan(sw, sh, r.tw, r.th, 'cover', r.anchor, false, r.focus);
+      var dw = img.clientWidth, dh = img.clientHeight, k = dw / sw;
+      edit = { r: r, dw: dw, dh: dh, fw: p.cw * k, fh: p.ch * k, x: p.sx * k, y: p.sy * k, url: url };
+      placeFrame();
+    };
+    img.src = url;
+    $('editor').hidden = false;
+  }
+
+  function placeFrame() {
+    var f = $('eFrame');
+    edit.x = Math.max(0, Math.min(edit.dw - edit.fw, edit.x));
+    edit.y = Math.max(0, Math.min(edit.dh - edit.fh, edit.y));
+    f.style.left = edit.x + 'px'; f.style.top = edit.y + 'px';
+    f.style.width = edit.fw + 'px'; f.style.height = edit.fh + 'px';
+  }
+
+  function closeEditor() {
+    $('editor').hidden = true;
+    if (edit) { URL.revokeObjectURL(edit.url); }
+    edit = null;
+  }
+
+  (function () {
+    var drag = null, stage = $('eStage');
+    stage.addEventListener('pointerdown', function (e) {
+      if (!edit) { return; }
+      var rect = stage.getBoundingClientRect();
+      if (e.target !== $('eFrame')) {   // Klick ins Bild: Rahmen dorthin setzen
+        edit.x = e.clientX - rect.left - edit.fw / 2;
+        edit.y = e.clientY - rect.top - edit.fh / 2;
+        placeFrame();
+      }
+      drag = { px: e.clientX, py: e.clientY, x: edit.x, y: edit.y };
+      stage.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+    stage.addEventListener('pointermove', function (e) {
+      if (!drag || !edit) { return; }
+      edit.x = drag.x + e.clientX - drag.px;
+      edit.y = drag.y + e.clientY - drag.py;
+      placeFrame();
+    });
+    ['pointerup', 'pointercancel'].forEach(function (n) { stage.addEventListener(n, function () { drag = null; }); });
+  })();
+
+  $('eOk').addEventListener('click', function () {
+    if (!edit) { return; }
+    manual[edit.r.key] = { x: (edit.x + edit.fw / 2) / edit.dw, y: (edit.y + edit.fh / 2) / edit.dh };
+    closeEditor(); run();
+  });
+  $('eReset').addEventListener('click', function () {
+    if (!edit) { return; }
+    delete manual[edit.r.key];
+    closeEditor(); run();
+  });
+  $('eCancel').addEventListener('click', closeEditor);
+  $('editor').addEventListener('click', function (e) { if (e.target === $('editor')) { closeEditor(); } });
 
   var timer = null;
   function rerunSoon() { clearTimeout(timer); timer = setTimeout(run, 250); }
@@ -396,7 +605,7 @@
   $('quality').addEventListener('input', function () { $('qv').textContent = $('quality').value; rerunSoon(); });
   $('mode').addEventListener('change', function () { $('anchor').disabled = $('mode').value !== 'cover'; });
 
-  $('clear').addEventListener('click', function () { files = []; $('files').value = ''; run(); });
+  $('clear').addEventListener('click', function () { files = []; manual = {}; $('files').value = ''; run(); });
 
   $('zip').addEventListener('click', async function () {
     var list = [];
