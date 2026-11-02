@@ -16,6 +16,8 @@
   "0 = only at adapter start": "0 = seulement au démarrage de l'adaptateur",
   "Check image size": "Vérifier la taille des images",
   "Warns in the log about images that are too large for a smooth slideshow": "Avertit dans le journal des images trop grandes pour un diaporama fluide",
+  "Check resolution (reads every image, needs more memory)": "Vérifier la résolution (lit chaque image, demande plus de mémoire)",
+  "Switch off to save memory: the file size is still checked, but images are no longer opened. Resolutions that are too high are then not reported.": "Désactiver pour économiser la mémoire : la taille du fichier est toujours vérifiée, mais les images ne sont plus ouvertes. Les résolutions trop élevées ne sont alors plus signalées.",
   "Largest recommended file size (KB)": "Taille de fichier maximale recommandée (Ko)",
   "Largest recommended resolution (megapixels)": "Résolution maximale recommandée (mégapixels)",
   "Shrink photos before uploading (1600 x 1000 px, JPEG). The tool runs in your browser, nothing is uploaded. It opens in a new tab. If your browser blocks pop-ups, it opens in this tab instead: allow pop-ups for the admin address, or save your settings first and use the Back button to return. Then upload the result under Files in the admin.": "Réduisez les photos avant de les téléverser (1600 × 1000 px, JPEG). L'outil fonctionne dans votre navigateur, rien n'est envoyé. Il s'ouvre dans un nouvel onglet. Si votre navigateur bloque les pop-ups, il s'ouvre dans cet onglet : autorisez les pop-ups pour l'adresse de l'admin ou enregistrez d'abord vos réglages et revenez avec le bouton Retour. Téléversez ensuite le résultat sous Fichiers dans l'admin.",

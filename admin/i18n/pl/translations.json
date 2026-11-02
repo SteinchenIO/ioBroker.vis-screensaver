@@ -16,6 +16,8 @@
   "0 = only at adapter start": "0 = tylko przy starcie adaptera",
   "Check image size": "Sprawdzaj rozmiar obrazów",
   "Warns in the log about images that are too large for a smooth slideshow": "Ostrzega w dzienniku o obrazach zbyt dużych dla płynnego pokazu",
+  "Check resolution (reads every image, needs more memory)": "Sprawdzaj rozdzielczość (wczytuje każdy obraz, zużywa więcej pamięci)",
+  "Switch off to save memory: the file size is still checked, but images are no longer opened. Resolutions that are too high are then not reported.": "Wyłącz, aby oszczędzić pamięć: rozmiar pliku nadal jest sprawdzany, ale obrazy nie są już otwierane. Zbyt wysokie rozdzielczości nie będą zgłaszane.",
   "Largest recommended file size (KB)": "Największy zalecany rozmiar pliku (KB)",
   "Largest recommended resolution (megapixels)": "Największa zalecana rozdzielczość (megapiksele)",
   "Shrink photos before uploading (1600 x 1000 px, JPEG). The tool runs in your browser, nothing is uploaded. It opens in a new tab. If your browser blocks pop-ups, it opens in this tab instead: allow pop-ups for the admin address, or save your settings first and use the Back button to return. Then upload the result under Files in the admin.": "Zmniejsz zdjęcia przed wgraniem (1600 × 1000 px, JPEG). Narzędzie działa w przeglądarce, nic nie jest wysyłane. Otwiera się w nowej karcie. Jeśli przeglądarka blokuje wyskakujące okna, otworzy się w tej karcie: zezwól na wyskakujące okna dla adresu panelu admin albo najpierw zapisz ustawienia i wróć przyciskiem Wstecz. Następnie wgraj wynik w panelu admin w sekcji Pliki.",

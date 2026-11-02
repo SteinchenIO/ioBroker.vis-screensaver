@@ -200,6 +200,7 @@ class Screensaver extends utils.Adapter {
             imageSource: String(c.imageSource || ''),
             rescanMinutes: num(c.rescanMinutes, 10, 0, 1440),
             checkImages: c.checkImages !== false,
+            checkPixels: c.checkPixels !== false,
             maxFileKB: num(c.maxFileKB, 1500, 100, 50000),
             maxMegapixels: num(c.maxMegapixels, 4, 0.5, 100),
         };
@@ -271,7 +272,8 @@ class Screensaver extends utils.Adapter {
             const key = `${e.url}|${e.size}|${e.modifiedAt}`;
             let dim = this.dimCache.get(key);
             if (dim === undefined) {
-                dim = await this.readDimensions(e);
+                // Die Auflösung steht nur im Bild selbst. Dafür wird jede Datei komplett gelesen (kostet Speicher).
+                dim = s.checkPixels ? await this.readDimensions(e) : null;
             }
             cache.set(key, dim);
 
@@ -422,13 +424,12 @@ class Screensaver extends utils.Adapter {
         try {
             if (obj.command === 'detectionStatus') {
                 const st = await detection.status(read);
-                reply({
-                    result: st.installed
-                        ? 'Personenerkennung ist installiert.'
-                        : st.outdated
-                          ? 'Eine ältere Version ist installiert. Bitte neu installieren.'
-                          : 'Personenerkennung ist nicht installiert.',
-                });
+                // Das Foto-Werkzeug nutzt immer die Dateien aus Instanz 0: bei anderen Instanzen dort mitprüfen
+                let first;
+                if (this.instance !== 0) {
+                    first = await detection.status(name => this.readFileAsync('vis-screensaver.0', name));
+                }
+                reply({ result: detection.describeStatus({ instance: this.instance, own: st, first }) });
             } else if (obj.command === 'installDetection') {
                 const force = !!(obj.message && obj.message.force);
                 const res = await detection.install({

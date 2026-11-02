@@ -1,8 +1,34 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.29",
+    "version": "0.1.31",
     "news": {
+      "0.1.31": {
+        "en": "New switch \"Check resolution\": switch it off to save memory (images are no longer opened, file size is still checked).",
+        "de": "Neuer Schalter \"Auflösung prüfen\": ausschalten spart Speicher (Bilder werden nicht mehr geöffnet, die Dateigröße wird weiter geprüft).",
+        "ru": "Новый переключатель «Проверять разрешение»: отключите, чтобы сэкономить память (изображения не открываются, размер файла проверяется).",
+        "pt": "Novo interruptor \"Verificar a resolução\": desativar poupa memória (as imagens deixam de ser abertas, o tamanho do ficheiro continua a ser verificado).",
+        "nl": "Nieuwe schakelaar \"Resolutie controleren\": uitschakelen bespaart geheugen (afbeeldingen worden niet geopend, bestandsgrootte wordt nog gecontroleerd).",
+        "fr": "Nouvel interrupteur \"Vérifier la résolution\" : le désactiver économise la mémoire (images non ouvertes, taille du fichier toujours vérifiée).",
+        "it": "Nuovo interruttore \"Controlla la risoluzione\": disattivarlo risparmia memoria (immagini non aperte, dimensione del file ancora controllata).",
+        "es": "Nuevo interruptor \"Comprobar la resolución\": desactivarlo ahorra memoria (las imágenes no se abren, el tamaño del archivo se sigue comprobando).",
+        "pl": "Nowy przełącznik \"Sprawdzaj rozdzielczość\": wyłączenie oszczędza pamięć (obrazy nie są otwierane, rozmiar pliku nadal jest sprawdzany).",
+        "uk": "Новий перемикач «Перевіряти роздільну здатність»: вимкнення заощаджує пам'ять (зображення не відкриваються, розмір файлу перевіряється).",
+        "zh-cn": "新增开关“检查分辨率”：关闭可节省内存（不再打开图片，仍检查文件大小）。"
+      },
+      "0.1.30": {
+        "en": "Status check shows whether person detection is installed in instance 0 as well (the photo tool always uses instance 0).",
+        "de": "Statusprüfung zeigt auch, ob die Personenerkennung in Instanz 0 installiert ist (das Foto-Werkzeug nutzt immer Instanz 0).",
+        "ru": "Проверка состояния показывает, установлено ли распознавание людей также в экземпляре 0 (инструмент для фото всегда использует экземпляр 0).",
+        "pt": "A verificação de estado mostra também se a deteção de pessoas está instalada na instância 0 (a ferramenta de fotos usa sempre a instância 0).",
+        "nl": "De statuscontrole toont ook of personenherkenning in instantie 0 is geïnstalleerd (de fototool gebruikt altijd instantie 0).",
+        "fr": "La vérification de l'état indique aussi si la détection de personnes est installée dans l'instance 0 (l'outil photo utilise toujours l'instance 0).",
+        "it": "Il controllo dello stato mostra anche se il riconoscimento delle persone è installato nell'istanza 0 (lo strumento foto usa sempre l'istanza 0).",
+        "es": "La comprobación de estado indica también si la detección de personas está instalada en la instancia 0 (la herramienta de fotos usa siempre la instancia 0).",
+        "pl": "Sprawdzenie stanu pokazuje też, czy wykrywanie osób jest zainstalowane w instancji 0 (narzędzie do zdjęć zawsze używa instancji 0).",
+        "uk": "Перевірка стану також показує, чи встановлено розпізнавання людей в екземплярі 0 (інструмент для фото завжди використовує екземпляр 0).",
+        "zh-cn": "状态检查还会显示实例 0 中是否已安装人物检测（照片工具始终使用实例 0）。"
+      },
       "0.1.29": {
         "en": "Admin texts moved to translation files (admin/i18n).",
         "de": "Admin-Texte in Übersetzungsdateien ausgelagert (admin/i18n).",
@@ -80,19 +106,6 @@
         "pl": "Dodano przykładowy widok dla vis 1.",
         "uk": "Додано приклад вигляду для vis 1.",
         "zh-cn": "新增 vis 1 示例视图。"
-      },
-      "0.1.23": {
-        "en": "Standard ioBroker tests and GitHub workflow added.",
-        "de": "Standard-Tests von ioBroker und GitHub-Aktion hinzugefügt.",
-        "ru": "Добавлены стандартные тесты ioBroker и рабочий процесс GitHub.",
-        "pt": "Testes padrão do ioBroker e fluxo de trabalho do GitHub adicionados.",
-        "nl": "Standaard ioBroker-tests en GitHub-workflow toegevoegd.",
-        "fr": "Tests standard ioBroker et workflow GitHub ajoutés.",
-        "it": "Aggiunti i test standard di ioBroker e il workflow GitHub.",
-        "es": "Añadidas las pruebas estándar de ioBroker y el flujo de trabajo de GitHub.",
-        "pl": "Dodano standardowe testy ioBroker i przepływ pracy GitHub.",
-        "uk": "Додано стандартні тести ioBroker і робочий процес GitHub.",
-        "zh-cn": "新增 ioBroker 标准测试和 GitHub 工作流。"
       }
     },
     "titleLang": {
@@ -177,6 +190,7 @@
     "showClock": true,
     "rescanMinutes": 10,
     "checkImages": true,
+    "checkPixels": true,
     "maxFileKB": 1500,
     "maxMegapixels": 4
   },

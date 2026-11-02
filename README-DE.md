@@ -21,6 +21,7 @@ Nach einer einstellbaren Leerlaufzeit blendet er Bilder aus einem ioBroker-Ordne
 | Uhr anzeigen | Uhrzeit und Datum unten links | an |
 | Ordner neu einlesen | alle n Minuten werden neue Bilder erkannt; 0 = nur beim Start der Instanz | 10 |
 | Bildgröße prüfen | meldet zu große Bilder im Log | an |
+| Auflösung prüfen | öffnet jedes Bild, um die Auflösung zu lesen. Ausschalten spart Speicher: Die Dateigröße wird weiter geprüft, die Auflösung nicht | an |
 
 ## Objekte
 
@@ -83,7 +84,7 @@ Hat das Desktop-Menü einen eigenen Schoner (`CONFIG.saver`), dort `enabled:fals
 - **Format:** JPEG, Qualität 80–85, möglichst unter 1,5 MB, im Normalfall unter 400 KB.
 - **Verkleinern:** In den Instanz-Einstellungen unter „Bilder“ auf das Bild **Foto-Werkzeug öffnen** klicken. Es öffnet sich in einem neuen Tab; blockiert dein Browser Popups für die Admin-Adresse, öffnet es sich stattdessen im selben Tab, erlaube dort also Popups oder speichere vorher deine Einstellungen (alternativ `http://<ioBroker-IP>:8081/files/vis-screensaver.admin/tools/resize.html`), Fotos hineinziehen, ZIP laden. Alles läuft im Browser; die Handy-Drehung (EXIF) wird beachtet, Dateinamen werden bereinigt.
 - **Personenerkennung (optional):** Das Foto-Werkzeug kann Personen finden und darauf zuschneiden, statt aus der Mitte zu schneiden. Den Ausschnitt kann man auch von Hand verschieben („Ausschnitt verschieben“). Die Erkennung läuft im Browser, die Fotos bleiben auf dem Rechner. Sie braucht vier Dateien (zusammen etwa 22 MB), die **nicht** zum Adapter gehören, damit Updates klein bleiben.
-  Einmal in den Adaptereinstellungen unter **Personenerkennung** mit dem Knopf „Personenerkennung installieren (ca. 22 MB)“ installieren. Der Adapter lädt die Dateien einmal (Modell von Google, Bibliothek von jsDelivr), prüft die Prüfsummen und legt sie im eigenen Dateispeicher ab. Bei Adapter-Updates werden sie nicht erneut geladen. Ohne sie schneidet das Werkzeug aus der Mitte zu und weist unter „Bildausschnitt“ darauf hin.
+  Einmal in den Adaptereinstellungen unter **Personenerkennung** mit dem Knopf „Personenerkennung installieren (ca. 22 MB)“ installieren. Der Adapter lädt die Dateien einmal (Modell von Google, Bibliothek von jsDelivr), prüft die Prüfsummen und legt sie im eigenen Dateispeicher ab. Bei Adapter-Updates werden sie nicht erneut geladen. Hast du mehrere Instanzen, nutzt das Foto-Werkzeug immer die Dateien aus Instanz 0 (`vis-screensaver.0`). Nur dort muss die Erkennung installiert werden; „Status prüfen“ zeigt bei anderen Instanzen auch, ob sie in Instanz 0 vorhanden ist. Ohne sie schneidet das Werkzeug aus der Mitte zu und weist unter „Bildausschnitt“ darauf hin.
 - **Hochladen:** Admin → **Dateien** → Ordner `vis.0/slideshow` → entpackte Bilder ins Fenster ziehen.
 - **Kontrolle:** Der Adapter prüft die Bilder ohne sie zu dekodieren. Was über „Maximale Dateigröße“ oder „Maximale Megapixel“ liegt, steht im Log und in `info.imageReport`. Bilder werden trotzdem gezeigt.
 - Hochformatbilder: Bei „Bildschirm füllen“ werden sie stark beschnitten. Dafür „Ganzes Bild zeigen“ wählen oder sie im Werkzeug mit „Einpassen“ vorbereiten.
