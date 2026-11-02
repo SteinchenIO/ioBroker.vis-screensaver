@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bildschirmschoner</title>
+<!--
+=====================================================================================================
+  BILDSCHIRMSCHONER-SEITE für den Fernseher (Samsung QE43Q60D, Browser des Fernsehers)
+=====================================================================================================
+
+  WAS IST DAS?
+    Eine einzelne HTML-Datei. Sie startet den Bildschirmschoner des Adapters "vis-screensaver" und
+    benutzt dafür die INSTANZ 1 (vis-screensaver.1), nicht die Instanz 0 des Wand-Displays.
+    So zeigt der Fernseher seine eigenen Bilder (eigener Bilderordner, eigene Zeiten, eigene Einstellungen).
+
+  WAS PASSIERT, WENN DIE SEITE GEÖFFNET WIRD?
+    1. Die Seite zeigt "Bildschirmschoner wird gleich gestartet ..." mit einem kurzen Countdown.
+    2. Dann startet sie den Schoner. Er legt sich über die ganze Seite und zeigt die Bilder.
+    3. Ein Tipp (oder eine Taste der Fernbedienung) beendet ihn. Darunter erscheint wieder diese Seite.
+    4. Der Schoner startet nach der eingestellten Leerlaufzeit von selbst wieder (Einstellung "Zeit bis zum
+       Start" bei der Instanz im Admin). Mit dem Knopf "Jetzt starten" geht es sofort.
+
+  WO LIEGT DIE DATEI?
+    Im ioBroker-Admin unter  Dateien -> vis.0 -> desktop-schoner-tv.html  (neben desktop-menue.html).
+    Aufruf am Fernseher, meist:  http://<IP des Pi>:8082/vis.0/desktop-schoner-tv.html
+    (Port je nach Web-Adapter, nicht geprüft). Die Adresse im Browser des Fernsehers als Lesezeichen
+    oder Startseite speichern.
+
+  WAS MUSS VORHER EINGERICHTET SEIN?
+    - Die Instanz vis-screensaver.1 läuft (Admin -> Instanzen, grüner Punkt).
+    - Bei dieser Instanz ist ein Bilderordner mit Bildern eingetragen (Einstellungen -> Bilder),
+      zum Beispiel vis.0/slideshow2. Für den Fernseher passen Bilder in 1920 x 1080 oder 2560 x 1440.
+    - Der Schalter vis-screensaver.1.control.enabled steht auf true (Standard).
+    Ohne Bilder oder bei ausgeschaltetem Schoner startet er NICHT. Die Seite sagt dann, woran es liegen kann.
+
+  WAS MACHT DIE SEITE NICHT?
+    Sie liest und schreibt keine ioBroker-Datenpunkte (keine Simple-API) und schaltet kein Display.
+    Sie startet nur den Schoner und zeigt den Zustand an.
+
+  AUFBAU DER DATEI
+    1. <style>     Aussehen
+    2. <body>      Meldung, Zeile mit dem Zustand, Knopf
+    3. <script>    a) KONFIGURATION (hier stellst du die Instanz und die Zeiten ein)
+                   b) Laden des Schoner-Skripts (Instanz wird VOR dem Laden festgelegt)
+                   c) Ablauf: Countdown, Starten, Zustand beobachten
+
+  HÄUFIGE ÄNDERUNGEN
+    - Andere Instanz:               CONFIG.instance (0, 1, 2 ...)
+    - Länger/kürzer warten:         CONFIG.startDelaySeconds
+    - Nach dem Beenden sofort neu:  CONFIG.restartSeconds (0 = aus, dann gilt nur die Leerlaufzeit)
+=====================================================================================================
+-->
+<style>
+  :root {
+    --bg1: #0b1020;
+    --bg2: #151b34;
+    --text: #eef1fb;
+    --muted: #8d97b8;
+    --card: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.12);
+    --accent: #ff9f43;
+    --accent-2: #ee5a6f;
+    --warn: #ffd166;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(900px 500px at 15% 10%, rgba(108, 92, 231, 0.28), transparent 60%),
+      radial-gradient(800px 500px at 90% 90%, rgba(255, 159, 67, 0.18), transparent 60%),
+      linear-gradient(160deg, var(--bg1), var(--bg2));
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    user-select: none;
+  }
+  /* Karte in der Mitte. Die Größen richten sich nach der Breite des Fensters (vw), so passt sie auf Fernseher und Wand-Display. */
+  .card {
+    width: min(70vw, 1100px);
+    padding: 4.5vw 4vw;
+    border-radius: 2.4vw;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+  .icon {
+    width: 7vw; height: 7vw; min-width: 64px; min-height: 64px;
+    margin: 0 auto 2.4vw;
+    border-radius: 2vw;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 10px 30px rgba(255, 159, 67, 0.4);
+  }
+  .icon svg { width: 55%; height: 55%; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  h1 { font-size: 3.2vw; font-weight: 300; letter-spacing: -0.5px; line-height: 1.2; }
+  .sub { color: var(--muted); font-size: 1.7vw; margin-top: 1.4vw; line-height: 1.4; }
+  .state { margin-top: 2vw; font-size: 1.8vw; color: var(--text); min-height: 1.4em; }
+  .state.warn { color: var(--warn); }
+  button {
+    margin-top: 2.6vw;
+    padding: 1.2vw 3vw;
+    border-radius: 1.4vw;
+    border: 1px solid var(--card-border);
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff; font: 600 2vw "Segoe UI", system-ui, sans-serif;
+    cursor: pointer;
+  }
+  button:active { transform: scale(0.97); }
+  /* Auf schmalen Fenstern (Hochformat) größere Schrift */
+  @media (max-width: 800px) {
+    .card { width: 90vw; padding: 8vw 6vw; border-radius: 5vw; }
+    h1 { font-size: 7vw; }
+    .sub { font-size: 4.2vw; }
+    .state { font-size: 4.4vw; }
+    button { font-size: 5vw; padding: 3vw 8vw; border-radius: 3.5vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- DIE MELDUNG. Die Texte setzt das Skript je nach Zustand (Wartezeit, läuft, beendet, Fehler). -->
+<main class="card">
+  <div class="icon">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 13l3-3.5 2.5 2.5 2-2 2.5 3"/></svg>
+  </div>
+  <h1 id="title">Bildschirmschoner wird gleich gestartet …</h1>
+  <p class="sub" id="sub">Ein Tipp beendet ihn.</p>
+  <div class="state" id="state"></div>
+  <button type="button" id="btnStart">Jetzt starten</button>
+</main>
+
+<script>
+/* ============ KONFIGURATION ============
+   Texte in Anführungszeichen sind Namen, Zahlen stehen ohne Anführungszeichen.
+   Nach einer Änderung die Datei im Admin neu einspielen und die Seite am Fernseher neu laden. */
+var CONFIG = {
+  // Welche Instanz des Adapters vis-screensaver benutzt werden soll.
+  // 1 = vis-screensaver.1 (Fernseher). Das Wand-Display nimmt Instanz 0.
+  instance: 1,
+
+  // Sekunden Wartezeit mit Countdown, bevor der Schoner gestartet wird (0 = sofort)
+  startDelaySeconds: 3,
+
+  // Läuft der Schoner nach so vielen Sekunden immer noch nicht, zeigt die Seite eine Fehlermeldung.
+  // (Die Seite versucht es bis dahin alle halbe Sekunde, weil der Adapter erst seine Einstellungen laden muss.)
+  giveUpSeconds: 20,
+
+  // Nach dem Beenden durch einen Tipp den Schoner nach so vielen Sekunden von selbst wieder starten.
+  // 0 = nicht: dann startet er erst nach der Leerlaufzeit des Adapters (Einstellung "Zeit bis zum Start").
+  restartSeconds: 0
+};
+/* ======================================= */
+
+// Die Instanz muss feststehen, BEVOR das Schoner-Skript geladen wird. Es liest sie beim Start aus window.SCREENSAVER_INSTANCE.
+window.SCREENSAVER_INSTANCE = CONFIG.instance;
+</script>
+
+<!-- Das Skript des Adapters. Es kommt vom Web-Adapter, gehört zu allen Instanzen und holt seine Einstellungen
+     und Bilder von der oben gewählten Instanz (Adresse /vis-screensaver.<Instanz>/). -->
+<script src="/vis-screensaver/screensaver.js"></script>
+
+<script>
+// ================================================================================
+// c) ABLAUF
+//    1. Countdown (startDelaySeconds)
+//    2. Starten: IoBScreensaver.start() wird alle halbe Sekunde aufgerufen, bis der Schoner läuft.
+//       (Das Skript startet nur, wenn es die Einstellungen geladen hat, die Instanz eingeschaltet ist und
+//       Bilder vorhanden sind. Bis dahin passiert bei start() nichts.)
+//    3. Läuft er, beobachtet die Seite den Zustand: wird er per Tipp beendet, zeigt sie das an.
+// ================================================================================
+var titleEl = document.getElementById("title");
+var subEl = document.getElementById("sub");
+var stateEl = document.getElementById("state");
+var btnStart = document.getElementById("btnStart");
+
+var phase = "wait";        // wait = Countdown, trying = versucht zu starten, running = Schoner läuft, ended = beendet, failed = Fehler
+var timer = null;          // Countdown und Neustart
+var tryTimer = null;       // Startversuche
+var watchTimer = null;     // Beobachten, ob der Schoner noch läuft
+
+// Texte und Zustand der Seite setzen
+function show(title, sub, state, warn) {
+  titleEl.textContent = title;
+  subEl.textContent = sub;
+  stateEl.textContent = state || "";
+  stateEl.className = "state" + (warn ? " warn" : "");
+}
+
+function saverReady() {
+  return !!(window.IoBScreensaver && typeof IoBScreensaver.start === "function");
+}
+function saverActive() {
+  return saverReady() && IoBScreensaver.isActive();
+}
+
+// Alles Laufende anhalten (vor jedem neuen Ablauf)
+function clearAll() {
+  clearInterval(timer); clearInterval(tryTimer); clearInterval(watchTimer);
+  timer = tryTimer = watchTimer = null;
+}
+
+// Schritt 1: Countdown, dann Schritt 2. Mit seconds = 0 geht es sofort los.
+function beginCountdown(seconds) {
+  clearAll();
+  phase = "wait";
+  var left = Math.max(0, Number(seconds) || 0);
+  show("Bildschirmschoner wird gleich gestartet …", "Ein Tipp beendet ihn.",
+       left > 0 ? "Start in " + left + " s" : "");
+  if (left === 0) { tryStart(); return; }
+  timer = setInterval(function () {
+    left -= 1;
+    if (left <= 0) { clearInterval(timer); timer = null; tryStart(); return; }
+    stateEl.textContent = "Start in " + left + " s";
+  }, 1000);
+}
+
+// Schritt 2: Starten, so lange es nötig ist, höchstens giveUpSeconds
+function tryStart() {
+  clearAll();
+  phase = "trying";
+  show("Bildschirmschoner wird gestartet …", "Einen Moment bitte.", "");
+  if (!saverReady()) {
+    fail("Das Skript des Bildschirmschoners wurde nicht geladen. Ist der Adapter vis-screensaver gestartet und der Web-Adapter erreichbar?");
+    return;
+  }
+  var started = Date.now();
+  var attempt = function () {
+    IoBScreensaver.start();
+    if (saverActive()) { running(); return; }
+    if (Date.now() - started > Math.max(1, CONFIG.giveUpSeconds) * 1000) {
+      fail("Der Bildschirmschoner konnte nicht gestartet werden. Mögliche Gründe: Instanz vis-screensaver." +
+           CONFIG.instance + " ist nicht gestartet, ausgeschaltet (Datenpunkt control.enabled) oder hat keine Bilder im Bilderordner.");
+    }
+  };
+  attempt();
+  if (phase === "trying") { tryTimer = setInterval(attempt, 500); }
+}
+
+// Schritt 3: Der Schoner läuft. Alle halbe Sekunde prüfen, ob er beendet wurde.
+function running() {
+  clearAll();
+  phase = "running";
+  show("Der Bildschirmschoner läuft", "Ein Tipp beendet ihn.", "");
+  watchTimer = setInterval(function () {
+    if (!saverActive()) { ended(); }
+  }, 500);
+}
+
+// Beendet (meist durch einen Tipp)
+function ended() {
+  clearAll();
+  phase = "ended";
+  var restart = Number(CONFIG.restartSeconds) || 0;
+  show("Bildschirmschoner beendet",
+       restart > 0
+         ? "Er startet in " + restart + " Sekunden von selbst wieder."
+         : "Er startet nach der eingestellten Leerlaufzeit von selbst wieder.",
+       "Mit „Jetzt starten“ geht es sofort.");
+  if (restart > 0) { timer = setTimeout(function () { beginCountdown(0); }, restart * 1000); }
+}
+
+// Fehler anzeigen. Der Knopf versucht es noch einmal.
+function fail(message) {
+  clearAll();
+  phase = "failed";
+  show("Bildschirmschoner nicht gestartet", "", message, true);
+  btnStart.textContent = "Noch einmal versuchen";
+}
+
+btnStart.addEventListener("click", function () {
+  btnStart.textContent = "Jetzt starten";
+  beginCountdown(0);
+});
+
+// Los geht es, sobald die Seite fertig geladen ist
+beginCountdown(CONFIG.startDelaySeconds);
+</script>
+</body>
+</html>
