@@ -348,6 +348,11 @@ class Screensaver extends utils.Adapter {
 
         if (this.settings.checkImages) {
             await this.checkImages(entries);
+        } else {
+            // Prüfung aus: alte Ergebnisse leeren, damit nach einem Neustart nichts Veraltetes stehen bleibt
+            this.problemKey = '';
+            await this.setStateAsync('info.oversizedCount', 0, true);
+            await this.setStateAsync('info.imageReport', '[]', true);
         }
     }
 

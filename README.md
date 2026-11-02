@@ -138,6 +138,9 @@ Do you like the adapter? You can support further development with a small donati
 
 ## Changelog
 
+### 0.1.32
+- With the image check switched off, `info.oversizedCount` and `info.imageReport` are cleared at start (0 and `[]`), so no old results remain.
+
 ### 0.1.31
 - New switch "Check resolution". Switched off, the adapter no longer opens every image at start, which saves memory (about 65 MB peak with 170 images of 800 KB each, measured on one Pi). The file size is still checked.
 

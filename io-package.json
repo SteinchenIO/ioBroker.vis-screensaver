@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.31",
+    "version": "0.1.32",
     "news": {
+      "0.1.32": {
+        "en": "Image check results (info.oversizedCount, info.imageReport) are now cleared at start when the check is switched off, so no old values remain.",
+        "de": "Ergebnisse der Bildprüfung (info.oversizedCount, info.imageReport) werden bei ausgeschalteter Prüfung beim Start geleert, es bleiben keine alten Werte stehen.",
+        "ru": "Результаты проверки изображений (info.oversizedCount, info.imageReport) при выключенной проверке очищаются при запуске, старые значения не остаются.",
+        "pt": "Os resultados da verificação de imagens (info.oversizedCount, info.imageReport) são limpos no arranque quando a verificação está desligada, sem valores antigos.",
+        "nl": "Resultaten van de afbeeldingscontrole (info.oversizedCount, info.imageReport) worden bij het starten gewist als de controle uit staat, zodat er geen oude waarden blijven staan.",
+        "fr": "Les résultats du contrôle des images (info.oversizedCount, info.imageReport) sont effacés au démarrage quand le contrôle est désactivé, aucune ancienne valeur ne subsiste.",
+        "it": "I risultati del controllo delle immagini (info.oversizedCount, info.imageReport) vengono azzerati all'avvio quando il controllo è disattivato, nessun valore vecchio resta.",
+        "es": "Los resultados de la comprobación de imágenes (info.oversizedCount, info.imageReport) se vacían al iniciar cuando la comprobación está desactivada, no quedan valores antiguos.",
+        "pl": "Wyniki sprawdzania obrazów (info.oversizedCount, info.imageReport) są czyszczone przy starcie, gdy sprawdzanie jest wyłączone, nie zostają stare wartości.",
+        "uk": "Результати перевірки зображень (info.oversizedCount, info.imageReport) при вимкненій перевірці очищаються під час запуску, старі значення не залишаються.",
+        "zh-cn": "关闭图片检查时，启动时会清空检查结果（info.oversizedCount、info.imageReport），不再保留旧值。"
+      },
       "0.1.31": {
         "en": "New switch \"Check resolution\": switch it off to save memory (images are no longer opened, file size is still checked).",
         "de": "Neuer Schalter \"Auflösung prüfen\": ausschalten spart Speicher (Bilder werden nicht mehr geöffnet, die Dateigröße wird weiter geprüft).",
