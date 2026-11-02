@@ -125,10 +125,10 @@
       "help": "Warns in the log about images that are too large for a smooth slideshow",
       "newLine": true,
       "xs": 12,
-      "sm": 12,
-      "md": 4,
-      "lg": 4,
-      "xl": 4
+      "sm": 6,
+      "md": 6,
+      "lg": 6,
+      "xl": 6
     },
     "maxFileKB": {
       "type": "number",
@@ -139,21 +139,21 @@
       "disabled": "!data.checkImages",
       "xs": 12,
       "sm": 6,
-      "md": 4,
-      "lg": 4,
-      "xl": 4
+      "md": 6,
+      "lg": 6,
+      "xl": 6
     },
     "checkPixels": {
       "type": "checkbox",
       "label": "Check resolution (reads every image, needs more memory)",
       "help": "Switch off to save memory: the file size is still checked, but images are no longer opened. Resolutions that are too high are then not reported.",
-      "newLine": true,
       "disabled": "!data.checkImages",
+      "newLine": true,
       "xs": 12,
-      "sm": 12,
-      "md": 8,
-      "lg": 8,
-      "xl": 8
+      "sm": 6,
+      "md": 6,
+      "lg": 6,
+      "xl": 6
     },
     "maxMegapixels": {
       "type": "number",
@@ -164,9 +164,9 @@
       "disabled": "!data.checkImages || !data.checkPixels",
       "xs": 12,
       "sm": 6,
-      "md": 4,
-      "lg": 4,
-      "xl": 4
+      "md": 6,
+      "lg": 6,
+      "xl": 6
     },
     "_resizeHint": {
       "type": "staticText",
