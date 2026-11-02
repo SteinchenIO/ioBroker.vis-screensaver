@@ -93,32 +93,6 @@
         "pl": "Narzędzie do zdjęć: wykrywanie osób instaluje się jednym przyciskiem w ustawieniach adaptera (pobierane raz, zachowane po aktualizacjach).",
         "uk": "Інструмент для фото: розпізнавання людей встановлюється однією кнопкою в налаштуваннях адаптера (завантажується один раз, зберігається при оновленнях).",
         "zh-cn": "照片工具：在适配器设置中点击一个按钮即可安装人物检测（只下载一次，更新后保留）。"
-      },
-      "0.1.25": {
-        "en": "Photo tool: optional person detection and manual crop adjustment.",
-        "de": "Foto-Werkzeug: optionale Personenerkennung und Ausschnitt von Hand verschieben.",
-        "ru": "Фото-инструмент: необязательное распознавание людей и ручная корректировка кадра.",
-        "pt": "Ferramenta de fotos: deteção opcional de pessoas e ajuste manual do recorte.",
-        "nl": "Fototool: optionele persoonsherkenning en handmatig bijsnijden aanpassen.",
-        "fr": "Outil photo : détection facultative des personnes et ajustement manuel du cadrage.",
-        "it": "Strumento foto: riconoscimento facoltativo delle persone e regolazione manuale del ritaglio.",
-        "es": "Herramienta de fotos: detección opcional de personas y ajuste manual del recorte.",
-        "pl": "Narzędzie do zdjęć: opcjonalne wykrywanie osób i ręczna korekta kadru.",
-        "uk": "Інструмент для фото: необов'язкове розпізнавання людей і ручне коригування кадру.",
-        "zh-cn": "照片工具：可选的人物检测和手动调整裁剪。"
-      },
-      "0.1.24": {
-        "en": "Example view for vis 1 added.",
-        "de": "Beispielansicht für vis 1 hinzugefügt.",
-        "ru": "Добавлен пример представления для vis 1.",
-        "pt": "Adicionada vista de exemplo para o vis 1.",
-        "nl": "Voorbeeldweergave voor vis 1 toegevoegd.",
-        "fr": "Vue d'exemple pour vis 1 ajoutée.",
-        "it": "Aggiunta vista di esempio per vis 1.",
-        "es": "Añadida vista de ejemplo para vis 1.",
-        "pl": "Dodano przykładowy widok dla vis 1.",
-        "uk": "Додано приклад вигляду для vis 1.",
-        "zh-cn": "新增 vis 1 示例视图。"
       }
     },
     "titleLang": {
