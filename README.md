@@ -92,45 +92,11 @@ If your desktop menu has its own screensaver (`CONFIG.saver`), set `enabled:fals
 
 Requirements: Node.js 22 or newer, js-controller 6.0.11 or newer, admin 7.6.20 or newer.
 
-The adapter is not in the official ioBroker repository and is therefore installed directly from GitHub. On the ioBroker machine (e.g. Raspberry Pi) via SSH:
-
-```
-cd /opt/iobroker
-iobroker url https://github.com/SteinchenIO/ioBroker.vis-screensaver
-```
-
-Then check in the admin under Instances that `vis-screensaver.0` exists. If not:
-
-```
-iobroker add vis-screensaver
-```
-
-Afterwards enter the image folder and the timing in the instance settings. How to integrate the screensaver into vis or your own page is described under "Integration".
-
-### Alternatively in the admin
-
-The installation also works through the user interface. The **cat icon** (GitHub symbol) in the adapter view is **only available in expert mode**.
-
-1. **Switch on expert mode** (switch at the bottom left of the menu bar).
-2. On the **Adapters** tab click the **cat icon** in the toolbar.
-3. In the dialog choose the **Custom** tab. The "From GitHub" tab does not fit here, it only lists adapters from the adapter list.
-4. Enter the address `https://github.com/SteinchenIO/ioBroker.vis-screensaver`.
-5. Leave "Create an instance if none exists" ticked and click **Install**.
-
-### Important: do not copy by hand into `node_modules`
-
-A folder copied by hand into `/opt/iobroker/node_modules/` is not listed in the `package.json` of ioBroker. The next `npm install` (e.g. during an adapter update) removes it as superfluous, and the instance reports `startInstance cannot find adapter`. Installing with `iobroker url` registers the adapter and protects it.
+Install the adapter on the **Adapters** tab of the ioBroker admin. Then check under **Instances** that `vis-screensaver.0` exists and create the instance if it does not. Afterwards enter the image folder and the timing in the instance settings. How to integrate the screensaver into vis or your own page is described under "Integration".
 
 ### Update
 
-Run the same command again:
-
-```
-cd /opt/iobroker
-iobroker url https://github.com/SteinchenIO/ioBroker.vis-screensaver
-```
-
-The instance settings are kept. The adapter restarts vis once so that the widget is recognised.
+Update the adapter on the **Adapters** tab like any other adapter. The instance settings are kept. The adapter restarts vis once so that the widget is recognised.
 
 ## Support
 

@@ -93,45 +93,11 @@ Hat das Desktop-Menü einen eigenen Schoner (`CONFIG.saver`), dort `enabled:fals
 
 Voraussetzungen: Node.js 22 oder neuer, js-controller 6.0.11 oder neuer, Admin 7.6.20 oder neuer.
 
-Der Adapter steht nicht im offiziellen ioBroker-Repository und wird deshalb direkt von GitHub installiert. Das geht auf dem ioBroker-Rechner (z. B. Raspberry Pi) per SSH:
-
-```
-cd /opt/iobroker
-iobroker url https://github.com/SteinchenIO/ioBroker.vis-screensaver
-```
-
-Danach in der Admin-Oberfläche unter Instanzen prüfen, ob `vis-screensaver.0` vorhanden ist. Falls nicht:
-
-```
-iobroker add vis-screensaver
-```
-
-Anschließend in den Instanz-Einstellungen Bilderordner und Zeiten eintragen. Wie du den Schoner in vis oder eine eigene Seite einbindest, steht unter „Einbinden“.
-
-### Alternativ im Admin
-
-Die Installation geht auch über die Oberfläche. Das **Katzen-Symbol** (GitHub-Zeichen) in der Adapter-Ansicht gibt es aber **nur im Expertenmodus**.
-
-1. **Expertenmodus einschalten** (Schalter unten links in der Menüleiste).
-2. Im Reiter **Adapter** oben in der Werkzeugleiste auf das **Katzen-Symbol** klicken.
-3. Im Dialog den Reiter **Benutzerdefiniert** wählen. Der Reiter „Von GitHub“ passt hier nicht, er zeigt nur Adapter aus der Adapterliste.
-4. Die Adresse `https://github.com/SteinchenIO/ioBroker.vis-screensaver` eintragen.
-5. Den Haken bei „Instanz erstellen, wenn noch keine existiert“ gesetzt lassen und auf **Installieren** klicken.
-
-### Wichtig: nicht von Hand nach `node_modules` kopieren
-
-Ein von Hand nach `/opt/iobroker/node_modules/` kopierter Ordner steht nicht in der `package.json` von ioBroker. Beim nächsten `npm install` (z. B. bei einem Adapter-Update) wird er dann als überflüssig entfernt, und die Instanz meldet `startInstance cannot find adapter`. Die Installation über `iobroker url` trägt den Adapter dagegen ein und schützt ihn.
+Den Adapter im Reiter **Adapter** der ioBroker-Admin-Oberfläche installieren. Danach unter **Instanzen** prüfen, ob `vis-screensaver.0` vorhanden ist, und die Instanz anlegen, falls nicht. Anschließend in den Instanz-Einstellungen Bilderordner und Zeiten eintragen. Wie du den Schoner in vis oder eine eigene Seite einbindest, steht unter „Einbinden“.
 
 ### Update
 
-Erneut denselben Befehl ausführen:
-
-```
-cd /opt/iobroker
-iobroker url https://github.com/SteinchenIO/ioBroker.vis-screensaver
-```
-
-Die Instanz-Einstellungen bleiben erhalten. Der Adapter startet dabei vis einmal neu, damit das Widget erkannt wird.
+Den Adapter im Reiter **Adapter** wie jeden anderen aktualisieren. Die Instanz-Einstellungen bleiben erhalten. Der Adapter startet dabei vis einmal neu, damit das Widget erkannt wird.
 
 ## Unterstützen
 
