@@ -37,3 +37,26 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           os: ${{ matrix.os }}
+
+  deploy:
+    needs: [check-and-lint, adapter-tests]
+
+    # Nur bei einem Push auf einen Tag mit Versionsnummer (z. B. v0.1.33)
+    if: |
+      contains(github.event.head_commit.message, '[skip ci]') == false &&
+      github.event_name == 'push' &&
+      startsWith(github.ref, 'refs/tags/v')
+
+    runs-on: ubuntu-latest
+
+    # id-token: Veröffentlichen auf npm per Trusted Publishing (ohne Token)
+    # contents: Anlegen des GitHub-Releases
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - uses: ioBroker/testing-action-deploy@v1
+        with:
+          node-version: '22.x'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
