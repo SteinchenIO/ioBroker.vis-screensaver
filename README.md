@@ -104,6 +104,9 @@ Do you like the adapter? You can support further development with a small donati
 
 ## Changelog
 
+### 0.1.33
+- Releases are published to npm automatically by GitHub Actions (trusted publishing). No functional change. Old changelog entries moved to `CHANGELOG_OLD.md`.
+
 ### 0.1.32
 - With the image check switched off, `info.oversizedCount` and `info.imageReport` are cleared at start (0 and `[]`), so no old results remain.
 
@@ -125,40 +128,7 @@ Do you like the adapter? You can support further development with a small donati
 ### 0.1.26
 - Photo tool: people detection is installed with one button in the adapter settings.
 
-### 0.1.25
-- Photo tool: optional person detection and manual crop adjustment.
-
-### 0.1.24
-- Example view for vis 1 added (`examples/`).
-
-### 0.1.23
-- Standard ioBroker tests and GitHub workflow added.
-
-### 0.1.22
-- README button opens the German README.
-
-### 0.1.21
-- Translations added, e-mail address in the license.
-
-### 0.1.20
-- Formatted, colored code examples in the settings and README.
-
-### 0.1.19
-- Admin layout sizes completed, admin 7.6.20 recommended.
-
-### 0.1.18
-- Requirements raised: Node.js 22, js-controller 6.0.11, admin 7.6.17; adapter-core updated.
-
-### 0.1.17
-- Admin layout sizes for large screens, shorter news list.
-
-### 0.1.16
-- Adapter timer, state roles and metadata follow the ioBroker guidelines.
-
-### 0.1.15
-- Description corrected (no vis-2 widget).
-
-Older entries: see the commit history on GitHub.
+Older entries: see [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 
 ## License
 

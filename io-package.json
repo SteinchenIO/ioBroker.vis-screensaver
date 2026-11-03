@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.32",
+    "version": "0.1.33",
     "news": {
+      "0.1.33": {
+        "en": "Releases are now published to npm automatically by GitHub Actions (trusted publishing). No functional change.",
+        "de": "Releases werden jetzt automatisch über GitHub Actions auf npm veröffentlicht (Trusted Publishing). Keine funktionale Änderung.",
+        "ru": "Релизы теперь автоматически публикуются в npm через GitHub Actions (trusted publishing). Функциональных изменений нет.",
+        "pt": "As versões passam a ser publicadas automaticamente no npm pelo GitHub Actions (trusted publishing). Sem alterações funcionais.",
+        "nl": "Releases worden nu automatisch via GitHub Actions op npm gepubliceerd (trusted publishing). Geen functionele wijziging.",
+        "fr": "Les versions sont désormais publiées automatiquement sur npm par GitHub Actions (trusted publishing). Aucun changement fonctionnel.",
+        "it": "Le versioni vengono ora pubblicate automaticamente su npm tramite GitHub Actions (trusted publishing). Nessuna modifica funzionale.",
+        "es": "Las versiones se publican ahora automáticamente en npm mediante GitHub Actions (trusted publishing). Sin cambios funcionales.",
+        "pl": "Wydania są teraz automatycznie publikowane w npm przez GitHub Actions (trusted publishing). Bez zmian funkcjonalnych.",
+        "uk": "Релізи тепер автоматично публікуються в npm через GitHub Actions (trusted publishing). Функціональних змін немає.",
+        "zh-cn": "现在通过 GitHub Actions 自动将版本发布到 npm（trusted publishing）。无功能变化。"
+      },
       "0.1.32": {
         "en": "Image check results (info.oversizedCount, info.imageReport) are now cleared at start when the check is switched off, so no old values remain.",
         "de": "Ergebnisse der Bildprüfung (info.oversizedCount, info.imageReport) werden bei ausgeschalteter Prüfung beim Start geleert, es bleiben keine alten Werte stehen.",
@@ -80,19 +93,6 @@
         "pl": "Teksty: link do narzędzia do zdjęć otwiera się w nowej karcie (wyskakujące okna muszą być dozwolone).",
         "uk": "Тексти: посилання на інструмент для фото відкривається в новій вкладці (спливаючі вікна мають бути дозволені).",
         "zh-cn": "文本：照片工具链接在新标签页中打开（需允许弹出窗口）。"
-      },
-      "0.1.26": {
-        "en": "Photo tool: people detection is installed with one button in the adapter settings (downloaded once, kept across updates).",
-        "de": "Foto-Werkzeug: Personenerkennung wird mit einem Knopf in den Adaptereinstellungen installiert (einmal geladen, bleibt bei Updates erhalten).",
-        "ru": "Фото-инструмент: распознавание людей устанавливается одной кнопкой в настройках адаптера (загружается один раз, сохраняется при обновлениях).",
-        "pt": "Ferramenta de fotos: a deteção de pessoas é instalada com um botão nas definições do adaptador (descarregada uma vez, mantida nas atualizações).",
-        "nl": "Fototool: persoonsherkenning wordt met één knop in de adapterinstellingen geïnstalleerd (eenmaal gedownload, blijft bij updates behouden).",
-        "fr": "Outil photo : la détection des personnes s'installe d'un bouton dans les réglages de l'adaptateur (téléchargée une fois, conservée lors des mises à jour).",
-        "it": "Strumento foto: il riconoscimento delle persone si installa con un pulsante nelle impostazioni dell'adattatore (scaricato una volta, mantenuto negli aggiornamenti).",
-        "es": "Herramienta de fotos: la detección de personas se instala con un botón en los ajustes del adaptador (se descarga una vez y se conserva en las actualizaciones).",
-        "pl": "Narzędzie do zdjęć: wykrywanie osób instaluje się jednym przyciskiem w ustawieniach adaptera (pobierane raz, zachowane po aktualizacjach).",
-        "uk": "Інструмент для фото: розпізнавання людей встановлюється однією кнопкою в налаштуваннях адаптера (завантажується один раз, зберігається при оновленнях).",
-        "zh-cn": "照片工具：在适配器设置中点击一个按钮即可安装人物检测（只下载一次，更新后保留）。"
       }
     },
     "titleLang": {
