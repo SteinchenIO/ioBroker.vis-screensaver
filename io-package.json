@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.33",
+    "version": "0.1.34",
     "news": {
+      "0.1.34": {
+        "en": "News list cleaned up: it now only contains versions that exist on npm. No functional change.",
+        "de": "News-Liste bereinigt: Sie enthält nur noch Versionen, die es auf npm gibt. Keine funktionale Änderung.",
+        "ru": "Список новостей очищен: в нём остались только версии, существующие в npm. Функциональных изменений нет.",
+        "pt": "Lista de novidades limpa: contém apenas versões que existem no npm. Sem alterações funcionais.",
+        "nl": "Nieuwslijst opgeschoond: bevat alleen nog versies die op npm bestaan. Geen functionele wijziging.",
+        "fr": "Liste des nouveautés nettoyée : elle ne contient plus que des versions existant sur npm. Aucun changement fonctionnel.",
+        "it": "Elenco delle novità ripulito: contiene solo versioni presenti su npm. Nessuna modifica funzionale.",
+        "es": "Lista de novedades depurada: solo contiene versiones que existen en npm. Sin cambios funcionales.",
+        "pl": "Lista zmian uporządkowana: zawiera tylko wersje istniejące w npm. Bez zmian funkcjonalnych.",
+        "uk": "Список новин очищено: у ньому лише версії, що існують у npm. Функціональних змін немає.",
+        "zh-cn": "已清理更新说明：仅保留 npm 上存在的版本。无功能变化。"
+      },
       "0.1.33": {
         "en": "Releases are now published to npm automatically by GitHub Actions (trusted publishing). No functional change.",
         "de": "Releases werden jetzt automatisch über GitHub Actions auf npm veröffentlicht (Trusted Publishing). Keine funktionale Änderung.",
@@ -15,84 +28,6 @@
         "pl": "Wydania są teraz automatycznie publikowane w npm przez GitHub Actions (trusted publishing). Bez zmian funkcjonalnych.",
         "uk": "Релізи тепер автоматично публікуються в npm через GitHub Actions (trusted publishing). Функціональних змін немає.",
         "zh-cn": "现在通过 GitHub Actions 自动将版本发布到 npm（trusted publishing）。无功能变化。"
-      },
-      "0.1.32": {
-        "en": "Image check results (info.oversizedCount, info.imageReport) are now cleared at start when the check is switched off, so no old values remain.",
-        "de": "Ergebnisse der Bildprüfung (info.oversizedCount, info.imageReport) werden bei ausgeschalteter Prüfung beim Start geleert, es bleiben keine alten Werte stehen.",
-        "ru": "Результаты проверки изображений (info.oversizedCount, info.imageReport) при выключенной проверке очищаются при запуске, старые значения не остаются.",
-        "pt": "Os resultados da verificação de imagens (info.oversizedCount, info.imageReport) são limpos no arranque quando a verificação está desligada, sem valores antigos.",
-        "nl": "Resultaten van de afbeeldingscontrole (info.oversizedCount, info.imageReport) worden bij het starten gewist als de controle uit staat, zodat er geen oude waarden blijven staan.",
-        "fr": "Les résultats du contrôle des images (info.oversizedCount, info.imageReport) sont effacés au démarrage quand le contrôle est désactivé, aucune ancienne valeur ne subsiste.",
-        "it": "I risultati del controllo delle immagini (info.oversizedCount, info.imageReport) vengono azzerati all'avvio quando il controllo è disattivato, nessun valore vecchio resta.",
-        "es": "Los resultados de la comprobación de imágenes (info.oversizedCount, info.imageReport) se vacían al iniciar cuando la comprobación está desactivada, no quedan valores antiguos.",
-        "pl": "Wyniki sprawdzania obrazów (info.oversizedCount, info.imageReport) są czyszczone przy starcie, gdy sprawdzanie jest wyłączone, nie zostają stare wartości.",
-        "uk": "Результати перевірки зображень (info.oversizedCount, info.imageReport) при вимкненій перевірці очищаються під час запуску, старі значення не залишаються.",
-        "zh-cn": "关闭图片检查时，启动时会清空检查结果（info.oversizedCount、info.imageReport），不再保留旧值。"
-      },
-      "0.1.31": {
-        "en": "New switch \"Check resolution\": switch it off to save memory (images are no longer opened, file size is still checked).",
-        "de": "Neuer Schalter \"Auflösung prüfen\": ausschalten spart Speicher (Bilder werden nicht mehr geöffnet, die Dateigröße wird weiter geprüft).",
-        "ru": "Новый переключатель «Проверять разрешение»: отключите, чтобы сэкономить память (изображения не открываются, размер файла проверяется).",
-        "pt": "Novo interruptor \"Verificar a resolução\": desativar poupa memória (as imagens deixam de ser abertas, o tamanho do ficheiro continua a ser verificado).",
-        "nl": "Nieuwe schakelaar \"Resolutie controleren\": uitschakelen bespaart geheugen (afbeeldingen worden niet geopend, bestandsgrootte wordt nog gecontroleerd).",
-        "fr": "Nouvel interrupteur \"Vérifier la résolution\" : le désactiver économise la mémoire (images non ouvertes, taille du fichier toujours vérifiée).",
-        "it": "Nuovo interruttore \"Controlla la risoluzione\": disattivarlo risparmia memoria (immagini non aperte, dimensione del file ancora controllata).",
-        "es": "Nuevo interruptor \"Comprobar la resolución\": desactivarlo ahorra memoria (las imágenes no se abren, el tamaño del archivo se sigue comprobando).",
-        "pl": "Nowy przełącznik \"Sprawdzaj rozdzielczość\": wyłączenie oszczędza pamięć (obrazy nie są otwierane, rozmiar pliku nadal jest sprawdzany).",
-        "uk": "Новий перемикач «Перевіряти роздільну здатність»: вимкнення заощаджує пам'ять (зображення не відкриваються, розмір файлу перевіряється).",
-        "zh-cn": "新增开关“检查分辨率”：关闭可节省内存（不再打开图片，仍检查文件大小）。"
-      },
-      "0.1.30": {
-        "en": "Status check shows whether person detection is installed in instance 0 as well (the photo tool always uses instance 0).",
-        "de": "Statusprüfung zeigt auch, ob die Personenerkennung in Instanz 0 installiert ist (das Foto-Werkzeug nutzt immer Instanz 0).",
-        "ru": "Проверка состояния показывает, установлено ли распознавание людей также в экземпляре 0 (инструмент для фото всегда использует экземпляр 0).",
-        "pt": "A verificação de estado mostra também se a deteção de pessoas está instalada na instância 0 (a ferramenta de fotos usa sempre a instância 0).",
-        "nl": "De statuscontrole toont ook of personenherkenning in instantie 0 is geïnstalleerd (de fototool gebruikt altijd instantie 0).",
-        "fr": "La vérification de l'état indique aussi si la détection de personnes est installée dans l'instance 0 (l'outil photo utilise toujours l'instance 0).",
-        "it": "Il controllo dello stato mostra anche se il riconoscimento delle persone è installato nell'istanza 0 (lo strumento foto usa sempre l'istanza 0).",
-        "es": "La comprobación de estado indica también si la detección de personas está instalada en la instancia 0 (la herramienta de fotos usa siempre la instancia 0).",
-        "pl": "Sprawdzenie stanu pokazuje też, czy wykrywanie osób jest zainstalowane w instancji 0 (narzędzie do zdjęć zawsze używa instancji 0).",
-        "uk": "Перевірка стану також показує, чи встановлено розпізнавання людей в екземплярі 0 (інструмент для фото завжди використовує екземпляр 0).",
-        "zh-cn": "状态检查还会显示实例 0 中是否已安装人物检测（照片工具始终使用实例 0）。"
-      },
-      "0.1.29": {
-        "en": "Admin texts moved to translation files (admin/i18n).",
-        "de": "Admin-Texte in Übersetzungsdateien ausgelagert (admin/i18n).",
-        "ru": "Тексты администратора вынесены в файлы переводов (admin/i18n).",
-        "pt": "Textos do admin movidos para ficheiros de tradução (admin/i18n).",
-        "nl": "Admin-teksten verplaatst naar vertaalbestanden (admin/i18n).",
-        "fr": "Textes de l'admin déplacés dans des fichiers de traduction (admin/i18n).",
-        "it": "Testi dell'admin spostati in file di traduzione (admin/i18n).",
-        "es": "Textos del admin movidos a archivos de traducción (admin/i18n).",
-        "pl": "Teksty panelu admin przeniesiono do plików tłumaczeń (admin/i18n).",
-        "uk": "Тексти адмінки винесено у файли перекладів (admin/i18n).",
-        "zh-cn": "管理界面文本已移至翻译文件（admin/i18n）。"
-      },
-      "0.1.28": {
-        "en": "Admin dialog translated into all 11 languages.",
-        "de": "Admin-Dialog in alle 11 Sprachen übersetzt.",
-        "ru": "Диалог администратора переведён на все 11 языков.",
-        "pt": "Diálogo de administração traduzido para os 11 idiomas.",
-        "nl": "Admin-dialoog vertaald in alle 11 talen.",
-        "fr": "Dialogue d'administration traduit dans les 11 langues.",
-        "it": "Finestra di amministrazione tradotta in tutte le 11 lingue.",
-        "es": "Diálogo de administración traducido a los 11 idiomas.",
-        "pl": "Okno administracyjne przetłumaczone na wszystkie 11 języków.",
-        "uk": "Діалог адміністратора перекладено всіма 11 мовами.",
-        "zh-cn": "管理界面已翻译为全部 11 种语言。"
-      },
-      "0.1.27": {
-        "en": "Texts: photo tool link opens in a new tab (pop-ups must be allowed).",
-        "de": "Texte: Der Link zum Foto-Werkzeug öffnet sich in einem neuen Tab (Popups müssen erlaubt sein).",
-        "ru": "Тексты: ссылка на фото-инструмент открывается в новой вкладке (всплывающие окна должны быть разрешены).",
-        "pt": "Textos: a ligação para a ferramenta de fotos abre num novo separador (os pop-ups têm de estar permitidos).",
-        "nl": "Teksten: de link naar de fototool opent in een nieuw tabblad (pop-ups moeten zijn toegestaan).",
-        "fr": "Textes : le lien vers l'outil photo s'ouvre dans un nouvel onglet (les pop-ups doivent être autorisés).",
-        "it": "Testi: il link allo strumento foto si apre in una nuova scheda (i pop-up devono essere consentiti).",
-        "es": "Textos: el enlace a la herramienta de fotos se abre en una pestaña nueva (deben permitirse las ventanas emergentes).",
-        "pl": "Teksty: link do narzędzia do zdjęć otwiera się w nowej karcie (wyskakujące okna muszą być dozwolone).",
-        "uk": "Тексти: посилання на інструмент для фото відкривається в новій вкладці (спливаючі вікна мають бути дозволені).",
-        "zh-cn": "文本：照片工具链接在新标签页中打开（需允许弹出窗口）。"
       }
     },
     "titleLang": {

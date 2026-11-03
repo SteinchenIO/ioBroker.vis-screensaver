@@ -104,6 +104,9 @@ Do you like the adapter? You can support further development with a small donati
 
 ## Changelog
 
+### 0.1.34
+- News list in `io-package.json` cleaned up (only versions that exist on npm). No functional change.
+
 ### 0.1.33
 - Releases are published to npm automatically by GitHub Actions (trusted publishing). No functional change. Old changelog entries moved to `CHANGELOG_OLD.md`.
 
