@@ -21,7 +21,14 @@ const detection = require('./lib/detection');
 const IMAGE_EXT = /\.(jpe?g|png|gif|webp|avif|bmp|svg)$/i;
 const MAX_LOGGED_PROBLEMS = 5;
 
-/** Zahl lesen und in den erlaubten Bereich zwingen. */
+/**
+ * Zahl lesen und in den erlaubten Bereich zwingen.
+ *
+ * @param value
+ * @param def
+ * @param min
+ * @param max
+ */
 function num(value, def, min, max) {
     let v = Number(value);
     if (!Number.isFinite(v)) {
@@ -380,7 +387,11 @@ class Screensaver extends utils.Adapter {
         return found.sort((a, b) => (a.url < b.url ? -1 : a.url > b.url ? 1 : 0));
     }
 
-    /** Breite und Höhe eines Bildes aus seinen Kopfdaten lesen (null, wenn nicht möglich). */
+    /**
+     * Breite und Höhe eines Bildes aus seinen Kopfdaten lesen (null, wenn nicht möglich).
+     *
+     * @param entry
+     */
     async readDimensions(entry) {
         try {
             const res = await this.readFileAsync(entry.objectId, entry.path);
@@ -395,6 +406,8 @@ class Screensaver extends utils.Adapter {
     /**
      * Dateigröße und Pixelzahl gegen die Grenzwerte prüfen. Zu große Bilder laden auf dem Pi langsam
      * und können beim Überblenden ruckeln. Das Ergebnis geht ins Log und in die States info.*.
+     *
+     * @param entries
      */
     async checkImages(entries) {
         const s = this.settings;
@@ -416,7 +429,9 @@ class Screensaver extends utils.Adapter {
             }
             if (dim && dim.width * dim.height > s.maxMegapixels * 1e6) {
                 const mp = (dim.width * dim.height) / 1e6;
-                issues.push(`${dim.width}×${dim.height} Pixel = ${mp.toFixed(1)} MP (empfohlen höchstens ${s.maxMegapixels} MP)`);
+                issues.push(
+                    `${dim.width}×${dim.height} Pixel = ${mp.toFixed(1)} MP (empfohlen höchstens ${s.maxMegapixels} MP)`,
+                );
             }
             if (issues.length) {
                 problems.push({
@@ -443,7 +458,9 @@ class Screensaver extends utils.Adapter {
                     this.log.warn(`  ${p.file}: ${p.issues.join('; ')}`);
                 }
                 if (problems.length > MAX_LOGGED_PROBLEMS) {
-                    this.log.warn(`  … und ${problems.length - MAX_LOGGED_PROBLEMS} weitere (siehe State info.imageReport)`);
+                    this.log.warn(
+                        `  … und ${problems.length - MAX_LOGGED_PROBLEMS} weitere (siehe State info.imageReport)`,
+                    );
                 }
             }
         }
@@ -451,7 +468,11 @@ class Screensaver extends utils.Adapter {
         await this.setStateAsync('info.imageReport', JSON.stringify(problems), true);
     }
 
-    /** Ordner einlesen und die Dateien nur schreiben, wenn sich etwas geändert hat. */
+    /**
+     * Ordner einlesen und die Dateien nur schreiben, wenn sich etwas geändert hat.
+     *
+     * @param force
+     */
     async refresh(force) {
         const entries = await this.scanImages();
         const images = entries.map(e => e.url);
@@ -489,7 +510,11 @@ class Screensaver extends utils.Adapter {
         }
     }
 
-    /** Schreibzugriffe nacheinander ausführen, damit sich Dateien nicht überholen. */
+    /**
+     * Schreibzugriffe nacheinander ausführen, damit sich Dateien nicht überholen.
+     *
+     * @param job
+     */
     enqueue(job) {
         this.writeQueue = this.writeQueue.then(job, job);
         return this.writeQueue;
@@ -551,6 +576,7 @@ class Screensaver extends utils.Adapter {
 
     /**
      * Nachrichten aus der Admin-Oberfläche (Knöpfe in den Einstellungen).
+     *
      * @param {ioBroker.Message} obj
      */
     async onMessage(obj) {

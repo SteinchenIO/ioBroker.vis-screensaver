@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-screensaver",
-  "version": "0.1.35",
+  "version": "0.1.36",
   "description": "Slideshow screensaver with your own photos for vis and custom web pages",
   "author": {
     "name": "SteinchenIO",
@@ -45,12 +45,18 @@
     "url": "https://github.com/SteinchenIO/ioBroker.vis-screensaver/issues"
   },
   "devDependencies": {
+    "@iobroker/adapter-dev": "^1.5.0",
+    "@iobroker/eslint-config": "^2.3.4",
     "@iobroker/testing": "^6.3.0",
-    "@types/node": "^22.0.0"
+    "@tsconfig/node22": "^22.0.6",
+    "@types/node": "^22.0.0",
+    "typescript": "^6.0.3"
   },
   "scripts": {
     "test:package": "mocha test/package --exit",
     "test:integration": "mocha test/integration --exit",
-    "test": "npm run test:package && npm run test:integration"
+    "test": "npm run test:package && npm run test:integration",
+    "lint": "eslint -c eslint.config.mjs .",
+    "translate": "translate-adapter"
   }
 }

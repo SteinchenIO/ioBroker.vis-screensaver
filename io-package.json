@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.35",
+    "version": "0.1.36",
     "news": {
+      "0.1.36": {
+        "en": "Development tooling added (shared ESLint configuration, lint script, Dependabot); admin translations moved to the short file format. No functional change.",
+        "de": "Entwicklungswerkzeuge ergänzt (gemeinsame ESLint-Konfiguration, Lint-Skript, Dependabot); Admin-Übersetzungen ins kurze Dateiformat umgestellt. Keine funktionale Änderung.",
+        "ru": "Добавлены инструменты разработки (общая конфигурация ESLint, скрипт lint, Dependabot); переводы админ-интерфейса переведены в короткий формат файлов. Функциональных изменений нет.",
+        "pt": "Ferramentas de desenvolvimento adicionadas (configuração ESLint partilhada, script lint, Dependabot); traduções do admin passadas para o formato curto de ficheiro. Sem alterações funcionais.",
+        "nl": "Ontwikkelhulpmiddelen toegevoegd (gedeelde ESLint-configuratie, lint-script, Dependabot); admin-vertalingen omgezet naar het korte bestandsformaat. Geen functionele wijziging.",
+        "fr": "Outils de développement ajoutés (configuration ESLint partagée, script lint, Dependabot) ; traductions de l'admin converties au format de fichier court. Aucun changement fonctionnel.",
+        "it": "Aggiunti strumenti di sviluppo (configurazione ESLint condivisa, script lint, Dependabot); traduzioni dell'admin convertite nel formato file breve. Nessuna modifica funzionale.",
+        "es": "Añadidas herramientas de desarrollo (configuración ESLint compartida, script lint, Dependabot); traducciones del admin convertidas al formato de archivo corto. Sin cambios funcionales.",
+        "pl": "Dodano narzędzia deweloperskie (wspólna konfiguracja ESLint, skrypt lint, Dependabot); tłumaczenia panelu admin przeniesiono do krótkiego formatu plików. Bez zmian funkcjonalnych.",
+        "uk": "Додано інструменти розробки (спільна конфігурація ESLint, скрипт lint, Dependabot); переклади адмінки переведено в короткий формат файлів. Функціональних змін немає.",
+        "zh-cn": "新增开发工具（共享 ESLint 配置、lint 脚本、Dependabot）；管理界面翻译改为简短文件格式。无功能变化。"
+      },
       "0.1.35": {
         "en": "Translations (ru, pt, nl, fr, it, es, pl, uk, zh-cn) added for the names of the adapter's states and channels. No functional change.",
         "de": "Übersetzungen (ru, pt, nl, fr, it, es, pl, uk, zh-cn) für die Namen der Datenpunkte und Kanäle des Adapters ergänzt. Keine funktionale Änderung.",

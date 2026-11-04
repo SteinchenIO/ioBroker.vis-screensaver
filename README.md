@@ -104,6 +104,9 @@ Do you like the adapter? You can support further development with a small donati
 
 ## Changelog
 
+### 0.1.36
+- Development tooling added: shared ioBroker ESLint configuration with a `lint` script, Dependabot, TypeScript configuration. Admin translations moved to the short file format (`admin/i18n/<lang>.json`). The test workflow now lints the code. No functional change.
+
 ### 0.1.35
 - Translations added for the names of the adapter's states and channels (ru, pt, nl, fr, it, es, pl, uk, zh-cn), as requested by the repository checker. The adapter now also restarts with VIS 2 (`vis-2` added to `restartAdapters`). `CHANGELOG_OLD.md` is no longer part of the npm package.
 
