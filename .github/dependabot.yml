@@ -8,6 +8,13 @@ updates:
       timezone: Europe/Berlin
     open-pull-requests-limit: 5
     versioning-strategy: increase
+    ignore:
+      # @types/node soll zur Mindestversion Node.js 22 passen (engines), keine Hauptversionssprünge
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      # typescript-eslint unterstützt neue TypeScript-Hauptversionen erst mit Verzögerung
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: "/"
