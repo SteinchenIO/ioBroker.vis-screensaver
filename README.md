@@ -104,6 +104,9 @@ Do you like the adapter? You can support further development with a small donati
 
 ## Changelog
 
+### 0.1.35
+- Translations added for the names of the adapter's states and channels (ru, pt, nl, fr, it, es, pl, uk, zh-cn), as requested by the repository checker. The adapter now also restarts with VIS 2 (`vis-2` added to `restartAdapters`). `CHANGELOG_OLD.md` is no longer part of the npm package.
+
 ### 0.1.34
 - News list in `io-package.json` cleaned up (only versions that exist on npm). No functional change.
 

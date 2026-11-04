@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-screensaver",
-    "version": "0.1.34",
+    "version": "0.1.35",
     "news": {
+      "0.1.35": {
+        "en": "Translations (ru, pt, nl, fr, it, es, pl, uk, zh-cn) added for the names of the adapter's states and channels. No functional change.",
+        "de": "Übersetzungen (ru, pt, nl, fr, it, es, pl, uk, zh-cn) für die Namen der Datenpunkte und Kanäle des Adapters ergänzt. Keine funktionale Änderung.",
+        "ru": "Добавлены переводы (ru, pt, nl, fr, it, es, pl, uk, zh-cn) для названий состояний и каналов адаптера. Функциональных изменений нет.",
+        "pt": "Traduções (ru, pt, nl, fr, it, es, pl, uk, zh-cn) adicionadas para os nomes dos estados e canais do adaptador. Sem alterações funcionais.",
+        "nl": "Vertalingen (ru, pt, nl, fr, it, es, pl, uk, zh-cn) toegevoegd voor de namen van de states en kanalen van de adapter. Geen functionele wijziging.",
+        "fr": "Traductions (ru, pt, nl, fr, it, es, pl, uk, zh-cn) ajoutées pour les noms des états et des canaux de l'adaptateur. Aucun changement fonctionnel.",
+        "it": "Aggiunte le traduzioni (ru, pt, nl, fr, it, es, pl, uk, zh-cn) per i nomi degli stati e dei canali dell'adattatore. Nessuna modifica funzionale.",
+        "es": "Añadidas traducciones (ru, pt, nl, fr, it, es, pl, uk, zh-cn) para los nombres de los estados y canales del adaptador. Sin cambios funcionales.",
+        "pl": "Dodano tłumaczenia (ru, pt, nl, fr, it, es, pl, uk, zh-cn) nazw stanów i kanałów adaptera. Bez zmian funkcjonalnych.",
+        "uk": "Додано переклади (ru, pt, nl, fr, it, es, pl, uk, zh-cn) назв станів і каналів адаптера. Функціональних змін немає.",
+        "zh-cn": "为适配器的状态和通道名称添加了翻译（ru、pt、nl、fr、it、es、pl、uk、zh-cn）。无功能变化。"
+      },
       "0.1.34": {
         "en": "News list cleaned up: it now only contains versions that exist on npm. No functional change.",
         "de": "News-Liste bereinigt: Sie enthält nur noch Versionen, die es auf npm gibt. Keine funktionale Änderung.",
@@ -81,7 +94,8 @@
     "connectionType": "local",
     "dataSource": "poll",
     "restartAdapters": [
-      "vis"
+      "vis",
+      "vis-2"
     ],
     "compact": true,
     "adminUI": {
